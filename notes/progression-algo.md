@@ -479,3 +479,311 @@ No maximum chapter count is enforced, and many previously combined chapters are 
     - Algorithm: IDS for implicit graphs  
     - Complexity: O(b^d) like DFS, but benefits of BFS solution depth.  
     - Narrative: Explore routes incrementally by depth, balancing time and memory.
+
+76. **A* Search Algorithm**  
+    - Algorithm: A* (Heuristic Search)  
+    - Complexities: Typically O(b^d) worst, where b=branching factor, d=solution depth. With a good heuristic, often much better than BFS/DFS.  
+    - Space: O(b^d) due to frontier and visited sets.  
+    - Narrative: Use A* to quickly find shortest routes in SRAS when a good heuristic (e.g., straight-line distance) is available.
+
+77. **Iterative Deepening A* (IDA*)**  
+    - Algorithm: IDA* (Depth-limited A* iteratively)  
+    - Complexities: Similar to A*, but uses less memory; worst-case still O(b^d).  
+    - Space: O(d) in recursion depth.  
+    - Narrative: When SRAS must find paths but memory is limited, IDA* trades off some time for lower space.
+
+78. **Bicriteria Shortest Paths**  
+    - Algorithm: Finding shortest paths optimizing two criteria (e.g., time and cost)  
+    - Complexities: Often NP-hard for multiple criteria. Approximations or specialized heuristics used.  
+    - Narrative: Choose routes that minimize travel time and fuel cost simultaneously in SRAS.
+
+79. **Multi-Commodity Flow Problem**  
+    - Algorithm: Multi-commodity flow (no polynomial-time exact solution known generally)  
+    - Complexities: NP-hard in general.  
+    - Narrative: SRAS handling multiple goods, each needing separate flow paths. Approximate or heuristic solutions required.
+
+80. **Minimum Cost Flow Algorithm (Successive Shortest Path)**  
+    - Algorithm: Successive Shortest Path for Min-Cost Flow  
+    - Complexities: O(F * (V+E) log V), where F is total flow.  
+    - Space: O(V+E)  
+    - Narrative: Route multiple shipments in SRAS minimizing total transport cost.
+
+81. **Hopcroft–Karp Algorithm for Maximum Bipartite Matching**  
+    - Algorithm: Hopcroft–Karp  
+    - Complexities: O(√V E)  
+    - Space: O(V+E)  
+    - Narrative: Match drivers to deliveries efficiently in SRAS.
+
+82. **Dinic’s Algorithm for Max Flow**  
+    - Algorithm: Dinic’s Max Flow  
+    - Complexities: O(min{V^{2/3}, E^{1/2}} * E) in general, O(E√V) for unit capacities  
+    - Space: O(V+E)  
+    - Narrative: Faster max flow computations for large SRAS networks compared to Edmond-Karp.
+
+83. **Push–Relabel Algorithm for Max Flow**  
+    - Algorithm: Push–Relabel  
+    - Complexities: O(V³) worst, O(min(V^{2/3}, E^{1/2}) E) with highest label selection heuristics  
+    - Space: O(V+E)  
+    - Narrative: Another approach for max flow, can outperform Dinic’s in practice.
+
+84. **Bipartite Check via Graph 2-Coloring**  
+    - Algorithm: BFS/DFS based 2-coloring  
+    - Complexities: O(V+E)  
+    - Space: O(V)  
+    - Narrative: Check if we can split warehouses into two sets (e.g., north vs. south) without conflicts.
+
+85. **Eulerian Path and Hierholzer’s Algorithm**  
+    - Algorithm: Hierholzer’s Algorithm for Eulerian Path/Circuit  
+    - Complexities: O(E)  
+    - Space: O(V+E)  
+    - Narrative: Traverse every road exactly once if SRAS needs a route covering all edges (e.g., mail delivery routes).
+
+86. **Planar Graph Testing (Boyer–Myrvold Algorithm)**  
+    - Algorithm: Boyer–Myrvold Planarity Test  
+    - Complexities: O(V+E)  
+    - Space: O(V+E)  
+    - Narrative: Check if SRAS route network can be drawn without edges crossing, useful in visualization.
+
+87. **Articulation Points and Bridges in Graphs**  
+    - Algorithm: DFS-based articulation point/bridge detection  
+    - Complexities: O(V+E)  
+    - Space: O(V)  
+    - Narrative: Identify critical intersections or roads whose removal disconnects SRAS network.
+
+88. **Minimum Vertex Cover in Bipartite Graphs (Kőnig's Theorem)**  
+    - Algorithm: Find Max Matching then Min Vertex Cover in Bipartite Graph  
+    - Complexities: O(√V E) using Hopcroft-Karp  
+    - Space: O(V+E)  
+    - Narrative: Minimal set of warehouses that "cover" all delivery routes.
+
+89. **Cycle Detection in Directed Graphs**  
+    - Algorithm: DFS-based cycle detection  
+    - Complexities: O(V+E)  
+    - Space: O(V) stack  
+    - Narrative: Detect cycles that may cause infinite loops in SRAS routing.
+
+90. **Preflow–Push Algorithm for Maximum Flow**  
+    - Algorithm: Preflow–Push  
+    - Complexities: O(V³) worst  
+    - Space: O(V+E)  
+    - Narrative: Another max flow algorithm alternative.
+
+91. **Fenwick Tree (Binary Indexed Tree)**  
+    - Algorithm: Fenwick Tree for prefix sums  
+    - Complexities:  
+      - Update: O(log n)  
+      - Prefix sum query: O(log n)  
+    - Space: O(n)  
+    - Narrative: Quickly compute cumulative metrics (e.g., cumulative costs over a route segment) in SRAS.
+
+92. **Segment Tree for Range Queries and Updates**  
+    - Algorithm: Segment Tree  
+    - Complexities:  
+      - Update: O(log n)  
+      - Query: O(log n)  
+    - Space: O(n)  
+    - Narrative: Efficient range queries on large SRAS datasets, e.g., range minimum or sum queries of costs.
+
+93. **Sparse Table for Range Minimum Query (RMQ)**  
+    - Algorithm: Sparse Table RMQ  
+    - Complexities:  
+      - Preprocessing: O(n log n)  
+      - Query: O(1)  
+    - Space: O(n log n)  
+    - Narrative: Preprocess static route cost arrays for constant-time queries.
+
+94. **Heavy-Light Decomposition (HLD)**  
+    - Algorithm: Heavy-Light Decomposition on Trees  
+    - Complexities:  
+      - Build: O(n)  
+      - Queries: O(log n) on paths  
+    - Space: O(n)  
+    - Narrative: Quickly query paths in SRAS route trees.
+
+95. **Centroid Decomposition of Trees**  
+    - Algorithm: Centroid Decomposition  
+    - Complexities:  
+      - Build: O(n log n)  
+      - Query complexities vary depending on use-case.  
+    - Space: O(n)  
+    - Narrative: Break down SRAS routing tree into balanced subproblems.
+
+96. **Mo’s Algorithm (Query Square Root Decomposition)**  
+    - Algorithm: Mo’s Algorithm for offline queries  
+    - Complexities:  
+      - Sorting queries: O(q log q) typically, queries handle in O((n+q)√n)  
+    - Space: O(n+q)  
+    - Narrative: Offline queries on SRAS data, improves certain heavy query sets performance.
+
+97. **Suffix Automaton Construction**  
+    - Algorithm: Suffix Automaton (linear time construction)  
+    - Complexities:  
+      - Time: O(n)  
+      - Space: O(n)  
+    - Narrative: Process SRAS location strings for complex substring queries efficiently.
+
+98. **Z-Algorithm for Pattern Matching**  
+    - Algorithm: Z-Algorithm  
+    - Complexities: O(n+m) for pattern length m and text length n  
+    - Space: O(n)  
+    - Narrative: Another pattern search to find product codes quickly.
+
+99. **Manacher’s Algorithm for Longest Palindromic Substring**  
+    - Algorithm: Manacher’s Algorithm  
+    - Complexities: O(n)  
+    - Space: O(n)  
+    - Narrative: Identify symmetrical route codes or palindromic IDs quickly.
+
+100. **Christofides Algorithm for TSP Approximation**  
+    - Algorithm: Christofides TSP Approximation  
+    - Complexities: O(n³) or O(n² log n) with better MST implementation  
+    - Space: O(n²)  
+    - Narrative: Good approximation for route planning in SRAS when exact TSP is too hard.
+
+101. **Multithreaded Algorithms (Fork-Join Model)**  
+    - Algorithm: Parallel Merge Sort as an example  
+    - Complexities: O(n log n / p) on p processors ideal case  
+    - Space: O(n)  
+    - Narrative: Scale SRAS computations across multiple cores.
+
+102. **Strassen’s Matrix Multiplication**  
+    - Algorithm: Strassen’s  
+    - Complexities: O(n^{log_2(7)}) ~ O(n^{2.81})  
+    - Space: O(n²)  
+    - Narrative: If SRAS uses matrix ops (e.g., certain DP?), faster than O(n³).
+
+103. **Coppersmith–Winograd Matrix Multiplication**  
+    - Algorithm: Coppersmith–Winograd  
+    - Complexities: O(n^{2.373}) approximately  
+    - Space: O(n²)  
+    - Narrative: Even faster matrix multiplication for huge matrix computations in SRAS analytics.
+
+104. **Karger’s Algorithm for Minimum Cut**  
+    - Algorithm: Karger’s Randomized Min Cut  
+    - Complexities: O(E) repeated poly times to increase success probability  
+    - Space: O(V+E)  
+    - Narrative: Randomized approach to find minimal edge cuts in SRAS networks.
+
+105. **Rabin–Miller Primality Test**  
+    - Algorithm: Rabin–Miller  
+    - Complexities:  
+      - Average: O(k log³ n) for k iterations  
+      - Space: O(log n)  
+    - Narrative: Quickly test primality for cryptographic keys if SRAS secures communications.
+
+106. **Elliptic Curve Primality Test (ECPP)**  
+    - Algorithm: ECPP  
+    - Complexity: heuristic polynomial time  
+    - Space: polynomial  
+    - Narrative: Advanced primality testing if SRAS needed advanced crypto keys.
+
+107. **Randomized Rounding in Approximation Algorithms**  
+    - Algorithm: Randomized rounding technique for LP solutions  
+    - Complexity depends on original problem, no direct big-O.  
+    - Narrative: Derive approximate integral solutions from fractional LP solutions for route allocations.
+
+108. **Arora’s PTAS for Euclidean TSP (Conceptual)**  
+    - Algorithm: Arora’s PTAS for Euclidean TSP  
+    - Complexities: O(n^{(1/ε)}) type, very large but polynomial.  
+    - Narrative: If SRAS needs near-optimal TSP solutions in Euclidean plane, use a PTAS.
+
+109. **AKS Primality Testing (Deterministic Poly-Time)**  
+    - Algorithm: AKS primality test  
+    - Complexities: O((log n)^{c}) for some c ~ 6, strictly polynomial  
+    - Space: Poly(log n)  
+    - Narrative: Perfect deterministic primality checks for cryptographic tasks in SRAS.
+
+110. **Shor’s Algorithm (Quantum)**  
+    - Algorithm: Shor’s factoring  
+    - Complexities: O((log n)³) on a quantum computer  
+    - Narrative: Future-proof SRAS cryptography considerations.
+
+111. **Grover’s Algorithm (Quantum) Detailed**  
+    - Algorithm: Grover’s search  
+    - Complexities: O(√n) quantum steps  
+    - Narrative: Hypothetical SRAS searches huge datasets even faster with quantum tech.
+
+112. **Reservoir Sampling**  
+    - Algorithm: Reservoir Sampling  
+    - Complexities: O(n) for one pass sampling  
+    - Space: O(k) for sample size k  
+    - Narrative: Randomly sample deliveries from a massive SRAS data stream in one pass.
+
+113. **Bloom Filters for Approximate Membership**  
+    - Algorithm: Bloom Filter insertion/check  
+    - Complexities: O(k) per insert/check, typically O(1)  
+    - Space: O(n) bits  
+    - Narrative: Quickly check if product IDs likely exist, saving memory at cost of false positives.
+
+114. **Count-Min Sketch for Frequency Estimation**  
+    - Algorithm: Count-Min Sketch  
+    - Complexities: O(1) update/query with small factor  
+    - Space: O(1/ε * log(1/δ)) typically  
+    - Narrative: Track frequency of route usage approximately in SRAS big data scenario.
+
+115. **MinHash for Similarity Estimation**  
+    - Algorithm: MinHash  
+    - Complexities: O(n) to compute hashes, queries O(1) for similarity  
+    - Space: O(k) hash values per set  
+    - Narrative: Quickly compare similarity of location sets in SRAS for clustering.
+
+116. **Locality-Sensitive Hashing (LSH) for Nearest Neighbor**  
+    - Algorithm: LSH  
+    - Complexities: Preprocessing O(n^{1+ρ}) for some ρ<1, Query ~ O(n^{ρ})  
+    - Space: O(n^{1+ρ})  
+    - Narrative: Approximate nearest neighbor searches in large SRAS coordinates.
+
+117. **B-tree for External Memory Searching**  
+    - Algorithm: B-tree  
+    - Complexities:  
+      - Search: O(log n)  
+      - Space: O(n)  
+    - Narrative: Efficient on-disk indexing of SRAS massive data.
+
+118. **R-tree for Spatial Indexing**  
+    - Algorithm: R-tree  
+    - Complexities:  
+      - Average query: O(log n)  
+      - In worst cases could degrade.  
+    - Narrative: Spatial queries on SRAS map data for nearest warehouse queries.
+
+119. **Suffix Tree (Ukkonen’s Algorithm O(n))**  
+    - Algorithm: Ukkonen’s Suffix Tree Construction  
+    - Complexities: O(n)  
+    - Space: O(n)  
+    - Narrative: Fast substring queries in SRAS route codes.
+
+120. **Radix Sort (Non-Comparison Sorting)**  
+    - Algorithm: Radix Sort  
+    - Complexities: O(dn), where d=#digits  
+    - Space: O(n + k) depending on alphabet size  
+    - Narrative: Sort large sets of IDs by digits quickly if numeric constraints allow.
+
+121. **Counting Sort (Linear Time Sorting)**  
+    - Algorithm: Counting Sort  
+    - Complexities: O(n + k), k=range of input  
+    - Space: O(k)  
+    - Narrative: If SRAS product IDs fall in a known small range, sort in O(n).
+
+122. **Deterministic Median Finding (Median of Medians)**  
+    - Algorithm: Median of Medians  
+    - Complexities: O(n) worst-case selection  
+    - Space: O(n)  
+    - Narrative: Guaranteed linear time median for route time computations.
+
+123. **Parallel Graph Algorithms (PRAM model) BFS**  
+    - Algorithm: Parallel BFS (PRAM)  
+    - Complexities: O(log n) with enough processors  
+    - Space: O(V+E)  
+    - Narrative: Compute large SRAS map queries in parallel on a cluster.
+
+124. **Huffman Coding for Optimal Prefix Codes**  
+    - Algorithm: Huffman’s Algorithm  
+    - Complexities: O(n log n) for n symbols  
+    - Space: O(n) for tree  
+    - Narrative: Compress SRAS logs or route data transmissions.
+
+125. **Arithmetic Progression Searching**  
+    - Algorithm: Checking arithmetic progression efficiently (sort then linear check)  
+    - Complexities: Sorting O(n log n), checking O(n)  
+    - Narrative: Identify patterns in SRAS data sequences.
