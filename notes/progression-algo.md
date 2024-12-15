@@ -1,219 +1,259 @@
-Below is a proposed progression of approximately 40 chapters focusing on algorithms, following a similar pattern as with the data structures outline. This sequence starts from fundamental concepts and gradually advances to complex algorithms, optimization strategies, and cutting-edge techniques. To provide narrative flow, imagine a scenario where we’re building a "Smart Routing and Analytics System" (SRAS) for a logistics company. Initially, we need simple methods (sorting, searching) to handle incoming data, and as complexity grows, we apply more sophisticated algorithms (graph algorithms for routing, dynamic programming for scheduling, optimization techniques for resource allocation), culminating in advanced algorithmic strategies and heuristics for large-scale, real-world problems.
+Below is a revised version of the 40-chapter progression with the requested modifications. Each chapter now focuses on a single algorithm (or a single major technique) per example. Chapters that originally contained multiple algorithms are split into multiple chapters. Each chapter will include time and space complexities where applicable (worst, average, best, and amortized) in their summaries. Chapters that were mainly conceptual or contained multiple algorithms now have been reorganized or split into multiple chapters. Where multiple examples were originally combined, they now appear as separate chapters.
 
-Each chapter would have a consistent code template, docstrings, doctests, and minimal code examples demonstrating the core algorithm. Over time, the lessons reference previous chapters, Python’s standard library (`bisect`, `heapq`, `functools`), and external techniques for performance and scaling.
+We still maintain the SRAS narrative, gradually introducing more complex algorithms. The complexity details (Big-O notations) are included in parentheses next to the algorithm’s name or in the summary line. The narrative remains, but now each chapter focuses on just one algorithm or technique.
 
 ---
 
-### Part I: Foundations of Algorithms (Chapters 1–10)
+### Part I: Foundations of Algorithms (Chapters 1–15)
 
 1. **Introduction to Algorithms and Complexity**  
-   - Concepts: What are algorithms, why complexity matters, Big-O notation.  
-   - Example: Basic runtime measurement of a trivial search.  
-   - Narrative: SRAS begins; we need to understand how algorithm speed affects response times.
+   - Algorithm: Basic trivial search (linear scan)  
+   - Complexity: O(n) worst, average, best time; O(1) space  
+   - Narrative: SRAS begins; understand why complexity matters.  
+   - Example: Measure runtime of linear scan for varying input sizes.
 
-2. **Basic Searching: Linear Search and Binary Search**  
-   - Concepts: O(n) linear vs. O(log n) binary search.  
-   - Example: Implement binary search, compare with `bisect`.  
-   - Narrative: Efficiently check if a product ID exists in our data before processing orders.
+2. **Linear Search**  
+   - Algorithm: Linear search on unsorted data  
+   - Complexity: O(n) time worst/average, O(n) best if found at start; O(1) space  
+   - Narrative: Checking product ID existence in the simplest way.  
+   - Example: Implement linear search and observe scaling.
 
-3. **Sorting Fundamentals: Selection, Insertion, and Bubble Sort**  
-   - Concepts: O(n²) sorts and their properties.  
-   - Example: Implement bubble sort and test on small datasets.  
-   - Narrative: Initially, we have small data; simple sorts suffice to order incoming requests.
+3. **Binary Search**  
+   - Algorithm: Binary search on sorted data  
+   - Complexity: O(log n) time worst/average, O(1) space  
+   - Narrative: More efficient product ID check once data is sorted.  
+   - Example: Implement binary search and compare times with linear search.
 
-4. **Efficient Sorting: Merge Sort and Quick Sort**  
-   - Concepts: Divide-and-conquer, O(n log n) complexity.  
-   - Example: Implement merge sort and quicksort, compare runtimes.  
-   - Narrative: As data grows, switching to more efficient sorts reduces processing latency.
+4. **Bubble Sort**  
+   - Algorithm: Bubble sort  
+   - Complexity: O(n²) worst/average, O(n) best (if already sorted), O(1) space  
+   - Narrative: Initially small data, a simple O(n²) sort suffices.  
+   - Example: Implement bubble sort, measure performance on small data.
 
-5. **Stable Sorting, Python’s Timsort, and Practical Considerations**  
-   - Concepts: Stability, best/worst cases, Python’s `sorted()` function.  
-   - Example: Use `sorted()` and measure performance vs. custom sorts.  
-   - Narrative: Use Python’s built-in sorting for production efficiency in SRAS.
+5. **Insertion Sort**  
+   - Algorithm: Insertion sort  
+   - Complexity: O(n²) worst/average, O(n) best; O(1) space  
+   - Narrative: Slightly better than bubble sort on nearly sorted data.  
+   - Example: Implement insertion sort and compare with bubble sort.
 
-6. **Greedy Algorithms Basics**  
-   - Concepts: Making locally optimal choices.  
-   - Example: Implement a greedy algorithm to select the earliest finishing delivery slots.  
-   - Narrative: Assign deliveries to time slots quickly to reduce idle time.
+6. **Selection Sort**  
+   - Algorithm: Selection sort  
+   - Complexity: O(n²) worst/average/best, O(1) space  
+   - Narrative: Another basic O(n²) sort, stable reference.  
+   - Example: Implement selection sort and compare with insertion/bubble.
 
-7. **Divide and Conquer Beyond Sorting**  
-   - Concepts: Problem decomposition, recurrence relations.  
-   - Example: Implement a divide-and-conquer closest pair of points algorithm.  
-   - Narrative: Find the two shipments closest geographically to plan joint delivery routes.
+7. **Merge Sort**  
+   - Algorithm: Merge sort  
+   - Complexity: O(n log n) worst/average/best; O(n) space  
+   - Narrative: For larger data, O(n log n) sorting reduces latency in SRAS.  
+   - Example: Implement merge sort and compare with O(n²) sorts.
 
-8. **Recursion vs. Iteration, Memoization Introduction**  
-   - Concepts: Comparing recursive and iterative styles, intro to memoization.  
-   - Example: Simple memoized Fibonacci to show improvement over naive recursion.  
-   - Narrative: Memoize certain lookup computations in SRAS to speed repeated queries.
+8. **Quick Sort**  
+   - Algorithm: Quick sort (Lomuto or Hoare partition)  
+   - Complexity: O(n²) worst, O(n log n) average, O(log n) space average  
+   - Narrative: Faster on average than mergesort, widely used.  
+   - Example: Implement quicksort and measure average performance.
 
-9. **Data-Driven Algorithm Choice**  
-   - Concepts: Selecting algorithms based on data size, constraints.  
-   - Example: Compare sorting algorithms on different distributions of data.  
-   - Narrative: Choose the best approach for various customer orders (e.g., mostly sorted vs. random data).
+9. **Stable Sorting and Timsort**  
+   - Algorithm: Python’s Timsort (conceptual)  
+   - Complexity: O(n log n) worst, O(n) best for mostly sorted data; O(n) space  
+   - Narrative: Use Python’s `sorted()`, optimal in production.  
+   - Example: Use `sorted()` and measure performance vs. custom sorts.
 
-10. **Practical Python Tools: bisect, itertools, functools**  
-    - Concepts: Standard library tools that simplify algorithmic tasks.  
-    - Example: Use `bisect` for binary search insertion, `itertools` for combinations.  
-    - Narrative: Quickly generate candidate delivery groupings using itertools without reinventing the wheel.
+10. **Greedy Algorithm Basics (Earliest Finishing Time)**  
+    - Algorithm: Select intervals with earliest finishing time first  
+    - Complexity: O(n log n) due to sorting intervals; O(1) space aside from input  
+    - Narrative: Assign deliveries to time slots quickly, reduce idle time.  
+    - Example: Implement a greedy scheduling of delivery tasks.
 
----
+11. **Divide and Conquer Technique (Closest Pair of Points)**  
+    - Algorithm: Closest pair of points  
+    - Complexity: O(n log n) average; O(n) space  
+    - Narrative: Find two geographically closest shipments to plan joint routes.  
+    - Example: Implement divide-and-conquer closest pair algorithm.
 
-### Part II: Graphs, Paths, and Advanced Structures (Chapters 11–20)
+12. **Recursion vs. Iteration (Memoized Fibonacci)**  
+    - Algorithm: Memoized Fibonacci as a DP example  
+    - Complexity: O(n) time, O(n) space for memo; best/worst same since well-defined subproblems  
+    - Narrative: Speed repeated queries for SRAS computations.  
+    - Example: Compare naive recursion vs. memoized approach.
 
-11. **Graph Fundamentals: BFS and DFS**  
-    - Concepts: Adjacency lists, O(V+E) traversals.  
-    - Example: Implement BFS and DFS to explore delivery network nodes.  
-    - Narrative: Explore the SRAS routing map to find connected regions and accessible routes.
+13. **Algorithm Selection Based on Data**  
+    - Algorithm: Compare sorting algorithms on different data distributions  
+    - Complexity: Depends on chosen algorithm  
+    - Narrative: Choose best approach (e.g., insertion sort for nearly sorted data).  
+    - Example: Empirically test sorting algorithms on various input patterns.
 
-12. **Shortest Path: Dijkstra’s Algorithm**  
-    - Concepts: Priority queues, greedy shortest path.  
-    - Example: Implement Dijkstra to find shortest delivery route.  
-    - Narrative: Given locations and roads, compute fastest route for a delivery truck.
+14. **Using Python’s bisect**  
+    - Algorithm: Using `bisect` for binary search insertion  
+    - Complexity: O(log n) search, O(n) insertion (since lists shift)  
+    - Narrative: Quickly generate candidate delivery groupings, indexing.  
+    - Example: Use bisect to insert items into a sorted list efficiently for searching.
 
-13. **Bellman-Ford and Detecting Negative Cycles**  
-    - Concepts: Handling negative edges, detecting cycles.  
-    - Example: Implement Bellman-Ford for complex cost scenarios.  
-    - Narrative: If some routes have conditional discounts (negative costs), ensure no infinite cost cycles.
-
-14. **Minimum Spanning Trees: Prim’s and Kruskal’s**  
-    - Concepts: MST for connecting all nodes minimally.  
-    - Example: Build MST to find a low-cost subset of routes connecting all warehouses.  
-    - Narrative: Decide which roads to maintain to ensure connectivity at minimal infrastructure cost.
-
-15. **Maximum Flow and Network Connectivity**  
-    - Concepts: Ford-Fulkerson, Edmond-Karp.  
-    - Example: Implement Edmond-Karp to find max flow in a network.  
-    - Narrative: Model capacity constraints on roads (bandwidth) and find max transportation volume.
-
-16. **Topological Sorting and Directed Acyclic Graphs (DAGs)**  
-    - Concepts: Ordering tasks with dependencies.  
-    - Example: Topologically sort a DAG representing staged data processing tasks.  
-    - Narrative: Ensure certain data transformations occur before analysis steps.
-
-17. **Dynamic Programming (DP) Introduction**  
-    - Concepts: Overlapping subproblems, memoization, bottom-up solutions.  
-    - Example: DP solution for a knapsack problem.  
-    - Narrative: Choose which deliveries to load given truck capacity constraints.
-
-18. **Classic DP Problems: LIS, Coin Change, Edit Distance**  
-    - Concepts: Substructure, building DP tables.  
-    - Example: Implement longest increasing subsequence (LIS).  
-    - Narrative: Analyze sequences of order arrival times or product prices to detect trends.
-
-19. **DP Optimization: Space Reduction and State Compression**  
-    - Concepts: Reducing space complexity, bitmasks.  
-    - Example: Bitmask DP for traveling salesman subsets.  
-    - Narrative: Optimize complex route planning with multiple destinations using TSP heuristics.
-
-20. **Greedy vs. DP vs. Backtracking: When to Use Which**  
-    - Concepts: Decision frameworks for choosing algorithmic approach.  
-    - Example: Compare runtime and memory for small instances of scheduling tasks.  
-    - Narrative: Decide if a quick greedy heuristic suffices or if DP is needed for accuracy.
+15. **Using itertools for Combinations**  
+    - Algorithm: Combinations generation (not a sorting/searching algorithm, but a combinational generation)  
+    - Complexity: C(n,k) iterations, O(1) per combination generation  
+    - Narrative: Quickly generate sets of orders or routes.  
+    - Example: Use `itertools.combinations` to explore potential SRAS groupings.
 
 ---
 
-### Part III: Advanced Algorithms and Techniques (Chapters 21–30)
+### Part II: Graphs and Paths (Chapters 16–25)
 
-21. **Backtracking and Branch & Bound**  
-    - Concepts: Systematic search with pruning.  
-    - Example: Solve a constraint scheduling problem with backtracking.  
-    - Narrative: Explore all possible delivery schedules but prune unfeasible paths early.
+16. **BFS (Breadth-First Search)**  
+    - Algorithm: BFS on a graph  
+    - Complexity: O(V+E) time, O(V) space  
+    - Narrative: Explore the SRAS routing map to find reachable areas.  
+    - Example: Implement BFS to determine connected regions.
 
-22. **Meet-in-the-Middle**  
-    - Concepts: Splitting problem into two halves.  
-    - Example: Meet-in-the-middle for subset sum problem.  
-    - Narrative: Quickly find if a combination of warehouses forms a target distribution pattern.
+17. **DFS (Depth-First Search)**  
+    - Algorithm: DFS on a graph  
+    - Complexity: O(V+E) time, O(V) space (recursive stack)  
+    - Narrative: Explore routes deeply, checking connectivity.  
+    - Example: Implement DFS to detect cycles or paths.
 
-23. **String Algorithms: KMP, Rabin-Karp**  
-    - Concepts: Efficient substring search.  
-    - Example: Implement KMP to find patterns in product codes.  
-    - Narrative: Quickly detect specific SKU patterns in large product catalogs.
+18. **Dijkstra’s Algorithm**  
+    - Algorithm: Dijkstra for shortest paths  
+    - Complexity: O((V+E) log V) with a priority queue; O(V) space  
+    - Narrative: Compute fastest route for a delivery truck on weighted map.  
+    - Example: Implement Dijkstra and compare runtime with BFS on weighted graphs.
 
-24. **Suffix Arrays, Suffix Trees, and Advanced String Structures**  
-    - Concepts: O(n) or O(n log n) construction, fast substring queries.  
-    - Example: Build a suffix array for route codes or location names.  
-    - Narrative: Rapidly match partial location names in the SRAS map.
+19. **Bellman-Ford Algorithm**  
+    - Algorithm: Bellman-Ford shortest paths with negative edges  
+    - Complexity: O(VE), O(V) space  
+    - Narrative: Handle routes with conditional discounts.  
+    - Example: Implement Bellman-Ford and detect negative cycles.
 
-25. **Maximum Matching in Bipartite Graphs (Hungarian Algorithm)**  
-    - Concepts: Assign tasks to workers optimally.  
-    - Example: Hungarian algorithm for assigning deliveries to drivers.  
-    - Narrative: Find perfect pairing between delivery requests and available drivers to minimize cost.
+20. **Prim’s Algorithm (MST)**  
+    - Algorithm: Prim’s algorithm for MST  
+    - Complexity: O(E log V) with a priority queue; O(V) space  
+    - Narrative: Find a low-cost subset of roads for connectivity.  
+    - Example: Implement Prim’s and compare with simpler MST approaches.
 
-26. **Minimum Cut, Max Flow Variations**  
-    - Concepts: More advanced flow algorithms, min-cut = max-flow.  
-    - Example: Use max-flow min-cut to find the bottleneck edges in the road network.  
-    - Narrative: Identify critical roads whose removal severely impacts connectivity.
+21. **Kruskal’s Algorithm (MST)**  
+    - Algorithm: Kruskal’s for MST  
+    - Complexity: O(E log E) or O(E log V); O(V) space  
+    - Narrative: Another MST approach; compare with Prim’s.  
+    - Example: Implement Kruskal’s with a union-find structure.
 
-27. **Approximation Algorithms for NP-hard Problems**  
-    - Concepts: When exact solutions are too slow, approximation provides near-optimal.  
-    - Example: Approximate a set cover for selecting minimal routes covering all warehouses.  
-    - Narrative: Achieve good-enough solutions under time constraints.
+22. **Ford-Fulkerson/Edmond-Karp (Max Flow)**  
+    - Algorithm: Edmond-Karp (Ford-Fulkerson using BFS)  
+    - Complexity: O(VE²) worst; space O(V+E)  
+    - Narrative: Maximize transportation volume in a network.  
+    - Example: Implement Edmond-Karp and measure performance on small networks.
 
-28. **Randomized Algorithms (e.g., Randomized Quickselect)**  
-    - Concepts: Use randomness for expected O(n) selection.  
-    - Example: Implement randomized algorithms like quickselect.  
-    - Narrative: Quickly pick median processing times for load balancing tasks.
+23. **Topological Sort (DAGs)**  
+    - Algorithm: Topological sorting on a DAG  
+    - Complexity: O(V+E) time, O(V) space  
+    - Narrative: Ensure data transformations occur in proper order.  
+    - Example: Implement topological sort for processing order dependencies.
 
-29. **Advanced Graph Algorithms: Tarjan’s SCC, Floyd-Warshall, Johnson’s**  
-    - Concepts: Strongly connected components, all-pairs shortest paths.  
-    - Example: Find SCCs to identify strongly connected regions of delivery points.  
-    - Narrative: Understand the structure of the SRAS network thoroughly.
+24. **Dynamic Programming Introduction (Knapsack Problem)**  
+    - Algorithm: 0/1 Knapsack DP  
+    - Complexity: O(nW) time (n: items, W: capacity), O(nW) space naive, can reduce space  
+    - Narrative: Choose deliveries to load given capacity.  
+    - Example: Implement knapsack DP solution.
 
-30. **Data Structure & Algorithm Integration**  
-    - Concepts: Combining data structures and algorithms efficiently.  
-    - Example: Implement Dijkstra with a Fibonacci heap (conceptually) and measure improvements.  
-    - Narrative: Fine-tune route calculations with advanced priority queue strategies.
+25. **Longest Increasing Subsequence (LIS) DP**  
+    - Algorithm: LIS using DP  
+    - Complexity: O(n²) straightforward DP, O(n log n) optimized with binary search; O(n) space  
+    - Narrative: Analyze order arrival times or prices to detect trends.  
+    - Example: Implement LIS DP solution and measure runtime.
 
 ---
 
-### Part IV: Master-Level and Cutting-Edge Topics (Chapters 31–40)
+### Part III: Advanced Techniques (Chapters 26–35)
 
-31. **Linear Programming and Integer Programming Basics**  
-    - Concepts: Formulating optimization problems.  
-    - Example: Use a LP solver interface to minimize transport cost.  
-    - Narrative: Formulate the SRAS routing and scheduling as a linear program for optimal solutions.
+26. **Edit Distance DP (Levenshtein Distance)**  
+    - Algorithm: Edit distance DP  
+    - Complexity: O(nm) time for strings of length n and m, O(nm) space (can optimize space)  
+    - Narrative: Compare route codes or product name variations.  
+    - Example: Implement edit distance and analyze complexity.
 
-32. **Heuristics and Metaheuristics (Genetic Algorithms, Simulated Annealing)**  
-    - Concepts: When classical algorithms are too slow.  
-    - Example: Simple genetic algorithm to evolve better route plans.  
-    - Narrative: Improve solution quality over time for complex route planning.
+27. **Traveling Salesman Problem (TSP) with Bitmask DP**  
+    - Algorithm: TSP DP (bitmask)  
+    - Complexity: O(n² 2^n), space O(n 2^n)  
+    - Narrative: Optimize route planning over multiple destinations.  
+    - Example: Implement a small TSP DP and test on small inputs.
 
-33. **Parallel and Distributed Algorithms**  
-    - Concepts: Running algorithms in parallel or distributed systems.  
-    - Example: Conceptually parallelize a sorting algorithm or BFS with multiprocessing.  
-    - Narrative: Scale SRAS across multiple servers to handle global logistics.
+28. **Backtracking (Constraint Scheduling)**  
+    - Algorithm: Backtracking search for scheduling tasks  
+    - Complexity: Worst-case exponential time, space depends on recursion depth  
+    - Narrative: Explore all delivery schedules but prune early.  
+    - Example: Implement backtracking to find a feasible schedule.
 
-34. **External Memory and Streaming Algorithms**  
-    - Concepts: Handling data too large to fit in memory.  
-    - Example: Implement a streaming median algorithm.  
-    - Narrative: Stream data from sensors and maintain statistics without loading full dataset.
+29. **Meet-in-the-Middle (Subset Sum)**  
+    - Algorithm: Meet-in-the-middle for subset sum  
+    - Complexity: O(2^(n/2)) time, better than O(2^n); O(2^(n/2)) space  
+    - Narrative: Quickly check if a combination of warehouses matches a target pattern.  
+    - Example: Implement meet-in-the-middle subset sum.
 
-35. **Handling Uncertainty: Online Algorithms**  
-    - Concepts: Make decisions without knowledge of future inputs.  
-    - Example: Online caching or paging algorithm.  
-    - Narrative: Route trucks without knowing future orders, adaptively choose paths.
+30. **KMP (Knuth-Morris-Pratt) String Matching**  
+    - Algorithm: KMP for substring search  
+    - Complexity: O(n + m) time (n text length, m pattern), O(m) space  
+    - Narrative: Detect product code patterns in catalogs.  
+    - Example: Implement KMP and measure improvements over naive search.
 
-36. **Algorithmic Complexity Classes and NP-Completeness**  
-    - Concepts: P, NP, NP-hard, reducing problems.  
-    - Example: Show how TSP reduces to a known NP-complete problem.  
-    - Narrative: Understand why certain problems in SRAS can’t be solved efficiently at large scale.
+31. **Rabin-Karp String Matching**  
+    - Algorithm: Rabin-Karp  
+    - Complexity: O(n+m) average, O(nm) worst; O(m) space  
+    - Narrative: Another efficient substring search method.  
+    - Example: Implement Rabin-Karp and compare with KMP.
 
-37. **Advanced Scheduling and Resource Allocation**  
-    - Concepts: Interval scheduling, machine scheduling.  
-    - Example: Solve a complex scheduling problem with DP or approximation.  
-    - Narrative: Assign multiple trucks and time slots for deliveries optimally.
+32. **Suffix Array Construction**  
+    - Algorithm: Suffix array construction (e.g., O(n log n))  
+    - Complexity: O(n log n) or O(n) depending on method, O(n) space  
+    - Narrative: Rapidly match location names in SRAS maps.  
+    - Example: Implement a suffix array and test substring queries.
 
-38. **Monte Carlo and Las Vegas Algorithms**  
-    - Concepts: Probabilistic guarantees.  
-    - Example: Use randomized algorithms with probability bounds.  
-    - Narrative: Quickly estimate shortest paths in uncertain conditions.
+33. **Hungarian Algorithm (Assignment Problem)**  
+    - Algorithm: Hungarian algorithm  
+    - Complexity: O(n^3) time, O(n²) space  
+    - Narrative: Assign deliveries to drivers optimally.  
+    - Example: Implement Hungarian algorithm for a small instance.
 
-39. **Algorithms in Practice: Testing, Profiling, and Benchmarking**  
-    - Concepts: Measure performance realistically, test correctness.  
-    - Example: Integrate `timeit` and `cProfile` to compare algorithms under different scenarios.  
-    - Narrative: Ensure that chosen algorithms meet performance SLAs for SRAS customers.
+34. **Max-Flow Min-Cut (e.g., Dinic’s Algorithm)**  
+    - Algorithm: Dinic’s algorithm for max flow  
+    - Complexity: O(min(V^(2/3), E^(1/2)) * E) worst, space O(V+E)  
+    - Narrative: Identify bottleneck edges in SRAS network.  
+    - Example: Implement Dinic’s and compare with Edmond-Karp.
 
-40. **Staying Current: Research Trends and Advanced References**  
-    - Concepts: New algorithmic paradigms (learned indexes, ML-driven heuristics).  
-    - Example: Summarize a research paper or new technique.  
-    - Narrative: Keep SRAS evolving, integrating cutting-edge algorithmic strategies for future competitiveness.
+35. **Set Cover Approximation**  
+    - Algorithm: Set cover greedy approximation  
+    - Complexity: O(n log m) for n sets, m elements; O(m) space  
+    - Narrative: Cover all warehouses with minimal routes under time constraints.  
+    - Example: Implement a simple approximation and note performance.
+
+---
+
+### Part IV: Master-Level and Special Topics (Chapters 36–40)
+
+36. **Randomized Quickselect**  
+    - Algorithm: Quickselect with random pivot  
+    - Complexity: O(n) average, O(n²) worst, O(log n) space average  
+    - Narrative: Quickly pick median processing times for load balancing tasks.  
+    - Example: Implement randomized quickselect and measure average performance.
+
+37. **Tarjan’s Algorithm (SCC)**  
+    - Algorithm: Tarjan’s strongly connected components  
+    - Complexity: O(V+E) time, O(V) space  
+    - Narrative: Identify strongly connected regions in the SRAS network.  
+    - Example: Implement Tarjan’s and find SCCs in a sample graph.
+
+38. **Floyd-Warshall All-Pairs Shortest Paths**  
+    - Algorithm: Floyd-Warshall  
+    - Complexity: O(n³) time, O(n²) space  
+    - Narrative: Compute shortest paths between all pairs of locations for SRAS.  
+    - Example: Implement Floyd-Warshall and test on small graphs.
+
+39. **Johnson’s Algorithm (All-Pairs Shortest Paths)**  
+    - Algorithm: Johnson’s algorithm  
+    - Complexity: O(V² log V + VE), O(V²) space  
+    - Narrative: Another method for all-pairs shortest paths, scalable for sparse graphs.  
+    - Example: Implement Johnson’s and compare with Floyd-Warshall.
+
+40. **Advanced Scheduling (Interval Scheduling with DP)**  
+    - Algorithm: Interval scheduling optimization using DP  
+    - Complexity: O(n log n) due to sorting + O(n) DP; O(n) space  
+    - Narrative: Assign multiple trucks and timeslots optimally with DP.  
+    - Example: Implement DP-based interval scheduling for maximum non-overlapping tasks.
