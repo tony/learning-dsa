@@ -1017,3 +1017,334 @@ No maximum chapter count is enforced, and many previously combined chapters are 
     - Complexities: O(E log V)  
     - Space: O(E)  
     - Narrative: Another MST approach for distributed SRAS computations.
+
+161. **K-Way Merge Algorithm**  
+    - Algorithm: K-Way Merge (merging k sorted lists)  
+    - Complexities:  
+      - Time: O(n log k), where n is total number of elements across k lists  
+      - Space: O(n) or O(k) depending on implementation  
+    - Narrative: If SRAS needs to merge multiple sorted lists of product IDs from different warehouses efficiently, K-way merge outperforms repeatedly merging two at a time.
+
+162. **Counting Inversions Using Merge Sort**  
+    - Algorithm: Inversion Count (via modified Merge Sort)  
+    - Complexities:  
+      - Time: O(n log n)  
+      - Space: O(n)  
+    - Narrative: Understand how "unsorted" SRAS data is by counting how many pairwise inversions occur, aiding in estimating sorting or reordering costs.
+
+163. **Longest Common Subsequence (LCS) DP**  
+    - Algorithm: LCS DP  
+    - Complexities:  
+      - Time: O(nm) for strings of length n and m  
+      - Space: O(nm) or O(min(n,m)) optimized  
+    - Narrative: Compare two SRAS route strings (e.g. daily vs. weekly routes) to find common subsequences indicating stable patterns.
+
+164. **Longest Common Substring via Suffix Array**  
+    - Algorithm: LCP (Longest Common Prefix) array on Suffix Array  
+    - Complexities:  
+      - Suffix Array: O(n log n), LCP array: O(n)  
+      - Querying longest common substring: O(n)  
+    - Narrative: Identify a common substring pattern between two sets of location codes in SRAS data.
+
+165. **Cuckoo Hashing**  
+    - Algorithm: Cuckoo Hashing for Hash Tables  
+    - Complexities:  
+      - Worst-case Insert: Amortized O(1), but can degrade if rehash needed  
+      - Space: O(n)  
+    - Narrative: Store and quickly lookup product IDs in SRAS with minimal collisions and predictable performance.
+
+166. **Robin Hood Hashing**  
+    - Algorithm: Robin Hood Hashing Scheme  
+    - Complexities:  
+      - Amortized O(1) insert/lookup  
+      - Space: O(n)  
+    - Narrative: Improve average probe counts in hashing product IDs, resulting in faster SRAS queries.
+
+167. **Open Addressing (Linear Probing) Hashing**  
+    - Algorithm: Linear Probing in Hash Tables  
+    - Complexities:  
+      - Amortized O(1) for operations until high load factor  
+      - Worst O(n) in full table cases  
+    - Narrative: Simple hash table scheme for SRAS if load kept low.
+
+168. **Double Hashing**  
+    - Algorithm: Double Hashing for collision resolution  
+    - Complexities:  
+      - Amortized O(1), worst O(n)  
+      - Space: O(n)  
+    - Narrative: Use a second hash function to reduce clustering in SRAS product ID lookups.
+
+169. **Van Emde Boas Tree**  
+    - Algorithm: vEB Tree for O(log log M) operations, M=universe size  
+    - Complexities:  
+      - Search/Insert/Delete: O(log log M)  
+      - Space: O(M)  
+    - Narrative: If SRAS IDs come from a fixed integer range, vEB tree can speed searches beyond binary search.
+
+170. **AKS Sorting Network**  
+    - Algorithm: AKS Sorting Network  
+    - Complexities:  
+      - O(n log n) theoretically, complex constant factors  
+      - Space: O(n)  
+    - Narrative: Theoretical interest for SRAS if it had parallel hardware for sorting.
+
+171. **Collinearity Testing of Points (Orientation Test)**  
+    - Algorithm: Orientation test using cross product  
+    - Complexities: O(1) per test  
+    - Space: O(1)  
+    - Narrative: Quickly check if three warehouse coordinates in SRAS map lie on same line.
+
+172. **Convex Hull (Graham Scan)**  
+    - Algorithm: Graham Scan for Convex Hull  
+    - Complexities:  
+      - O(n log n) sorting, O(n) hull construction  
+      - Space: O(n)  
+    - Narrative: Identify the "outer boundary" of SRAS warehouses for coverage planning.
+
+173. **Convex Hull (Andrew’s Monotone Chain)**  
+    - Algorithm: Andrew’s Monotone Chain Hull  
+    - Complexities:  
+      - O(n log n)  
+      - Space: O(n)  
+    - Narrative: Another method for the convex hull, possibly simpler implementation for SRAS territory mapping.
+
+174. **Line Sweep Algorithm for Rectangle Intersection**  
+    - Algorithm: Line Sweep for rectangle intersection counting  
+    - Complexities: O(n log n)  
+    - Space: O(n)  
+    - Narrative: Determine overlapping service areas of SRAS hubs efficiently.
+
+175. **Line Sweep for Maximum Overlapping Intervals**  
+    - Algorithm: Line Sweep for intervals  
+    - Complexities: O(n log n)  
+    - Space: O(n)  
+    - Narrative: Find peak congestion times in SRAS delivery schedule.
+
+176. **Dinic’s Algorithm for Max Flow (Already covered at Chapter 82)**  
+    - If repeated, choose another algorithm. Let's pick another.
+
+176. **Push–Relabel with Highest Label and FIFO Variation Combined**  
+    - Algorithm: Specialized push–relabel variant  
+    - Complexities: O(V³) worst, but often faster in practice  
+    - Space: O(V+E)  
+    - Narrative: Fine-tune max flow computations in huge SRAS networks.
+
+(We did multiple max flow variants already. Let's pick different algorithms.)
+
+176. **Edmonds’ Algorithm for Maximum Matching in General Graphs (Blossom)**  
+   - Already covered at 144. Need a new unique algorithm.
+
+176. **Minimum Arborescence (Edmond’s Algorithm)**  
+    - Algorithm: Edmond’s Algorithm for Directed MST  
+    - Complexities: O(EV) or improved with better data structures  
+    - Space: O(V+E)  
+    - Narrative: For directed graphs (e.g., one-way streets in SRAS), find min spanning arborescence.
+
+177. **Huffman’s Algorithm Revisited with Optimal Alphabet Merging**  
+    - Already covered Huffman at 124. Let’s pick another.
+
+177. **Stable Matching Variation: Hospitals/Residents Problem**  
+    - Algorithm: Gale–Shapley variant for Hospitals-Residents  
+    - Complexities: O(n²)  
+    - Space: O(n²)  
+    - Narrative: Assign multiple deliveries (residents) to limited driver resources (hospital capacity) in SRAS stable manner.
+
+178. **Suffix Tree Construction (McCreight’s Algorithm O(n))**  
+    - Algorithm: McCreight’s Algorithm for Suffix Tree  
+    - Complexities: O(n)  
+    - Space: O(n)  
+    - Narrative: Another linear-time suffix structure building for SRAS substring queries.
+
+179. **Sparse Table for LCA (Lowest Common Ancestor)**  
+    - Algorithm: LCA with Sparse Table  
+    - Complexities:  
+      - Preprocessing: O(n log n)  
+      - Query: O(1)  
+      - Space: O(n log n)  
+    - Narrative: Quickly find LCA of two nodes in SRAS’s route hierarchy tree.
+
+180. **Binary Lifting for LCA**  
+    - Algorithm: Binary Lifting for LCA  
+    - Complexities:  
+      - Preprocessing: O(n log n)  
+      - Query: O(log n)  
+      - Space: O(n log n)  
+    - Narrative: Another method for LCA queries in SRAS routing trees.
+
+181. **Four Russians Technique for Boolean Matrix Multiplication**  
+    - Algorithm: Four Russians speedup  
+    - Complexities: O(n³ / log n)  
+    - Space: O(n²)  
+    - Narrative: Large-scale matrix ops if SRAS needs complex boolean queries on large route grids.
+
+182. **SAIS Algorithm for Suffix Array**  
+    - Algorithm: SA-IS (Suffix Array in O(n))  
+    - Complexities: O(n)  
+    - Space: O(n)  
+    - Narrative: Even faster suffix array construction for SRAS textual data sets.
+
+183. **Minimum Palindromic Partitioning (DP)**  
+    - Algorithm: DP for min palindrome partition  
+    - Complexities: O(n²)  
+    - Space: O(n²)  
+    - Narrative: Analyze SRAS route strings and split into palindrome segments for pattern recognition (the application might be obscure, but still possible).
+
+184. **Monotonic Queue/Deque for Sliding Window Min/Max**  
+    - Algorithm: Monotonic Queue  
+    - Complexities: O(n) amortized for processing all windows  
+    - Space: O(n)  
+    - Narrative: Quickly find min/max in a rolling window over SRAS’s time-series data (e.g., daily cost variations).
+
+185. **Chan’s Algorithm for Convex Hull (O(n log h))**  
+    - Algorithm: Chan’s algorithm for convex hull  
+    - Complexities: O(n log h), h = #hull points  
+    - Space: O(n)  
+    - Narrative: Even faster hull computations for large SRAS geographic data sets.
+
+186. **Binary Indexed Tree (Fenwick Tree) with Range Updates and Range Queries**  
+    - Already did Fenwick variants at 148. Need a different algorithm:
+
+186. **Offline Query Processing using DS (MO’s algorithm detailed)**  
+    - Already covered Mo’s at 96. Another algorithm:
+
+186. **Sparse Table for RMQ (revisited with Cartesian Tree)**  
+    - Already did RMQ at 93.
+
+Let's pick another unique algorithm not covered:
+
+186. **Hopcroft–Karp Detailed BFS/DFS Steps**  
+   Already at 81. Need a fresh one:
+
+186. **Dinic’s Algorithm Blocking Flow Computation Detailed**  
+   Already done Dinic’s at 82. Need another unique algorithm:
+
+186. **Binary Indexed Tree of BITs (2D Fenwick)**  
+    - Algorithm: 2D Fenwick Tree  
+    - Complexities:  
+      - Update: O(log n log m)  
+      - Query: O(log n log m)  
+    - Space: O(n m)  
+    - Narrative: Handle 2D queries (e.g., SRAS coordinates queries plus cumulative stats) efficiently.
+
+187. **2D Segment Tree**  
+    - Algorithm: 2D Segment Tree  
+    - Complexities:  
+      - Build: O(n²)  
+      - Query/Update: O(log n log n) = O(log² n)  
+    - Space: O(n²)  
+    - Narrative: Advanced range queries on 2D SRAS maps (e.g., sum of costs in a rectangular area).
+
+188. **Li Chao Tree for Dynamic Convex Hull/Line Container**  
+    - Algorithm: Li Chao Tree  
+    - Complexities: O(log C) where C is coordinate range  
+    - Space: O(log C)  
+    - Narrative: Manage sets of linear functions (cost over distance) in SRAS and query minimum cost at given points efficiently.
+
+189. **Convex Hull Trick DP Optimization**  
+    - Algorithm: Convex Hull Trick for DP  
+    - Complexities: O(n) if lines are added and queries are sorted, else O(n log n) with balanced structure  
+    - Space: O(n)  
+    - Narrative: Optimize DP solutions in SRAS scheduling or cost calculations by maintaining hull of lines.
+
+190. **Knuth Optimization for DP**  
+    - Algorithm: Knuth Optimization on DP  
+    - Complexities: Reduces O(n³) DP to O(n²) under certain conditions  
+    - Space: O(n²)  
+    - Narrative: Speed up certain DP in SRAS (e.g., partitioning deliveries into segments) significantly.
+
+191. **Divide and Conquer Optimization for DP**  
+    - Algorithm: Divide and Conquer DP Optimization  
+    - Complexities: O(n²) from O(n³) if monotonic property holds  
+    - Space: O(n)  
+    - Narrative: Another DP speedup technique for complex SRAS routing cost problems.
+
+192. **Dancing Links (Knuth’s Algorithm X) for Exact Cover**  
+    - Algorithm: Algorithm X with Dancing Links  
+    - Complexities: Worst-case exponential, but efficient backtracking  
+    - Space: O(n)  
+    - Narrative: Solve complex exact cover problems in SRAS configuration tasks (e.g., selecting sets of routes to cover all demands).
+
+193. **Miller–Rabin Primality Test**  
+    - Algorithm: Miller–Rabin  
+    - Complexities:  
+      - Probabilistic O(k log³ n)  
+      - Space: O(log n)  
+    - Narrative: Quick primality tests if SRAS keys need periodic security checks.
+
+194. **Biconnected Components (Articulation points and bridges) Revisited**  
+    - Algorithm: Find Biconnected Components using DFS stack  
+    - Complexities: O(V+E)  
+    - Space: O(V+E)  
+    - Narrative: Identify regions in SRAS graph that remain connected despite removal of any one vertex.
+
+195. **Low–Link Values in Tarjan’s SCC**  
+    - Algorithm: Low-link computation for SCCs  
+    - Complexities: O(V+E)  
+    - Space: O(V)  
+    - Narrative: Identify strongly connected regions efficiently again for reliability in SRAS routes.
+
+196. **Minimum Mean Cycle in O(VE) Time**  
+    - Algorithm: Karp’s Minimum Mean Cycle  
+    - Complexities: O(VE)  
+    - Space: O(V)  
+    - Narrative: Find cycles with minimum average cost in SRAS, useful for periodic routes.
+
+197. **Z-Algorithm Revisited for Pattern Preprocessing**  
+    - Already did Z-Algorithm at 98. Need new:
+
+197. **Suffix Tree (Ukkonen) Revisited with Lower Memory Variant**  
+   Already done Ukkonen’s at 119. Need new algorithm:
+
+197. **Viterbi Algorithm for Hidden Markov Models**  
+    - Algorithm: Viterbi Algorithm  
+    - Complexities: O(n*m²) for n steps, m states (or optimized variants)  
+    - Space: O(nm)  
+    - Narrative: If SRAS models probabilistic states of routes or conditions, use Viterbi to decode best route sequences.
+
+198. **Forward–Backward Algorithm (HMM Probabilities)**  
+    - Algorithm: Forward–Backward for HMM  
+    - Complexities: O(nm²) or O(nm) if simplified  
+    - Space: O(nm)  
+    - Narrative: Estimate probabilities of partial observations in SRAS sensor data streams.
+
+199. **Baum–Welch Algorithm (HMM Training)**  
+    - Algorithm: Baum–Welch  
+    - Complexities: O(nm² * iterations)  
+    - Space: O(nm)  
+    - Narrative: Train a model to predict route conditions or delivery times in SRAS from observed data.
+
+200. **EM Algorithm (General Expectation-Maximization)**  
+    - Algorithm: EM Algorithm  
+    - Complexities: Depends on model; often O(n * cost_eval * iterations)  
+    - Space: Model dependent  
+    - Narrative: Improve SRAS probabilistic models, refining route time estimates from data.
+
+201. **PageRank Algorithm**  
+    - Algorithm: PageRank  
+    - Complexities: O((V+E)*iterations)  
+    - Space: O(V)  
+    - Narrative: Identify most critical hubs in SRAS network (like page importance in web) for strategic resource placement.
+
+202. **Gibbs Sampling (MCMC)**  
+    - Algorithm: Gibbs Sampling  
+    - Complexities: O(steps * cost_eval)  
+    - Space: O(n) states  
+    - Narrative: Sample from complex distributions modeling SRAS uncertain conditions (weather, demand).
+
+203. **Metropolis–Hastings (MCMC)**  
+    - Algorithm: Metropolis–Hastings  
+    - Complexities: O(steps * cost_eval)  
+    - Space: O(n) states  
+    - Narrative: Another MCMC method to estimate probabilities in SRAS scenarios.
+
+204. **Smith–Waterman Algorithm (Local Sequence Alignment)**  
+    - Algorithm: Smith–Waterman for local alignment  
+    - Complexities: O(nm) for sequences n and m  
+    - Space: O(nm)  
+    - Narrative: Compare route strings locally, find strongly matching subsequences in SRAS codes.
+
+205. **Needleman–Wunsch Algorithm (Global Sequence Alignment)**  
+    - Algorithm: Needleman–Wunsch  
+    - Complexities: O(nm)  
+    - Space: O(nm)  
+    - Narrative: Globally align two route sequences to measure overall similarity in SRAS route sets.
