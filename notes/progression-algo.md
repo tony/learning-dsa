@@ -787,3 +787,233 @@ No maximum chapter count is enforced, and many previously combined chapters are 
     - Algorithm: Checking arithmetic progression efficiently (sort then linear check)  
     - Complexities: Sorting O(n log n), checking O(n)  
     - Narrative: Identify patterns in SRAS data sequences.
+
+126. **Boyer–Moore String Search**  
+    - Algorithm: Boyer–Moore  
+    - Complexities:  
+      - Best: O(n/m) on average (skips many comparisons), Worst O(nm)  
+      - Space: O(m) for pattern preprocessing  
+    - Narrative: Quickly skip sections of product code text, improving pattern search in large SRAS catalogs.
+
+127. **Boyer–Moore–Horspool Variation**  
+    - Algorithm: Boyer–Moore–Horspool  
+    - Complexities:  
+      - Average: O(n), Worst: O(nm)  
+      - Space: O(m)  
+    - Narrative: A simplified variant for pattern matching in SRAS product databases, often faster in practice.
+
+128. **B+ Tree Operations (Insertion)**  
+    - Algorithm: B+ Tree Insertion  
+    - Complexities:  
+      - Search/Insert: O(log n)  
+      - Space: O(n)  
+    - Narrative: Handle on-disk indexing of massive SRAS data sets with efficient inserts and lookups.
+
+129. **AVL Tree Insertion**  
+    - Algorithm: AVL Tree Insertion (Self-balancing BST)  
+    - Complexities:  
+      - Search/Insert: O(log n)  
+      - Space: O(n)  
+    - Narrative: Keep deliveries or product IDs always balanced for fast lookups in SRAS.
+
+130. **Red-Black Tree Insertion**  
+    - Algorithm: Red-Black Tree Insertion  
+    - Complexities:  
+      - O(log n) for insert/search  
+      - Space: O(n)  
+    - Narrative: Another balanced BST ensuring SRAS queries remain efficient under updates.
+
+131. **Aho–Corasick Automaton for Multi-Pattern Matching**  
+    - Algorithm: Aho–Corasick  
+    - Complexities:  
+      - Building automaton: O(sum of all pattern lengths)  
+      - Query: O(text length + number of matches)  
+      - Space: O(sum of pattern lengths)  
+    - Narrative: Match multiple product codes at once in SRAS logs.
+
+132. **Splay Trees (Splay Operation)**  
+    - Algorithm: Splay Tree Access  
+    - Complexities:  
+      - Amortized O(log n) for searches/insertions  
+      - Worst for a single operation can be O(n), but amortized still O(log n)  
+      - Space: O(n)  
+    - Narrative: Frequently accessed product IDs get faster over time in SRAS.
+
+133. **Treap Insertion**  
+    - Algorithm: Treap (Randomized BST) Insertion  
+    - Complexities:  
+      - Expected O(log n)  
+      - Space: O(n)  
+    - Narrative: Randomization keeps SRAS data balanced without complex rotations.
+
+134. **Cartesian Tree Construction**  
+    - Algorithm: Cartesian Tree from a sequence  
+    - Complexities:  
+      - O(n) construction  
+      - Space: O(n)  
+    - Narrative: Preprocess SRAS data sequences for RMQ queries or other purposes.
+
+135. **Gomory–Hu Tree for Global Min-Cut**  
+    - Algorithm: Gomory–Hu Tree Construction  
+    - Complexities:  
+      - O(V*max_flow) typically O(V E log V) with good max flow algorithms  
+      - Space: O(V²)  
+    - Narrative: Efficiently represent all-pairs min-cuts in SRAS networks for robust connectivity analysis.
+
+136. **Stoer–Wagner Minimum Cut Algorithm**  
+    - Algorithm: Stoer–Wagner Min Cut  
+    - Complexities:  
+      - O(V³) or improved O(E√V)  
+      - Space: O(V+E)  
+    - Narrative: Find a global minimum cut in SRAS routes to identify critical edges.
+
+137. **Fast Fourier Transform (FFT)**  
+    - Algorithm: FFT for polynomial multiplication  
+    - Complexities:  
+      - O(n log n)  
+      - Space: O(n)  
+    - Narrative: Possibly useful in SRAS for signal processing if sensor data is analyzed.
+
+138. **Karatsuba Multiplication**  
+    - Algorithm: Karatsuba Integer Multiplication  
+    - Complexities:  
+      - O(n^{log_2(3)}) ~ O(n^{1.585})  
+      - Space: O(n)  
+    - Narrative: If SRAS deals with very large integers (e.g., IDs or cryptographic keys), faster multiplication.
+
+139. **Pollard’s Rho Algorithm for Integer Factorization**  
+    - Algorithm: Pollard’s Rho (Factoring)  
+    - Complexities: Expected O(n^{1/4}) for factoring n-bit numbers, depends on randomization  
+    - Space: O(1)  
+    - Narrative: If SRAS uses cryptographic keys, might need factoring tests for security checks.
+
+140. **Pollard’s Rho Algorithm for Discrete Log**  
+    - Algorithm: Pollard’s Rho for Discrete Log  
+    - Complexities: O(√m) where m is group order  
+    - Space: O(√m)  
+    - Narrative: Again, cryptographic angle if SRAS needs to handle secure keys.
+
+141. **Extended Euclidean Algorithm**  
+    - Algorithm: Extended Euclidean GCD  
+    - Complexities:  
+      - O(log min(a,b))  
+      - Space: O(1)  
+    - Narrative: Compute GCD and Bezout coefficients if SRAS needs to solve integer linear equations quickly.
+
+142. **Euclidean Algorithm for GCD**  
+    - Algorithm: Euclidean Algorithm  
+    - Complexities: O(log min(a,b))  
+    - Space: O(1)  
+    - Narrative: Basic number-theoretic computations for route ID manipulations.
+
+143. **Gale–Shapley Stable Matching**  
+    - Algorithm: Gale–Shapley  
+    - Complexities:  
+      - O(n²) for n pairs  
+      - Space: O(n²) for preference lists  
+    - Narrative: Match drivers to deliveries or buyers to sellers stably in SRAS marketplace.
+
+144. **Edmonds’ Blossom Algorithm for Maximum Matching in General Graphs**  
+    - Algorithm: Edmonds’ Blossom  
+    - Complexities:  
+      - O(V^3) worst  
+      - Space: O(V²)  
+    - Narrative: More general matching than bipartite, handle complex SRAS networks.
+
+145. **Karger–Stein Algorithm for Minimum Cut**  
+    - Algorithm: Karger–Stein randomized min cut  
+    - Complexities: O(V² log³ V) with repeated runs  
+    - Space: O(V+E)  
+    - Narrative: Faster randomized approach to find min cuts in SRAS routes.
+
+146. **Suurballe’s Algorithm for Disjoint Shortest Paths**  
+    - Algorithm: Suurballe’s Algorithm  
+    - Complexities: O(E log V) with Dijkstra’s  
+    - Space: O(V+E)  
+    - Narrative: Find two disjoint shortest paths in SRAS for redundancy in routes.
+
+147. **Warren’s Algorithm for Bit Counting**  
+    - Algorithm: Bit count (Brian Kernighan’s method or Warren’s method)  
+    - Complexities: O(# of set bits)  
+    - Space: O(1)  
+    - Narrative: Quick bit-level operations if SRAS encodes data in bitfields.
+
+148. **Binary Indexed Tree with Range Updates and Queries**  
+    - Algorithm: Fenwick Tree variant  
+    - Complexities:  
+      - Update/Query: O(log n)  
+      - Space: O(n)  
+    - Narrative: Advanced range queries on SRAS data arrays efficiently.
+
+149. **Capacity Scaling in Edmond–Karp (Max Flow)**  
+    - Algorithm: Capacity Scaling Max Flow  
+    - Complexities: O(E log(U) * E) or O(E√V) improvements  
+    - Space: O(V+E)  
+    - Narrative: Faster max flow with scaling for SRAS if edges have large capacities.
+
+150. **Push–Relabel Variation: Highest Label Selection**  
+    - Algorithm: Push–Relabel max flow (Highest label heuristic)  
+    - Complexities: O(V³) worst but often faster in practice  
+    - Space: O(V+E)  
+    - Narrative: Fine-tune max flow computations in SRAS large networks.
+
+151. **Preflow-Push Variation: FIFO selection rule**  
+    - Algorithm: Push–Relabel with FIFO rule  
+    - Complexities: Similar to push-relabel standard  
+    - Space: O(V+E)  
+    - Narrative: Another heuristic to improve max flow runtime.
+
+152. **Ford–Fulkerson Method (Basic Max Flow)**  
+    - Algorithm: Ford–Fulkerson  
+    - Complexities: O(E * max_flow)  
+    - Space: O(V+E)  
+    - Narrative: The foundational max flow algorithm, if SRAS can rely on small max flows.
+
+153. **Golden-Section Search (Unimodal Optimization)**  
+    - Algorithm: Golden-Section Search  
+    - Complexities: O(log((b−a)/ε)) for searching in interval [a,b]  
+    - Space: O(1)  
+    - Narrative: Optimize a unimodal cost function in SRAS route parameter tuning.
+
+154. **Brent’s Method for Root Finding**  
+    - Algorithm: Brent’s Root Finding  
+    - Complexities: O(log((b−a)/ε)) typically  
+    - Space: O(1)  
+    - Narrative: Solve equations related to SRAS cost or time functions.
+
+155. **Arora’s Approximation Scheme for Metric TSP (Detailed)**  
+    - Algorithm: Arora’s PTAS  
+    - Complexities: O(n^{(1/ε)}) or worse, polynomial but huge  
+    - Space: O(n) or more  
+    - Narrative: Near-optimal TSP solutions for Euclidean SRAS routing.
+
+156. **Kahn’s Algorithm for Topological Sort**  
+    - Algorithm: Kahn’s Topological Sort  
+    - Complexities: O(V+E)  
+    - Space: O(V+E)  
+    - Narrative: Another method to order tasks in SRAS DAGs, ensuring all prerequisites precede tasks.
+
+157. **Approximate Nearest Neighbor Search (using LSH)**  
+    - Algorithm: LSH-based ANN search  
+    - Complexities: O(n^{ρ}) query, O(n^{1+ρ}) preprocessing for some ρ<1  
+    - Space: O(n^{1+ρ})  
+    - Narrative: Find nearest warehouse quickly without perfect accuracy.
+
+158. **Binomial Heap for Priority Queue**  
+    - Algorithm: Binomial Heap operations (Insert, Extract-Min)  
+    - Complexities: Insert: O(1) amortized, Extract-min: O(log n), Decrease-key: O(log n)  
+    - Space: O(n)  
+    - Narrative: Advanced PQ for SRAS scheduling tasks.
+
+159. **Fibonacci Heap for Decrease-Key Operations**  
+    - Algorithm: Fibonacci Heap  
+    - Complexities:  
+      - Insert: O(1) amortized, Extract-min: O(log n) amortized, Decrease-key: O(1) amortized  
+    - Space: O(n)  
+    - Narrative: Further optimize Dijkstra in SRAS route calculations.
+
+160. **Borůvka’s Algorithm for MST**  
+    - Algorithm: Borůvka’s MST  
+    - Complexities: O(E log V)  
+    - Space: O(E)  
+    - Narrative: Another MST approach for distributed SRAS computations.
