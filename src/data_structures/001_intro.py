@@ -4,92 +4,77 @@
 
 Context
 -------
-This lesson introduces the concept of algorithmic complexity (Big-O notation) and why it matters
-when choosing data structures or algorithms. We explore how to reason about space and time
-trade-offs. Understanding complexity helps us predict how code will scale as data grows.
+Before diving into actual data structures, we need to understand why they matter and how to
+evaluate their performance. We'll discuss what algorithms and data structures are, introduce
+Big-O notation for complexity, and explain why complexity is crucial for scaling performance
+as data grows.
 
-Prerequisites:
-- Familiarity with basic Python syntax and running Python scripts.
-- No previous knowledge of complex data structures required.
+Data Structure: *None* (conceptual introduction)
+- We are not implementing a specific data structure in this chapter.
+- Instead, we introduce the concept of complexity analysis, which applies to all data structures.
 
-References
-----------
-- Official Python docs: https://docs.python.org/3/library/timeit.html
-- Big-O notation guide: https://en.wikipedia.org/wiki/Big_O_notation
+Complexity Details:
+- At this stage, we only discuss complexity conceptually.
+- Big-O notation: O(n), O(log n), O(n²), etc., describe how runtime or space usage grows with input size.
+- We'll learn that as data grows, certain complexities lead to performance issues.
 
-Summary
--------
-We will:
-- Introduce Big-O notation as a way to describe algorithmic growth.
-- Show how to measure runtime of a simple function using the `timeit` module.
-- Discuss space vs. time trade-offs conceptually.
-
-By the end, learners will understand that complexity analysis is crucial for making informed
-decisions about which data structures or algorithms to use as the size of input data increases.
+Narrative:
+Our Data Analytics Pipeline (or SRAS scenario) starts small, but as it handles more data (e.g., more
+rows, more products, more queries), poor algorithmic complexity leads to slowdowns. Understanding
+complexity now ensures we choose data structures that keep performance stable at large scales.
 
 Doctests:
-- We provide a simple doctest that checks the correctness of our sample function.
-- Run `python -m doctest -v thisfile.py` or `pytest --doctest-modules` to verify.
+No specific data structure to test. We may just show that the file runs and a trivial function works.
+
+Run `python -m doctest -v thisfile.py` or `pytest --doctest-modules` if needed.
 """
 
 import timeit
 
 
-def sample_function(data: list[int]) -> int:
+def trivial_operation() -> int:
     """
-    A sample function: sum the elements of a list.
+    A trivial function that does a small, fixed amount of work.
+    Not an algorithm or data structure, just a placeholder.
 
-    Complexity:
-    - Time: O(n), where n is the length of the input list.
-    - Space: O(1) additional space, not counting the input storage.
-
-    This function demonstrates a linear-time operation, as it must visit each element once.
-
-    Examples
-    --------
-    >>> sample_function([1, 2, 3])
-    6
-    >>> sample_function([])
-    0
-    >>> sample_function([10])
-    10
+    Complexity: O(1), since it does a constant amount of work.
     """
-    return sum(data)
+    total = 0
+    for i in range(10):
+        total += i
+    return total
 
 
 def main() -> None:
     """
-    Main demonstration for this lesson.
+    Main demonstration:
+    - Explain what data structures and algorithms are.
+    - Introduce Big-O notation for complexity.
+    - Show timing a trivial operation to illustrate that we can measure runtime,
+      though this does not scale or show complexity differences yet.
 
-    We will:
-    - Explain Big-O briefly.
-    - Show how to time `sample_function` with `timeit` for a small and large input,
-      illustrating how runtime grows with input size.
-
-    Examples
-    --------
-    (This is a conceptual demo, so no fixed output is tested. Run and observe the printed output.)
+    By understanding complexity now, we set the foundation to analyze actual data structures
+    (arrays, lists, trees, hash tables, etc.) in later chapters.
     """
-    print("Introduction to Complexity:")
+    print("Introduction to Data Structures and Complexity")
+    print("------------------------------------------------")
+    print("Algorithms: Defined procedures to solve problems.")
+    print("Data Structures: Organized ways to store and manage data.")
     print(
-        "Big-O notation describes how runtime or space usage grows as input size increases.",
+        "Complexity (Big-O notation): A tool to describe how runtime or space grows with input size.",
     )
-
-    small_data = list(range(10_000))  # small scale data
-    large_data = list(range(1_000_000))  # larger scale data
-
-    # Time the small_data run
-    small_time = timeit.timeit(lambda: sample_function(small_data), number=10)
-    # Time the large_data run
-    large_time = timeit.timeit(lambda: sample_function(large_data), number=10)
-
-    print(f"Time for small_data (n=10,000), 10 runs: {small_time:.5f} seconds")
-    print(f"Time for large_data (n=1,000,000), 10 runs: {large_time:.5f} seconds")
-
+    print()
+    print("Timing a trivial operation (purely for demonstration):")
+    exec_time = timeit.timeit(trivial_operation, number=100000)
+    print(f"Running trivial_operation 100,000 times took: {exec_time:.5f} seconds.")
+    print()
+    print("This doesn't show scaling yet. Later chapters will apply Big-O notation")
     print(
-        "\nAs input size grows, runtime increases roughly proportionally (linear in this case).",
+        "to real data structures as input sizes grow, and we'll see differences between O(n), O(log n), etc.",
     )
-    print("This illustrates O(n) complexity: doubling n roughly doubles the runtime.")
+    print(
+        "This understanding ensures good performance choices in our data analytics pipeline.",
+    )
 
 
 if __name__ == "__main__":

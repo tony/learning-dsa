@@ -1,135 +1,93 @@
 #!/usr/bin/env python
 """
-2. Arrays and Python Lists.
+2. Fixed-Size Arrays.
 
-Context
--------
-This lesson explores the difference between fixed-size arrays (common in lower-level languages)
-and Python’s dynamic `list` type, which automatically resizes as needed. We’ll implement a
-simple dynamic array from scratch to show the underlying concept, then compare it with Python’s
-built-in `list`.
+Data Structure: Fixed-Size Array
 
-Prerequisites:
-- Basic understanding of Python lists and indexing.
-- Familiarity with the concept of complexity from the previous lesson.
+Concepts:
+A fixed-size array is a contiguous block of memory storing elements of the same type. Its size is determined at creation and cannot be changed. While Python doesn't have a native fixed-size array without resizing, we can simulate it or imagine a lower-level language scenario.
 
-References
-----------
-- Python lists: https://docs.python.org/3/tutorial/datastructures.html
-- Array vs. list concepts: https://en.wikipedia.org/wiki/Dynamic_array
+Complexities:
+- Access by index: O(1) (direct indexing)
+- Insert at end: O(n) if we must copy into a larger array since size is fixed (no amortized benefit)
+- Insert at arbitrary position: O(n) due to shifting elements
+- Search (linear): O(n) if we must scan the array
+- Space: O(n) where n is the fixed capacity
+No amortized improvements since size is not dynamic.
 
-Summary
--------
-We will:
-- Discuss how arrays are typically fixed-size and how a dynamic array grows to accommodate more elements.
-- Implement a simplified dynamic array in Python.
-- Compare insertion performance and usage with Python’s `list`.
-- Narrative scenario: Imagine streaming data lines from a CSV file. Initially, we don’t know how many lines
-  we’ll receive, so a dynamic structure is beneficial.
-
-By the end, learners will understand why Python’s `list` is so convenient, how it achieves amortized O(1) append,
-and the difference between a low-level fixed array and a high-level dynamic structure.
+Narrative:
+In our Data Analytics Pipeline, initially, we might just load a fixed number of data lines into a fixed-size array (imagine a CSV with a known row count). Access is constant time by index, but adding more items beyond the fixed capacity is costly (we must allocate a bigger array and copy). As data grows unpredictably, fixed-size arrays become inconvenient, prompting us to consider dynamic arrays (Python lists) next.
 
 Doctests:
-- We’ll test basic functionality of our custom dynamic array.
-- Run `python -m doctest -v thisfile.py` or `pytest --doctest-modules` to verify.
+We’ll show basic access and update operations. No resizing is possible here.
+
+Run `python -m doctest -v thisfile.py` or `pytest --doctest-modules` to test.
 """
 
 import timeit
-from typing import Any
 
 
-class DynamicArray:
+def fixed_size_array_example() -> None:
     """
-    A simplified dynamic array implementation.
+    Simulate a fixed-size array by creating a Python list of fixed length
+    and treating it as if we cannot change its size.
 
-    Internally:
-    - Uses a Python list as a static array to store elements.
-    - When capacity is reached, it creates a new, larger list and copies elements over.
-
-    Complexity:
-    - Amortized O(1) append, similar to Python’s built-in list.
-    - O(n) worst-case when resizing.
+    We'll show basic O(1) access and O(n) insertion at arbitrary position (simulated),
+    though we won't actually resize here since it's fixed-size.
 
     Examples
     --------
-    >>> arr = DynamicArray()
-    >>> arr.append(10)
-    >>> arr.append(20)
+    >>> arr = [None] * 5  # fixed-size array of length 5
+    >>> arr[0] = 10       # O(1) assignment
     >>> arr[0]
     10
-    >>> arr[1]
+    >>> arr[4] = 20       # assign at end still O(1)
+    >>> arr[4]
     20
-    >>> len(arr)
-    2
+    >>> # Searching (linear):
+    >>> 10 in arr
+    True
+    >>> 99 in arr
+    False
     """
-
-    def __init__(self) -> None:
-        self._capacity = 1
-        self._size = 0
-        self._array = [None] * self._capacity
-
-    def __len__(self) -> int:
-        return self._size
-
-    def __getitem__(self, index: int) -> Any:
-        if 0 <= index < self._size:
-            return self._array[index]
-        msg = "Index out of bounds"
-        raise IndexError(msg)
-
-    def append(self, value: Any) -> None:
-        if self._size == self._capacity:
-            self._resize(2 * self._capacity)  # Double capacity
-        self._array[self._size] = value
-        self._size += 1
-
-    def _resize(self, new_capacity: int) -> None:
-        new_array = [None] * new_capacity
-        for i in range(self._size):
-            new_array[i] = self._array[i]
-        self._array = new_array
-        self._capacity = new_capacity
 
 
 def main() -> None:
     """
-    Main demonstration for this lesson.
+    Main demonstration:
+    We will measure access and search times on a fixed-size array simulation.
+    Access by index is O(1), searching requires O(n) scanning.
 
-    We will:
-    - Show how to use our DynamicArray.
-    - Compare append performance vs. Python’s built-in list.
-    - Narrative: Imagine reading lines from a CSV (simulated with range of strings).
-
-    This demonstration highlights how dynamic resizing works behind the scenes
-    and how Python’s list, being a dynamic array, suits scenarios where data size is unknown.
+    Narrative:
+    Initially, if we know the exact number of lines we’ll process (e.g., a fixed-size dataset),
+    a fixed-size array might suffice. Access is O(1) and simple. But if we need to insert beyond
+    the fixed capacity or frequently rearrange, O(n) operations and complete copies become a bottleneck
+    as data scales. This sets the stage for dynamic arrays (covered next), which handle unknown growth better.
     """
-    # Simulate incoming CSV lines
-    csv_lines = [f"line_{i}" for i in range(100_000)]
+    # Simulate a fixed-size array of a given size
+    n = 100_000
+    arr = list(range(n))  # fixed-size array simulation with known elements
 
-    # Using our DynamicArray
-    arr = DynamicArray()
-    start = timeit.default_timer()
-    for line in csv_lines:
-        arr.append(line)
-    custom_time = timeit.default_timer() - start
+    # Access time measurement (random index)
+    access_time = timeit.timeit(lambda: arr[n // 2], number=1_000_000)
+    print(
+        f"Accessing a fixed-size array element 1,000,000 times took: {access_time:.5f} seconds (O(1) each).",
+    )
 
-    # Using Python’s list
-    py_list = []
-    start = timeit.default_timer()
-    for line in csv_lines:
-        py_list.append(line)
-    built_in_time = timeit.default_timer() - start
+    # Searching (linear)
+    # Searching for a value near the end ensures O(n) behavior
+    search_time = timeit.timeit(lambda: (n - 1 in arr), number=10)
+    print(
+        f"Searching for an element near the end of the array 10 times took: {search_time:.5f} seconds.",
+    )
+    print("As n grows, searching scales linearly, O(n).")
 
-    print("DynamicArray size:", len(arr))
-    print("Python list size:", len(py_list))
-    print(f"DynamicArray append time: {custom_time:.5f} s")
-    print(f"Python list append time: {built_in_time:.5f} s")
-
-    # Note: Times will vary by machine, but Python’s list should be
-    # well-optimized and likely faster than our naive implementation.
-    # Both scale linearly and offer amortized O(1) appends,
-    # showing the principle behind dynamic arrays.
+    print()
+    print("Fixed-size arrays provide O(1) index access but no easy resizing.")
+    print(
+        "As data grows unpredictably, fixed-size arrays force costly O(n) operations when resizing or inserting.",
+    )
+    print("This motivates using dynamic arrays (Python lists) in the next chapter.")
 
 
 if __name__ == "__main__":
