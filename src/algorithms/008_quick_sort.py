@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """
-8. Quick Sort (Divide and Conquer).
+8. Quick Sort (Divide and Conquer) with Random Pivot.
 
 Algorithm: Quick Sort
 
@@ -28,6 +28,7 @@ We test quick_sort on small lists to confirm correctness.
 Run `python -m doctest -v thisfile.py` or `pytest --doctest-modules` to verify.
 """
 
+import random
 import timeit
 
 
@@ -38,7 +39,7 @@ def quick_sort(data: list[int]) -> None:
     Complexity:
     - Best: O(n log n)
     - Average: O(n log n)
-    - Worst: O(n^2) if pivot is poor each time
+    - Worst: O(n^2) if extremely unluck with random pivot
     - Space: O(log n) average for recursion
 
     Examples
@@ -71,6 +72,10 @@ def _quick_sort_helper(data: list[int], low: int, high: int) -> None:
 
 
 def _partition(data: list[int], low: int, high: int) -> int:
+    # Pick a random pivot between low and high
+    pivot_index = random.randint(low, high)
+    # Swap pivot into the end
+    data[pivot_index], data[high] = data[high], data[pivot_index]
     # We'll pick the last element as pivot (simple strategy).
     # For better performance, consider randomizing or median-of-three pivot selection.
     pivot = data[high]
