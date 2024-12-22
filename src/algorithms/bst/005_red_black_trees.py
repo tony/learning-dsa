@@ -9,7 +9,7 @@ Concepts:
 
 Algorithm:
 - Insert a new node as red, then fix color violations with recolors/rotations while moving upward if needed.
-- Delete also rebalances if there's a "black deficit," but omitted here for brevity.
+- Delete also rebalances if there's a "black deficit," but omitted for brevity.
 
 Complexities:
 - Worst-case O(log n) for search/insert/delete. The tree remains balanced in height.
@@ -28,13 +28,12 @@ BLACK = False
 class RBNode:
     """
     A Node in a Red-Black Tree, storing:
-    - key: the value
-    - color: RED or BLACK
-    - left, right, parent: pointers to child and parent nodes.
+    - key: integer value
+    - color: RED (True) or BLACK (False)
+    - left, right, parent: pointers to children/parent, or None if absent.
 
-    We'll use a sentinel NIL node for leaves or child references, but keep
-    it minimal here with None checks. The code must check if child is not None
-    before accessing child attributes.
+    We'll rely on None checks to avoid a sentinel approach. Before accessing .color or .left/.right,
+    confirm the node is not None.
     """
 
     def __init__(self, key: int, color: bool = RED) -> None:
@@ -45,25 +44,28 @@ class RBNode:
         self.parent: RBNode | None = None
 
 
-def rotate_left(root: RBNode, x: RBNode) -> RBNode:
+def is_red(node: RBNode | None) -> bool:
+    """Return True if node is non-None and node.color == RED."""
+    return (node is not None) and (node.color == RED)
+
+
+def safe_rotate_left(root: RBNode, x: RBNode) -> RBNode:
     """
-    Left-rotate at node x.
-    Returns the (possibly new) root of the entire tree if it changed.
+    Left-rotate at node x. Return possibly new root if x was root.
+    We only rotate if x.right is not None. If x.right is None, do nothing.
     """
     y = x.right
     if y is None:
-        return root  # can't rotate if x.right is None
-
-    # y's left subtree becomes x's right subtree
+        return root  # no rotation possible
+    # y.left becomes x.right
     x.right = y.left
-    if y.left:
+    if y.left is not None:
         y.left.parent = x
     y.parent = x.parent
 
     if x.parent is None:
-        # x was root
         root = y
-    elif x is x.parent.left:
+    elif x.parent.left is x:
         x.parent.left = y
     else:
         x.parent.right = y
@@ -73,23 +75,23 @@ def rotate_left(root: RBNode, x: RBNode) -> RBNode:
     return root
 
 
-def rotate_right(root: RBNode, x: RBNode) -> RBNode:
+def safe_rotate_right(root: RBNode, x: RBNode) -> RBNode:
     """
-    Right-rotate at node x.
-    Returns the (possibly new) root of the entire tree if it changed.
+    Right-rotate at node x. Return possibly new root if x was root.
+    Only rotate if x.left is not None.
     """
     y = x.left
     if y is None:
-        return root  # can't rotate if x.left is None
-
+        return root
+    # y.right becomes x.left
     x.left = y.right
-    if y.right:
+    if y.right is not None:
         y.right.parent = x
     y.parent = x.parent
 
     if x.parent is None:
         root = y
-    elif x is x.parent.right:
+    elif x.parent.right is x:
         x.parent.right = y
     else:
         x.parent.left = y
@@ -101,7 +103,7 @@ def rotate_right(root: RBNode, x: RBNode) -> RBNode:
 
 def insert_rb(root: RBNode | None, key: int) -> RBNode:
     """
-    Insert 'key' into the Red-Black tree with root 'root' (which may be None).
+    Insert 'key' into the Red-Black tree with root 'root' (may be None).
     Returns the new root after insertion (which might change).
 
     Examples
@@ -109,114 +111,113 @@ def insert_rb(root: RBNode | None, key: int) -> RBNode:
     >>> root = None
     >>> for x in [10, 20, 30, 15]:
     ...     root = insert_rb(root, x)
-    >>> inorder_vals = []
+    >>> vals = []
     >>> def inorder(n):
-    ...     if not n: return
-    ...     inorder(n.left)
-    ...     inorder_vals.append(n.key)
-    ...     inorder(n.right)
+    ...     if n: inorder(n.left); vals.append(n.key); inorder(n.right)
     >>> inorder(root)
-    >>> inorder_vals
+    >>> vals
     [10, 15, 20, 30]
     """
-    # 1) BST insert (iterative)
     new_node = RBNode(key, RED)
-    if not root:
-        root = new_node
-        # root will be recolored to BLACK in fixup
-    else:
-        current = root
-        while current:
-            if key < current.key:
-                if current.left is None:
-                    current.left = new_node
-                    new_node.parent = current
-                    break
-                current = current.left
-            elif current.right is None:
-                current.right = new_node
-                new_node.parent = current
-                break
-            else:
-                current = current.right
 
-    # 2) Fix up the red-black properties
+    if root is None:
+        # new_node becomes root, fixup will recolor it black
+        return insert_fixup(new_node, new_node)
+
+    # standard BST insert (iterative)
+    curr = root
+    while True:
+        if key < curr.key:
+            if curr.left is None:
+                curr.left = new_node
+                new_node.parent = curr
+                break
+            curr = curr.left
+        else:
+            if curr.right is None:
+                curr.right = new_node
+                new_node.parent = curr
+                break
+            curr = curr.right
+
     return insert_fixup(root, new_node)
 
 
 def insert_fixup(root: RBNode, x: RBNode) -> RBNode:
-    """
-    Fix red-black violations after inserting node x, walking up if needed.
-    Returns possibly new root.
-    """
-    while x.parent and x.parent.color == RED:
-        grand = x.parent.parent
-        if grand and x.parent is grand.left:
-            # uncle is grand.right
-            uncle = grand.right
-            if uncle and uncle.color == RED:
-                # Case 1: uncle is red => recolor
-                x.parent.color = BLACK
-                uncle.color = BLACK
-                grand.color = RED
-                x = grand
+    """Fix red-black violations after inserting node x, possibly changing the root."""
+    while True:
+        p = x.parent
+        if p is None or not is_red(p):
+            break  # no violation if parent is black or doesn't exist
+        # Now parent is red => check grandparent
+        g = p.parent
+        if g is None:
+            break  # no grand => no uncle => done?
+
+        if p is g.left:
+            # uncle is g.right
+            u = g.right
+            if is_red(u):
+                # recolor parent, uncle to black, grand to red => move x up
+                p.color = BLACK
+                if u:
+                    u.color = BLACK
+                g.color = RED
+                x = g
             else:
-                # Case 2 or 3: uncle is black => rotate
-                if x is x.parent.right:
-                    # left rotation on x.parent
-                    root = rotate_left(root, x.parent)
-                    x = x.left or x
-                # Right rotation on grand
-                x.parent.color = BLACK
-                grand.color = RED
-                root = rotate_right(root, grand)
-        elif grand and x.parent is grand.right:
-            # uncle is grand.left
-            uncle = grand.left
-            if uncle and uncle.color == RED:
-                # Case 1 mirror
-                x.parent.color = BLACK
-                uncle.color = BLACK
-                grand.color = RED
-                x = grand
-            else:
-                # Case 2 or 3 mirror
-                if x is x.parent.left:
-                    root = rotate_right(root, x.parent)
-                    x = x.right or x
-                x.parent.color = BLACK
-                grand.color = RED
-                root = rotate_left(root, grand)
+                # uncle is black => rotate
+                if x is p.right:
+                    root = safe_rotate_left(root, p)
+                    x = p  # after rotate, x might shift
+                    if x.left:
+                        x = x.left  # move x to "inserted" pos
+                # now do right rotation on grand
+                p2 = x.parent
+                if p2:  # re-check
+                    p2.color = BLACK
+                g.color = RED
+                root = safe_rotate_right(root, g)
         else:
-            # might happen if no grand, e.g. x's parent is root
-            break
+            # p is g.right => symmetrical
+            u = g.left
+            if is_red(u):
+                p.color = BLACK
+                if u:
+                    u.color = BLACK
+                g.color = RED
+                x = g
+            else:
+                if x is p.left:
+                    root = safe_rotate_right(root, p)
+                    x = p
+                    if x.right:
+                        x = x.right
+                if x.parent:
+                    x.parent.color = BLACK
+                g.color = RED
+                root = safe_rotate_left(root, g)
 
-    # Ensure root is always black
-    root.color = BLACK
-    return root
+    # ensure final root is black
+    # find root top
+    top = root
+    while top.parent is not None:
+        top = top.parent
+    top.color = BLACK
+    return top
 
 
-def inorder(root: RBNode | None, result: list[int]) -> None:
-    """In-order traversal for debugging or checking BST property."""
-    if not root:
-        return
-    inorder(root.left, result)
-    result.append(root.key)
-    inorder(root.right, result)
-
-
-def node_color_str(n: RBNode | None) -> str:
-    """Return 'R' or 'B' for the node color, or 'NIL' if n is None."""
-    if not n:
-        return "NIL"
-    return "R" if n.color == RED else "B"
+def inorder(root: RBNode | None, out: list[int]) -> None:
+    """In-order traversal for verifying BST property or debugging."""
+    if root:
+        inorder(root.left, out)
+        out.append(root.key)
+        inorder(root.right, out)
 
 
 def main() -> None:
     """
     Main demonstration:
-    We'll insert a few items and show the in-order traversal.
-    The tree remains balanced near O(log n) height thanks to red-black rebalancing.
+    Insert a few items, show in-order. The final tree remains balanced O(log n).
     """
     root = None
     for x in [10, 20, 30, 15]:
@@ -225,13 +226,6 @@ def main() -> None:
     vals: list[int] = []
     inorder(root, vals)
     print("In-order of final Red-Black Tree:", vals)
-
-    # We could show color of root, children's colors, etc.
-    print(f"Root = {root.key}, color={node_color_str(root)}")
-    if root.left:
-        print(f"Root.left = {root.left.key}, color={node_color_str(root.left)}")
-    if root.right:
-        print(f"Root.right = {root.right.key}, color={node_color_str(root.right)}")
 
 
 if __name__ == "__main__":
