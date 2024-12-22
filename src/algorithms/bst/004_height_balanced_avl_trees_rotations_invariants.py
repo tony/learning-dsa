@@ -11,8 +11,8 @@ Algorithm:
 - Insert in BST fashion, then update heights while unwinding the recursion.
 - If the node becomes unbalanced (balance factor > 1 or < -1), rotate:
   - Single rotation (left or right) if it’s a simple "zig-zig" pattern.
-  - Double rotation if it’s a "zig-zag" pattern (left-right or right-left).
-- Delete similarly rebalances.
+  - Double rotation (left-right or right-left) if it’s "zig-zag".
+- Delete similarly rebalances (omitted here for brevity).
 
 Complexities:
 - Search/Insert/Delete: O(log n) guaranteed, because the tree is rebalanced consistently.
@@ -117,7 +117,7 @@ def insert_avl(root: AVLNode | None, key: int) -> AVLNode:
     >>> root.height
     2
     """
-    if root is None:
+    if not root:
         return AVLNode(key)
 
     # BST insert
@@ -134,40 +134,44 @@ def insert_avl(root: AVLNode | None, key: int) -> AVLNode:
     # If node unbalanced => 4 cases
 
     # Left Left Case
-    if balance > 1 and key < root.left.key:
-        return rotate_right(root)
+    if balance > 1:
+        # We must ensure root.left is not None before comparing keys
+        if root.left and key < root.left.key:
+            return rotate_right(root)
 
     # Right Right Case
-    if balance < -1 and key > root.right.key:
-        return rotate_left(root)
+    if balance < -1:
+        # Ensure root.right is not None before comparing keys
+        if root.right and key > root.right.key:
+            return rotate_left(root)
 
     # Left Right Case
-    if balance > 1 and key > root.left.key:
+    if balance > 1 and root.left and key > root.left.key:
         root.left = rotate_left(root.left)
         return rotate_right(root)
 
     # Right Left Case
-    if balance < -1 and key < root.right.key:
+    if balance < -1 and root.right and key < root.right.key:
         root.right = rotate_right(root.right)
         return rotate_left(root)
 
     return root  # no rotation needed
 
 
-def preorder(root: AVLNode | None, result: list[int]) -> None:
-    """Preorder traversal, for demonstration or debugging."""
+def inorder(root: AVLNode | None, result: list[int]) -> None:
+    """In-order traversal, for debugging or checking sorting property."""
     if not root:
         return
+    inorder(root.left, result)
     result.append(root.key)
-    preorder(root.left, result)
-    preorder(root.right, result)
+    inorder(root.right, result)
 
 
 def main() -> None:
     """
     Main demonstration:
-    We'll insert ascending data [10..1 step -1], also random data,
-    and confirm we get a balanced tree of height ~ log n.
+    We'll insert ascending data (1..20), also random data,
+    and confirm we get a balanced tree of height ~ log(n).
 
     Narrative:
     An SRAS pipeline with random data remains balanced in O(log n)
@@ -190,18 +194,16 @@ def main() -> None:
     for rv in random_vals:
         root_rand = insert_avl(root_rand, rv)
 
-    asc_preorder: list[int] = []
-    rand_preorder: list[int] = []
-    preorder(root_asc, asc_preorder)
-    preorder(root_rand, rand_preorder)
+    inorder_asc: list[int] = []
+    inorder_rand: list[int] = []
+    inorder(root_asc, inorder_asc)
+    inorder(root_rand, inorder_rand)
 
-    print("AVL with ascending inserts (1..20) => Preorder:", asc_preorder)
+    print("AVL with ascending inserts (1..20) => Inorder:", inorder_asc)
     print(f"Final height (ascending) = {root_asc.height if root_asc else 0}")
 
-    print("AVL with random inserts => Preorder:", rand_preorder)
+    print("AVL with random inserts => Inorder:", inorder_rand)
     print(f"Final height (random) = {root_rand.height if root_rand else 0}")
-
-    # Typically, both are ~ log(n) in height, no skew issues.
 
 
 if __name__ == "__main__":
