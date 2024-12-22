@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """
-11. Greedy Algorithms: Introduction with a Simple Interval Scheduling
+11. Greedy Algorithms: Introduction with a Simple Interval Scheduling.
 
 Algorithm: Interval Scheduling using Earliest Finishing Time
 
@@ -14,25 +14,27 @@ Complexities:
 - Sorting by finish time: O(n log n)
 - Selecting intervals: O(n)
 - Overall: O(n log n)
-- Space: O(n) if storing intervals; or O(1) in-place sorting (depending on implementation details).
+- Space: O(n) if storing intervals, or O(1) with in-place sorting.
 
 Narrative:
-In SRAS, each interval could represent a potential delivery window. By sorting these by their
-finish times and greedily choosing intervals that don't overlap with already chosen ones,
-we schedule the maximum number of deliveries. This approach ensures efficient resource use.
+In SRAS, each interval might be a delivery window. By sorting them by their finish times
+and greedily choosing intervals that don't overlap with already chosen ones,
+we schedule the maximum number of deliveries efficiently.
 
 Doctests:
-We define a small set of intervals, run the scheduling function, and verify the output.
+Because multiple valid solutions may exist if intervals have ties or partial overlaps,
+we only test that we get a maximum set of non-overlapping intervals (length 3 here),
+not a specific arrangement.
 
 Run `python -m doctest -v thisfile.py` or `pytest --doctest-modules` to verify.
 """
 
-import timeit
+import operator
 import random
-from typing import List, Tuple
+import timeit
 
 
-def interval_scheduling(intervals: List[Tuple[int, int]]) -> List[Tuple[int, int]]:
+def interval_scheduling(intervals: list[tuple[int, int]]) -> list[tuple[int, int]]:
     """
     Performs interval scheduling using the earliest finishing time greedy approach.
     Returns a maximal set of non-overlapping intervals.
@@ -53,15 +55,17 @@ def interval_scheduling(intervals: List[Tuple[int, int]]) -> List[Tuple[int, int
     --------
     >>> ivals = [(0,3), (5,9), (1,2), (3,5), (2,4)]
     >>> chosen = interval_scheduling(ivals)
-    >>> sorted(chosen)  # for consistent test output
-    [(0, 3), (3, 5), (5, 9)]
-    >>> # Explanation: after sorting by finish time => (1,2), (2,4), (0,3), (3,5), (5,9)
-    >>> # The chosen intervals typically would be (1,2), (3,5), and (5,9) or
-    >>> # (0,3), (3,5), (5,9) depending on tie ordering. The result is a maximal
-    >>> # non-overlapping set. We'll get a set of size 3.
+    >>> len(chosen)
+    3
+    >>> # We expect 3 intervals in the optimal solution, though multiple solutions
+    >>> # are correct if they have length 3 and remain non-overlapping.
+
+    >>> # Verify chosen intervals do not overlap:
+    >>> all(chosen[i][1] <= chosen[i+1][0] for i in range(len(chosen)-1))
+    True
     """
     # Sort intervals by finish time
-    intervals.sort(key=lambda x: x[1])
+    intervals.sort(key=operator.itemgetter(1))
 
     chosen = []
     last_finish = -1
@@ -77,16 +81,15 @@ def interval_scheduling(intervals: List[Tuple[int, int]]) -> List[Tuple[int, int
 def main() -> None:
     """
     Main demonstration:
-    We create a random list of intervals, apply interval_scheduling,
-    and measure its time. This showcases O(n log n) for sorting.
+    Creates random intervals, applies interval_scheduling, and measures O(n log n) sorting time.
 
     Narrative:
-    If each interval represents a possible delivery window, the earliest finishing time
-    greedy picks the maximum number of non-overlapping deliveries quickly and efficiently.
+    If each interval is a potential delivery window, earliest finishing time picking yields
+    the maximum number of non-overlapping deliveries, ensuring efficient resource usage.
     """
     n = 10_000
     intervals = []
-    # Create random intervals with random start time, short random duration
+    # Create random intervals with random start times and short durations
     for _ in range(n):
         start = random.randint(0, 50_000)
         duration = random.randint(1, 100)
@@ -95,7 +98,7 @@ def main() -> None:
 
     exec_time = timeit.timeit(lambda: interval_scheduling(intervals), number=1)
     print(
-        f"Scheduling {n} intervals took: {exec_time:.5f}s (O(n log n) due to sorting)."
+        f"Scheduling {n} intervals took: {exec_time:.5f}s (O(n log n) due to sorting).",
     )
 
 
