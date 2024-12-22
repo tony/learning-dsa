@@ -52,6 +52,7 @@ We demonstrate both recursive and iterative search code and show how to handle e
 “next-larger” ID queries.
 """
 
+import timeit
 from typing import Any, Optional
 
 
@@ -251,43 +252,52 @@ class BST:
 def main() -> None:
     """
     Main demonstration:
-    We'll insert random data, demonstrate recursive vs. iterative search times,
-    and show min/max plus successor/predecessor on a known node.
+    We'll insert some data, compare recursive vs iterative search times,
+    show min/max, and check successor/predecessor.
 
-    Narrative:
-    If SRAS needs quick neighbor lookups or range queries, we might rely on successor/predecessor.
-    For big data, self-balancing is essential, but the logic of searching remains similar.
+    Also prints complexity details as a reference:
+    * Time: O(log n) average, O(n) worst if skewed
+    * Space: O(h) recursion stack or O(1) iterative
+
+    We then run doctests to verify correctness.
     """
-    # Build a small BST
-    values = [5, 2, 8, 1, 3, 7, 9, 6, 4]
+    import random
+
+    print("Complexities for BST Search Variations and Edge Cases:")
+    print(" - Average Time Complexity: O(log n) for random or balanced data.")
+    print(" - Worst Case Time Complexity: O(n) if the tree is skewed.")
+    print(
+        " - Space Complexity: O(h) for recursion, or O(1) iterative, where h = tree height.\n",
+    )
+
+    # Build a BST with some random values
+    values = [random.randint(0, 50) for _ in range(10)]
     bst = BST()
     for val in values:
         bst.insert(val)
 
-    # Compare recursive vs iterative search for a target
-    target = 6
-    rec_result = bst.search_recursive(target)
-    itr_result = bst.search_iterative(target)
-    print(f"Recursive search for {target}: {rec_result}")
-    print(f"Iterative search for {target}: {itr_result}")
+    # Demonstrate searches
+    target = values[len(values) // 2]  # pick some item from the list
+    rec_time = timeit.timeit(lambda: bst.search_recursive(target), number=1000)
+    itr_time = timeit.timeit(lambda: bst.search_iterative(target), number=1000)
 
-    # Show min and max
-    node_min = bst.min_node()
-    node_max = bst.max_node()
-    print("Min node key:", node_min.key if node_min else "None")
-    print("Max node key:", node_max.key if node_max else "None")
+    print(f"Recursive search for {target} repeated 1000 times: {rec_time:.5f}s")
+    print(f"Iterative search for {target} repeated 1000 times: {itr_time:.5f}s")
 
-    # Show successor of 3
-    node_3 = bst.find_node(3)
-    if node_3:
-        succ_3 = bst.successor(node_3)
-        print(f"Successor of 3: {succ_3.key if succ_3 else 'None'}")
+    # Show min, max
+    mn = bst.min_node()
+    mx = bst.max_node()
+    print("Min node key:", mn.key if mn else "None")
+    print("Max node key:", mx.key if mx else "None")
 
-    # Show predecessor of 7
-    node_7 = bst.find_node(7)
-    if node_7:
-        pred_7 = bst.predecessor(node_7)
-        print(f"Predecessor of 7: {pred_7.key if pred_7 else 'None'}")
+    # Check successor/predecessor if exist
+    if mn and mx and mn != mx:
+        succ = bst.successor(mn)
+        if succ:
+            print(f"Successor of min node ({mn.key}): {succ.key}")
+        pred = bst.predecessor(mx)
+        if pred:
+            print(f"Predecessor of max node ({mx.key}): {pred.key}")
 
 
 if __name__ == "__main__":
