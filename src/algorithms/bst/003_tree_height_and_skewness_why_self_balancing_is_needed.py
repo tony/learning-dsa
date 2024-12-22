@@ -18,16 +18,14 @@ a naive BST becomes a performance bottleneck (O(n) per operation). We must consi
 self-balancing BST solutions.
 """
 
-from __future__ import annotations
-
 import random
 import timeit
+from collections import deque
 
 
 class BSTNode:
     """
     A simple BST node for demonstration: each node has a value, a left child, and a right child.
-
     We'll keep this minimal for clarity. No balancing logic here.
     """
 
@@ -37,66 +35,87 @@ class BSTNode:
         self.right: BSTNode | None = None
 
 
-def insert(root: BSTNode | None, val: int) -> BSTNode:
+def insert_iterative(root: BSTNode | None, val: int) -> BSTNode:
     """
-    Insert 'val' into the BST rooted at 'root'. Returns the (possibly new) root.
+    Iteratively insert 'val' into the BST, avoiding deep recursion.
+    Returns the (possibly new) root.
 
     Examples
     --------
     >>> root = None
     >>> for x in [3,1,2]:
-    ...     root = insert(root, x)
-    >>> # The tree is now skewed or partial:
+    ...     root = insert_iterative(root, x)
+    >>> # The tree might be skewed or partially skewed:
     >>> #    3
     >>> #   /
     >>> #  1
     >>> #   \
     >>> #    2
-    >>> height(root)
+    >>> height_iterative(root)
     3
     """
     if root is None:
         return BSTNode(val)
-    if val < root.val:
-        root.left = insert(root.left, val)
-    else:
-        # assume duplicates go right or no duplicates exist
-        root.right = insert(root.right, val)
+
+    current = root
+    while True:
+        if val < current.val:
+            if current.left is None:
+                current.left = BSTNode(val)
+                break
+            current = current.left
+        # duplicates go right, or assume no duplicates
+        elif current.right is None:
+            current.right = BSTNode(val)
+            break
+        else:
+            current = current.right
+
     return root
 
 
-def height(root: BSTNode | None) -> int:
+def height_iterative(root: BSTNode | None) -> int:
     """
-    Return the height of the BST (longest path from root to leaf).
-
-    An empty tree has height 0. A single node has height 1.
+    Iteratively compute the height of the BST using a BFS approach.
+    An empty tree has height=0. A single node has height=1.
 
     Examples
     --------
     >>> root = None
-    >>> height(root)
+    >>> height_iterative(root)
     0
-    >>> root = insert(None, 10)
-    >>> height(root)
+    >>> root = BSTNode(10)
+    >>> height_iterative(root)
     1
     >>> for val in [5,4,3,2,1]:
-    ...     root = insert(root, val)
-    >>> height(root)  # can become large if inserted in descending order
+    ...     root = insert_iterative(root, val)
+    >>> height_iterative(root)  # can become large if inserted in descending order
     6
     """
     if root is None:
         return 0
-    return 1 + max(height(root.left), height(root.right))
+
+    max_height = 0
+    queue = deque([(root, 1)])  # (node, level)
+    while queue:
+        node, level = queue.popleft()
+        max_height = max(level, max_height)
+        if node.left:
+            queue.append((node.left, level + 1))
+        if node.right:
+            queue.append((node.right, level + 1))
+    return max_height
 
 
 def main() -> None:
     """
     Main demonstration:
     We'll construct two BSTs of size n:
-      1) Insert ascending values (1..n), measuring final height (worst-case ~n).
-      2) Insert random values, measuring final height (average ~O(log n)) if distribution is balanced.
+      1) Insert ascending values (0..n-1), measuring final height (worst-case ~n).
+      2) Insert random values, measuring final height (typical average ~O(log n)) if distribution is balanced.
 
-    We illustrate how naive BST can degrade with sorted data, emphasizing why self-balancing is needed.
+    By using iterative insert and iterative height, we avoid Python recursion limits.
+    We show how naive BST degrade with sorted data, emphasizing self-balancing need.
     """
     n = 2000
 
@@ -104,8 +123,8 @@ def main() -> None:
     def build_ascending() -> int:
         root = None
         for i in range(n):
-            root = insert(root, i)
-        return height(root)
+            root = insert_iterative(root, i)
+        return height_iterative(root)
 
     # 2) Random insertion
     def build_random() -> int:
@@ -113,8 +132,8 @@ def main() -> None:
         values = list(range(n))
         random.shuffle(values)
         for v in values:
-            root = insert(root, v)
-        return height(root)
+            root = insert_iterative(root, v)
+        return height_iterative(root)
 
     ascending_time = timeit.timeit(build_ascending, number=1)
     random_time = timeit.timeit(build_random, number=1)
@@ -131,7 +150,7 @@ def main() -> None:
     print(
         f"Observation: Ascending insertion yields near-linear height (~{asc_height}), "
         f"while random insertion typically yields a smaller height (~{rand_height}), "
-        "demonstrating how naive BST can degrade in worst-case.",
+        "demonstrating how naive BST can degrade in the worst-case and motivate self-balancing.",
     )
 
 
