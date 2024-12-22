@@ -201,6 +201,7 @@ def main() -> None:
     """
     Main demonstration:
     We'll insert some data into the BST, then do a quick timing of search operations.
+    Also prints out complexities and runs doctests.
 
     Narrative:
     A small demonstration of how a BST might be used in an SRAS system for moderate random data.
@@ -208,14 +209,21 @@ def main() -> None:
     """
     import random
 
+    # Print complexity details first
+    print("BST Fundamentals - Insert, Search, Delete, Traversals")
+    print("Complexities:")
+    print(" - Worst-case: O(n) if the tree is skewed (like inserting sorted data).")
+    print(" - Average: O(log n) for random or near-balanced data.\n")
+
     # Create a BST and insert random data
     bst = BST()
-    data = [random.randint(0, 9999) for _ in range(50)]  # moderate
+    data = [random.randint(0, 9999) for _ in range(50)]
     for val in data:
         bst.insert(val)
 
     # Time searching for a value that may or may not exist
     search_val = data[len(data) // 2]  # pick a middle value
+
     search_time = timeit.timeit(lambda: bst.search(search_val), number=1000)
     print(f"Searching for {search_val} 1000 times took {search_time:.5f} seconds.")
     print("In-order traversal (showing sorted data):", bst.in_order())
