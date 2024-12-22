@@ -81,4 +81,6 @@ async def main() -> None:
 
 if __name__ == "__main__":
     # Running the main coroutine so the file is executable directly.
+    # If "Complexities" / "Performance" are in the instructions, print those examples here, e.g. `timeit`.
+    # Run doctests here
     asyncio.run(main())
