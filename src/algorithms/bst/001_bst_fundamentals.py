@@ -98,7 +98,9 @@ class BST:
 
     def insert(self, key: Any) -> None:
         """
-        Insert a new key into the BST. If key already exists, this example does not handle
+        Insert a new key into the BST.
+
+        If key already exists, this example does not handle
         duplicates (either skip or define your own policy).
         """
         self.root = self._insert_recursive(self.root, key)

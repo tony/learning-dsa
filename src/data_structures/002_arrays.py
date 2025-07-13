@@ -70,8 +70,9 @@ def main() -> None:
     Narrative:
     Initially, if we know the exact number of lines we'll process (e.g., a fixed-size dataset),
     a fixed-size array might suffice. Access is O(1) and simple. But if we need to insert beyond
-    the fixed capacity or frequently rearrange, O(n) operations and complete copies become a bottleneck
-    as data scales. This sets the stage for dynamic arrays (covered next), which handle unknown growth better.
+    the fixed capacity or frequently rearrange, O(n) operations and complete copies become a
+    bottleneck as data scales. This sets the stage for dynamic arrays (covered next), which
+    handle unknown growth better.
     """
     # Simulate a fixed-size array of a given size
     n = 100_000

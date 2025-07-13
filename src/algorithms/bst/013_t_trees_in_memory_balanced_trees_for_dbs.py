@@ -136,11 +136,13 @@ def insert_into_node(node: TTreeNode, key: int) -> bool:
 
 
 def split_node(node: TTreeNode) -> tuple[int, TTreeNode]:
-    """
-    If node.keys exceed capacity => we 'split' it by:
+    """Split nodes.
+
+    If node.keys exceed capacity => we 'split' it:
 
     1) take middle key as 'promoted' or 'pushed up' key
     2) create a new TTreeNode for the right half.
+
     Return (promoted_key, new_right_node).
     For simplicity, we do a half-split.
     """
@@ -160,6 +162,7 @@ def split_node(node: TTreeNode) -> tuple[int, TTreeNode]:
 def insert_ttree(root: TTreeNode | None, key: int, capacity: int = 4) -> TTreeNode:
     """
     Insert 'key' into a toy T-tree with node capacity=4 by default.
+
     If root is None, create a node.
     If node can hold the key, we do so. Else descend left or right based on BST logic.
     If node is over capacity, split it and push up (like a simplified approach).

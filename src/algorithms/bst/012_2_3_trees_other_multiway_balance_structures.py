@@ -48,9 +48,9 @@ def is_full_2keys(node: Two3Node) -> bool:
 
 def split_2node(parent: Two3Node, index: int) -> None:
     """
-    Split the full child parent.children[index] (which must have 2 keys, then we add 1 =>
-    total 3 keys).
+    Split the full child parent.children[index].
 
+    (which must have 2 keys, then we add 1 => total 3 keys).
     We'll create a new sibling node and push the middle key up into parent.
     """
     child = parent.children[index]
