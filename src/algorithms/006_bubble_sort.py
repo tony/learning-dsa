@@ -86,7 +86,7 @@ def main() -> None:
     sizes = [1000, 2000]
     for n in sizes:
         data = list(range(n, 0, -1))  # worst-case: reverse-sorted
-        exec_time = timeit.timeit(lambda: bubble_sort(data), number=1)
+        exec_time = timeit.timeit(lambda d=data: bubble_sort(d), number=1)
         print(f"Bubble sort on {n} elements took: {exec_time:.5f}s.")
 
 

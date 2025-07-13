@@ -68,7 +68,7 @@ def main() -> None:
 
     for n in sizes:
         data = list(range(n))
-        exec_time = timeit.timeit(lambda: linear_search(data, target), number=10)
+        exec_time = timeit.timeit(lambda d=data: linear_search(d, target), number=10)
         print(
             f"List size {n}, repeated 10 runs: {exec_time:.5f} seconds total "
             f"(~{exec_time / 10:.5f}s per run).",

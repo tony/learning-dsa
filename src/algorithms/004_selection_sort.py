@@ -77,7 +77,7 @@ def main() -> None:
     sizes = [1000, 2000]  # keep fairly small; selection sort is O(n^2)
     for n in sizes:
         data = list(range(n, 0, -1))  # worst-case: reverse-sorted
-        exec_time = timeit.timeit(lambda: selection_sort(data), number=1)
+        exec_time = timeit.timeit(lambda d=data: selection_sort(d), number=1)
         print(f"Selection sort on {n} elements took: {exec_time:.5f}s.")
 
 

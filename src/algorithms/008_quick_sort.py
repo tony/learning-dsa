@@ -104,7 +104,7 @@ def main() -> None:
     sizes = [10_000, 20_000]
     for n in sizes:
         data = list(range(n, 0, -1))  # worst-case with naive pivot
-        exec_time = timeit.timeit(lambda: quick_sort(data), number=1)
+        exec_time = timeit.timeit(lambda d=data: quick_sort(d), number=1)
         print(
             f"Quick sort on {n} elements took: {exec_time:.5f}s. (Pivot=last element)",
         )
