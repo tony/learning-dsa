@@ -9,7 +9,7 @@ Concepts:
 - Best case: O(1) if the target is at the beginning.
 - Average case: O(n) where n is the list size (target near middle or random).
 - Worst case: O(n) if the target is at the end or not present.
-- Space complexity: O(1), as we don’t need extra storage apart from variables.
+- Space complexity: O(1), as we don't need extra storage apart from variables.
 
 Narrative:
 When the dataset is small or we have no knowledge of its order, we might do a linear scan.

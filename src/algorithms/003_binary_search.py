@@ -9,11 +9,12 @@ Binary search operates on a sorted list by repeatedly dividing the search interv
 - Best case: O(1) if the target is the very middle element initially checked.
 - Average case: O(log n)
 - Worst case: O(log n) (we keep halving until we find or exhaust the search space)
-- Space complexity: O(1), as we do it in-place (unless using recursive variant which adds O(log n) stack space).
+- Space complexity: O(1), as we do it in-place (unless using recursive variant which
+adds O(log n) stack space).
 
 Narrative:
 If we sort product IDs or any sorted collection, we can confirm existence of a particular ID
-in O(log n) rather than O(n). For SRAS (Smart Routing and Analytics System), that’s a huge improvement
+in O(log n) rather than O(n). For SRAS (Smart Routing and Analytics System), that's a huge improvement
 over linear scanning. This keeps the system responsive even if the list grows large.
 
 Doctests:
