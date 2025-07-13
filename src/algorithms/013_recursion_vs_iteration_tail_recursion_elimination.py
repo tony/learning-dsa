@@ -79,6 +79,7 @@ def iterative_sum(n: int) -> int:
 def main() -> None:
     """
     Main demonstration:
+
     We'll pick a moderately large n, time both the tail-recursive approach
     and the iterative approach to sum 1..n. We illustrate that Python’s tail recursion
     doesn't get optimized, so iteration may be faster and won't risk hitting recursion depth limits.

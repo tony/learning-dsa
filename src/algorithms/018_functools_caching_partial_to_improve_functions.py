@@ -38,6 +38,7 @@ def route_cost(
 ) -> float:
     """
     Simulate a CPU-bound or complex route cost computation.
+
     We'll sleep a short random time to emulate 'work', then
     return a distance measure (like Euclidean distance).
 
@@ -65,6 +66,7 @@ def route_cost(
 def main() -> None:
     """
     Main demonstration:
+
     We'll measure the time for repeated calls to route_cost with or without the cache.
 
     Narrative:

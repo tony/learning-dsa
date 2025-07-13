@@ -73,6 +73,7 @@ def merge_sort(data: list[int]) -> None:
 def main() -> None:
     """
     Main demonstration:
+
     We create three data patterns: random, nearly sorted, and reverse sorted,
     each of size n. We time insertion_sort, merge_sort, and Timsort (Python's sorted).
 

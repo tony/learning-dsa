@@ -43,6 +43,7 @@ from typing import Any
 def linear_search(data: list[Any], target: Any) -> bool:
     """
     A trivial linear search algorithm:
+
     Checks each element until it finds the target or reaches the end.
 
     Complexity:

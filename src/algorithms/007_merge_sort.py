@@ -33,6 +33,7 @@ import timeit
 def merge_sort(data: list[int]) -> None:
     """
     In-place merge sort (we'll implement a helper function that merges in a separate array,
+
     then copy back). Sorts 'data' in ascending order.
 
     Complexity: O(n log n) in best, average, and worst case.
@@ -93,6 +94,7 @@ def merge_sort(data: list[int]) -> None:
 def main() -> None:
     """
     Main demonstration:
+
     We'll run merge sort on moderately sized lists to illustrate O(n log n) scaling.
     Even in worst-case scenarios, merge sort remains O(n log n) compared to O(n²) methods.
 

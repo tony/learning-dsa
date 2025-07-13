@@ -37,6 +37,7 @@ import timeit
 def interval_scheduling(intervals: list[tuple[int, int]]) -> list[tuple[int, int]]:
     """
     Performs interval scheduling using the earliest finishing time greedy approach.
+
     Returns a maximal set of non-overlapping intervals.
 
     intervals: list of (start, finish) times
@@ -81,6 +82,7 @@ def interval_scheduling(intervals: list[tuple[int, int]]) -> list[tuple[int, int
 def main() -> None:
     """
     Main demonstration:
+
     Creates random intervals, applies interval_scheduling, and measures O(n log n) sorting time.
 
     Narrative:

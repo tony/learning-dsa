@@ -54,6 +54,7 @@ def closest_pair(points: list[tuple[float, float]]) -> float:
     >>> # Explanation: points (1,1) and (2,2) are sqrt(2)=1.4142... apart, which is the minimal distance.
     """
     # Sort points by x-coordinate initially
+
     pts_sorted_x = sorted(points, key=operator.itemgetter(0))
     # A helper array sorted by y will be used in recursion or we can do it on the fly
     return _closest_pair_rec(pts_sorted_x)
@@ -102,6 +103,7 @@ def _closest_strip_pair(strip: list[tuple[float, float]], d: float) -> float:
     check each point against up to next 6 points in the strip to find a smaller distance.
     """
     min_d = d
+
     n = len(strip)
     for i in range(n):
         j = i + 1
@@ -122,6 +124,7 @@ def main() -> None:
     in O(n log n) instead of O(n^2), saving significant computation time for large data sets.
     """
     n = 5000
+
     points = [(random.uniform(0, 10000), random.uniform(0, 10000)) for _ in range(n)]
 
     exec_time = timeit.timeit(lambda: closest_pair(points), number=1)

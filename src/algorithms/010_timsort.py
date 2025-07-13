@@ -58,6 +58,7 @@ def demonstrate_timsort() -> None:
 def main() -> None:
     """
     Main demonstration:
+
     We'll compare the sorting times for partially sorted data vs random data
     to showcase Timsort's advantage on already sorted or partially ordered segments.
 

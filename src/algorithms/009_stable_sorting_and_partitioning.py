@@ -40,6 +40,7 @@ from collections.abc import Callable
 def stable_partition(data: list[int], predicate: Callable[[int], bool]) -> None:
     """
     Reorders 'data' so that all elements for which predicate(x) is True come first,
+
     but the relative ordering among True-Group and False-Group elements remains the same.
     This is done in O(n) time with O(n) extra space, preserving stability.
 
@@ -79,6 +80,7 @@ def stable_partition(data: list[int], predicate: Callable[[int], bool]) -> None:
 def main() -> None:
     """
     Main demonstration:
+
     We'll show stable_partition dividing a list into two groups
     (for example, region A vs. region B in SRAS scenario),
     ensuring each group retains the original relative order of its elements.

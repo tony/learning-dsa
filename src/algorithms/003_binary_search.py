@@ -29,6 +29,7 @@ from typing import Any
 def binary_search(sorted_data: list[Any], target: Any) -> bool:
     """
     Perform a binary search on a sorted list for the target element.
+
     Returns True if found, False otherwise.
 
     Complexity:
@@ -65,6 +66,7 @@ def binary_search(sorted_data: list[Any], target: Any) -> bool:
 def main() -> None:
     """
     Main demonstration:
+
     We'll time the binary_search on large sorted lists to show O(log n) performance.
     For bigger n, time growth is logarithmic rather than linear.
 

@@ -27,6 +27,7 @@ from functools import lru_cache
 def naive_fib(n: int) -> int:
     """
     Naive recursive Fibonacci: fib(0)=0, fib(1)=1.
+
     This is O(2^n) time due to repeated subproblem calculations.
 
     Examples
@@ -87,6 +88,7 @@ def fib_lru(n: int) -> int:
 def main() -> None:
     """
     Main demonstration:
+
     We'll compare times for naive_fib (exponential) vs. memo_fib (linear) on moderately large n.
 
     Narrative:
