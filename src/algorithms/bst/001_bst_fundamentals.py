@@ -42,30 +42,35 @@ inserts degrade performance to O(n), motivating self-balancing strategies later.
 """
 
 import timeit
-from typing import Any
+from typing import Generic, TypeVar
+
+# For BST to work, T must support comparison operators (<, >, ==)
+# We use TypeVar without bounds for simplicity, relying on duck typing
+# In production code, you might use Protocol or ABC for stricter typing
+T = TypeVar("T")
 
 
-class BSTNode:
+class BSTNode(Generic[T]):  # noqa: UP046
     """
     A node in the binary search tree.
 
     Attributes
     ----------
-    key : Any
+    key : T
         The key used to order nodes in the BST (left < root < right).
-    left : Optional[BSTNode]
+    left : Optional[BSTNode[T]]
         Left subtree pointer.
-    right : Optional[BSTNode]
+    right : Optional[BSTNode[T]]
         Right subtree pointer.
     """
 
-    def __init__(self, key: Any) -> None:
+    def __init__(self, key: T) -> None:
         self.key = key
-        self.left: BSTNode | None = None
-        self.right: BSTNode | None = None
+        self.left: BSTNode[T] | None = None
+        self.right: BSTNode[T] | None = None
 
 
-class BST:
+class BST(Generic[T]):  # noqa: UP046
     """
     A simple Binary Search Tree implementation with insert, search, and delete operations,.
 
@@ -73,7 +78,7 @@ class BST:
 
     Examples
     --------
-    >>> bst = BST()
+    >>> bst: BST[int] = BST()
     >>> bst.insert(5)
     >>> bst.insert(2)
     >>> bst.insert(8)
@@ -94,9 +99,9 @@ class BST:
     """
 
     def __init__(self) -> None:
-        self.root: BSTNode | None = None
+        self.root: BSTNode[T] | None = None
 
-    def insert(self, key: Any) -> None:
+    def insert(self, key: T) -> None:
         """
         Insert a new key into the BST.
 
@@ -105,17 +110,17 @@ class BST:
         """
         self.root = self._insert_recursive(self.root, key)
 
-    def _insert_recursive(self, node: BSTNode | None, key: Any) -> BSTNode:
+    def _insert_recursive(self, node: BSTNode[T] | None, key: T) -> BSTNode[T]:
         if node is None:
-            return BSTNode(key)
-        if key < node.key:
+            return BSTNode[T](key)
+        if key < node.key:  # type: ignore[operator]
             node.left = self._insert_recursive(node.left, key)
-        elif key > node.key:
+        elif key > node.key:  # type: ignore[operator]
             node.right = self._insert_recursive(node.right, key)
         # if key == node.key: skip duplicates (current behavior)
         return node
 
-    def search(self, key: Any) -> bool:
+    def search(self, key: T) -> bool:
         """
         Search for a key in the BST.
 
@@ -129,19 +134,19 @@ class BST:
         while current is not None:
             if key == current.key:
                 return True
-            current = current.left if key < current.key else current.right
+            current = current.left if key < current.key else current.right  # type: ignore[operator]
         return False
 
-    def delete(self, key: Any) -> None:
+    def delete(self, key: T) -> None:
         """Delete a key from the BST if it exists."""
         self.root = self._delete_recursive(self.root, key)
 
-    def _delete_recursive(self, node: BSTNode | None, key: Any) -> BSTNode | None:
+    def _delete_recursive(self, node: BSTNode[T] | None, key: T) -> BSTNode[T] | None:
         if node is None:
             return None  # key not found
-        if key < node.key:
+        if key < node.key:  # type: ignore[operator]
             node.left = self._delete_recursive(node.left, key)
-        elif key > node.key:
+        elif key > node.key:  # type: ignore[operator]
             node.right = self._delete_recursive(node.right, key)
         # key == node.key: remove this node
         elif node.left is None and node.right is None:
@@ -157,44 +162,44 @@ class BST:
             node.right = self._delete_recursive(node.right, successor.key)
         return node
 
-    def _find_min(self, node: BSTNode) -> BSTNode:
+    def _find_min(self, node: BSTNode[T]) -> BSTNode[T]:
         current = node
         while current.left is not None:
             current = current.left
         return current
 
-    def in_order(self) -> list[Any]:
+    def in_order(self) -> list[T]:
         """Return a list of keys from an in-order traversal (left, root, right)."""
-        result: list[Any] = []
+        result: list[T] = []
         self._in_order_recursive(self.root, result)
         return result
 
-    def _in_order_recursive(self, node: BSTNode | None, result: list[Any]) -> None:
+    def _in_order_recursive(self, node: BSTNode[T] | None, result: list[T]) -> None:
         if node is not None:
             self._in_order_recursive(node.left, result)
             result.append(node.key)
             self._in_order_recursive(node.right, result)
 
-    def pre_order(self) -> list[Any]:
+    def pre_order(self) -> list[T]:
         """Return a list of keys from a pre-order traversal (root, left, right)."""
-        result: list[Any] = []
+        result: list[T] = []
 
         self._pre_order_recursive(self.root, result)
         return result
 
-    def _pre_order_recursive(self, node: BSTNode | None, result: list[Any]) -> None:
+    def _pre_order_recursive(self, node: BSTNode[T] | None, result: list[T]) -> None:
         if node is not None:
             result.append(node.key)
             self._pre_order_recursive(node.left, result)
             self._pre_order_recursive(node.right, result)
 
-    def post_order(self) -> list[Any]:
+    def post_order(self) -> list[T]:
         """Return a list of keys from a post-order traversal (left, right, root)."""
-        result: list[Any] = []
+        result: list[T] = []
         self._post_order_recursive(self.root, result)
         return result
 
-    def _post_order_recursive(self, node: BSTNode | None, result: list[Any]) -> None:
+    def _post_order_recursive(self, node: BSTNode[T] | None, result: list[T]) -> None:
         if node is not None:
             self._post_order_recursive(node.left, result)
             self._post_order_recursive(node.right, result)
@@ -222,7 +227,7 @@ def main() -> None:
     print(" - Average: O(log n) for random or near-balanced data.\n")
 
     # Create a BST and insert random data
-    bst = BST()
+    bst = BST[int]()
     data = [random.randint(0, 9999) for _ in range(50)]
     for val in data:
         bst.insert(val)
