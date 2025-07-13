@@ -59,6 +59,7 @@ from typing import Any, Optional
 class BSTNode:
     """
     A node in the binary search tree, storing:
+
     - key
     - pointers: left, right
     - optional pointer to parent (for easy successor/predecessor).
@@ -74,6 +75,7 @@ class BSTNode:
 class BST:
     """
     A BST with both recursive and iterative search, plus methods to find
+
     minimum, maximum, successor, and predecessor.
 
     We'll reuse an insert method (like in Chapter 1) but add a 'parent' pointer
@@ -190,6 +192,7 @@ class BST:
     def max_node(self) -> BSTNode | None:
         """Return the node with maximum key (rightmost). None if tree empty."""
         current = self.root
+
         if current is None:
             return None
         while current.right:
@@ -211,6 +214,7 @@ class BST:
     def successor(self, node: BSTNode) -> BSTNode | None:
         """
         Return the node’s in-order successor (next-larger).
+
         If node has a right subtree, it's the min of that subtree.
         Otherwise, move up parents until we come from the left side.
         """
@@ -225,6 +229,7 @@ class BST:
     def predecessor(self, node: BSTNode) -> BSTNode | None:
         """
         Return the node’s in-order predecessor (next-smaller).
+
         If node has a left subtree, it's the max of that subtree.
         Otherwise, move up parents until we come from the right side.
         """
@@ -252,6 +257,7 @@ class BST:
 def main() -> None:
     """
     Main demonstration:
+
     We'll insert some data, compare recursive vs iterative search times,
     show min/max, and check successor/predecessor.
 

@@ -6,7 +6,7 @@ Concepts:
 - Instead of the full O(n^3) DP, we can use heuristics to build a near-optimal BST.
 - Example heuristics:
   1) Mehlhorn’s approximation (not fully shown here),
-  2) Garsia–Wachs for "alphabetic trees",
+  2) Garsia-Wachs for "alphabetic trees",
   3) A naive approach: always pick the key with the largest frequency as root,
      then recursively build left and right subtrees.
 
@@ -27,6 +27,7 @@ from __future__ import annotations
 class Node:
     """
     A simple BST node storing:
+
     - key
     - freq: frequency for heuristic building (as a float)
     - left, right children.
@@ -42,6 +43,7 @@ class Node:
 def build_heuristic_bst(keys: list[int], freqs: list[float]) -> Node | None:
     """
     A naive heuristic building a BST:
+
      1) Find the key with largest freq in [keys], make it root
      2) Recursively build left subtree from keys < root
         and right subtree from keys > root
@@ -106,6 +108,7 @@ def inorder(n: Node | None, out: list[int]) -> None:
 def main() -> None:
     """
     Main demonstration:
+
     We'll build a naive "largest freq as root" BST for demonstration,
     show that it forms a valid BST, though not truly optimal except
     in the trivial case where one freq is dominant.

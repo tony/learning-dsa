@@ -32,6 +32,7 @@ import random
 class TreapNode:
     """
     Node in a Treap:
+
     - key: BST key
     - priority: random priority, ensures heap property
     - left, right: child pointers.
@@ -47,6 +48,7 @@ class TreapNode:
 def rotate_left(root: TreapNode) -> TreapNode:
     """
     Perform a left rotation on 'root'. Return the new subtree root (y).
+
     We assume root.right is not None; caller checks if needed.
     """
     y = root.right
@@ -60,6 +62,7 @@ def rotate_left(root: TreapNode) -> TreapNode:
 def rotate_right(root: TreapNode) -> TreapNode:
     """
     Perform a right rotation on 'root'. Return the new subtree root (y).
+
     We assume root.left is not None; caller checks if needed.
     """
     y = root.left
@@ -124,6 +127,7 @@ def main() -> None:
     Observe random priority yields an unpredictable shape, but expected O(log n) height.
     """
     items = [10, 5, 15, 2, 7, 13, 20]
+
     root = None
     for x in items:
         root = insert_treap(root, x)

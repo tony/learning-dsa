@@ -34,6 +34,7 @@ import random
 class TreapNode:
     """
     A node in the Treap:
+
     - key: BST key
     - priority: random float (for min-heap or max-heap logic)
     - left, right: child pointers.
@@ -49,6 +50,7 @@ class TreapNode:
 def rotate_right(root: TreapNode) -> TreapNode:
     """
     Right-rotate at 'root' (which must have root.left != None).
+
     Return the new root of this subtree.
     """
     y = root.left
@@ -62,6 +64,7 @@ def rotate_right(root: TreapNode) -> TreapNode:
 def rotate_left(root: TreapNode) -> TreapNode:
     """
     Left-rotate at 'root' (which must have root.right != None).
+
     Return the new root of this subtree.
     """
     y = root.right
@@ -75,6 +78,7 @@ def rotate_left(root: TreapNode) -> TreapNode:
 def treap_insert(root: TreapNode | None, key: int) -> TreapNode:
     """
     Insert 'key' into the treap. We do a BST insert by 'key',
+
     then we rotate if needed to maintain min-heap property on 'priority'.
     """
     if root is None:
@@ -95,6 +99,7 @@ def treap_insert(root: TreapNode | None, key: int) -> TreapNode:
 def find_min(root: TreapNode | None) -> TreapNode | None:
     """Return the node with the minimum key (leftmost)."""
     cur = root
+
     while cur and cur.left:
         cur = cur.left
     return cur
@@ -190,6 +195,7 @@ def treap_inorder(root: TreapNode | None, out: list[int]) -> None:
 def main() -> None:
     """
     Demonstration: We create a treap, then do some insertions,
+
     extract-min a couple times, and confirm the BST property.
     """
     data = [20, 5, 15, 2, 7, 25, 1, 3]

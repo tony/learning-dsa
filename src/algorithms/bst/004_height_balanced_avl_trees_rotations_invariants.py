@@ -28,6 +28,7 @@ from __future__ import annotations
 class AVLNode:
     """
     A Node in an AVL Tree, storing:
+
     - key: the value
     - left, right: child pointers
     - height: cached height of this node for balancing.
@@ -47,6 +48,7 @@ def get_height(node: AVLNode | None) -> int:
 def get_balance(node: AVLNode | None) -> int:
     """
     Balance factor = height(left subtree) - height(right subtree).
+
     If > 1 or < -1 => unbalanced => rotation needed.
     """
     if not node:
@@ -65,6 +67,7 @@ def rotate_left(z: AVLNode) -> AVLNode:
     Usually done when z is "heavier" on the right side.
     """
     y = z.right
+
     if y is None:
         return z  # shouldn't happen if we call rotate_left properly
     # Perform rotation
@@ -82,6 +85,7 @@ def rotate_right(z: AVLNode) -> AVLNode:
     Usually done when z is "heavier" on the left side.
     """
     y = z.left
+
     if y is None:
         return z  # shouldn't happen if we call rotate_right properly
     # Perform rotation
@@ -170,6 +174,7 @@ def inorder(root: AVLNode | None, result: list[int]) -> None:
 def main() -> None:
     """
     Main demonstration:
+
     We'll insert ascending data (1..20), also random data,
     and confirm we get a balanced tree of height ~ log(n).
 

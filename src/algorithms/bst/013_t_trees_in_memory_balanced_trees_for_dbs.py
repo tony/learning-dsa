@@ -30,6 +30,7 @@ from __future__ import annotations
 class TTreeNode:
     """
     A node in a toy T-Tree:
+
     - keys: a sorted list of keys (up to capacity)
     - left, right: child pointers
     - height: for AVL-like balancing
@@ -61,6 +62,7 @@ def get_balance(node: TTreeNode | None) -> int:
 def rotate_left(root: TTreeNode) -> TTreeNode:
     """
     Standard AVL-like left rotation around 'root'.
+
     We'll assume root.right is not None in normal usage.
     """
     y = root.right
@@ -76,6 +78,7 @@ def rotate_left(root: TTreeNode) -> TTreeNode:
 def rotate_right(root: TTreeNode) -> TTreeNode:
     """
     Standard AVL-like right rotation around 'root'.
+
     We'll assume root.left is not None in normal usage.
     """
     x = root.left
@@ -91,6 +94,7 @@ def rotate_right(root: TTreeNode) -> TTreeNode:
 def rebalance(node: TTreeNode) -> TTreeNode:
     """Check balance factor, do single or double rotations if needed."""
     update_height(node)
+
     balance = get_balance(node)
     # left heavy
     if balance > 1:
@@ -136,6 +140,7 @@ def split_node(node: TTreeNode) -> tuple[int, TTreeNode]:
     For simplicity, we do a half-split.
     """
     mid_idx = len(node.keys) // 2
+
     mid_key = node.keys[mid_idx]
     # new node with same capacity
     new_node = TTreeNode(node.capacity)
@@ -208,6 +213,7 @@ def inorder_traverse(node: TTreeNode | None, arr: list[int]) -> None:
 def main() -> None:
     """
     Minimal T-tree demonstration:
+
     We'll insert some keys. Each node can hold up to 4 keys before splitting.
     Then we do an in-order listing, verifying BST ordering across node.keys.
     This toy approach omits advanced merges or full concurrency logic.

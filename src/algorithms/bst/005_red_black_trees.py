@@ -28,6 +28,7 @@ BLACK = False
 class RBNode:
     """
     A Node in a Red-Black Tree, storing:
+
     - key: integer value
     - color: RED (True) or BLACK (False)
     - left, right, parent: pointers to children/parent, or None if absent.
@@ -55,6 +56,7 @@ def safe_rotate_left(root: RBNode, x: RBNode) -> RBNode:
     We only rotate if x.right is not None. If x.right is None, do nothing.
     """
     y = x.right
+
     if y is None:
         return root  # no rotation possible
     # y.left becomes x.right
@@ -81,6 +83,7 @@ def safe_rotate_right(root: RBNode, x: RBNode) -> RBNode:
     Only rotate if x.left is not None.
     """
     y = x.left
+
     if y is None:
         return root
     # y.right becomes x.left
@@ -220,6 +223,7 @@ def main() -> None:
     Insert a few items, show in-order. The final tree remains balanced O(log n).
     """
     root = None
+
     for x in [10, 20, 30, 15]:
         root = insert_rb(root, x)
 

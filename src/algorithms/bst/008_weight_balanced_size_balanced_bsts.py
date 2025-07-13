@@ -29,6 +29,7 @@ from __future__ import annotations
 class SizeBSTNode:
     """
     Node for a Size-Balanced BST:
+
     - key: BST key
     - size: number of nodes in this subtree (including self)
     - left, right: child pointers.
@@ -54,6 +55,7 @@ def update_size(node: SizeBSTNode) -> None:
 def rotate_left(root: SizeBSTNode) -> SizeBSTNode:
     """
     Rotate left around 'root'. Return the new subtree root (y).
+
     We'll assume root.right is not None in typical usage.
     """
     y = root.right
@@ -70,6 +72,7 @@ def rotate_left(root: SizeBSTNode) -> SizeBSTNode:
 def rotate_right(root: SizeBSTNode) -> SizeBSTNode:
     """
     Rotate right around 'root'. Return the new subtree root (y).
+
     We'll assume root.left is not None in typical usage.
     """
     y = root.left
@@ -86,6 +89,7 @@ def rotate_right(root: SizeBSTNode) -> SizeBSTNode:
 def fix_sizebalance(node: SizeBSTNode, ratio: float = 2.0) -> SizeBSTNode:
     """
     Check the size ratio of the left and right children.
+
     If one side is too big, rotate to restore balance. Re-check after rotation.
 
     ratio=2 means no subtree can exceed double the size of its sibling.
@@ -173,6 +177,7 @@ def main() -> None:
     keeps subtrees from getting too large, preserving O(log n) height in practice.
     """
     items = [10, 5, 15, 3, 7, 20, 6]
+
     root = None
     for x in items:
         root = insert_sizebst(root, x, ratio=2.0)

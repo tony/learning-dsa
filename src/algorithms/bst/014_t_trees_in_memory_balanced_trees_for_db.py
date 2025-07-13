@@ -22,6 +22,7 @@ from __future__ import annotations
 class BSTNode:
     """
     A simple BST node for demonstration:
+
     - key: the value
     - left, right: child pointers.
     """
@@ -35,6 +36,7 @@ class BSTNode:
 def bst_insert(root: BSTNode | None, key: int) -> BSTNode:
     """
     Insert 'key' into a naive BST. Returns the new root.
+
     (Not self-balancing, can degrade to O(n^2) in worst case.).
     """
     if root is None:
@@ -63,6 +65,7 @@ def tree_sort(arr: list[int]) -> list[int]:
     to maintain O(n log n) performance. This naive approach can degrade to O(n^2).
     """
     # 1) Insert all elements into BST
+
     root: BSTNode | None = None
     for x in arr:
         root = bst_insert(root, x)

@@ -29,6 +29,7 @@ from __future__ import annotations
 class OBSTNode:
     """
     A node in the Optimal BST:
+
     - key: the actual key
     - left, right: children.
     """
@@ -123,6 +124,7 @@ def main() -> None:
     Typically, the key with highest freq (30) ends near root to minimize cost.
     """
     keys = [10, 20, 30, 40]
+
     freq = [3.0, 2.0, 6.0, 1.0]  # e.g. 30 is highest freq => likely root
     root = build_optimal_bst(keys, freq)
 

@@ -27,6 +27,7 @@ from __future__ import annotations
 class SplayNode:
     """
     A node in the Splay Tree, storing:
+
     - key: BST key
     - left, right, parent: pointers to children and parent.
     """
@@ -41,6 +42,7 @@ class SplayNode:
 def rotate_left(x: SplayNode) -> None:
     """
     Rotate left at node x. x.right must be non-None.
+
     The parent's child pointer to x is updated to x.right.
     x.right's left becomes x's right. Then x becomes left child of x.right.
     """
@@ -65,6 +67,7 @@ def rotate_left(x: SplayNode) -> None:
 def rotate_right(x: SplayNode) -> None:
     """Rotate right at node x. x.left must be non-None."""
     y = x.left
+
     if y is None:
         return
     x.left = y.right
@@ -164,6 +167,7 @@ def search_splay(root: SplayNode | None, key: int) -> SplayNode | None:
     Returns the new root after splay, which might be the found node or the last accessed.
     """
     cur = root
+
     last = None
     while cur is not None:
         last = cur
@@ -196,6 +200,7 @@ def inorder(root: SplayNode | None, out: list[int]) -> None:
 def main() -> None:
     """
     Main demonstration:
+
     Insert a few items, do an in-order print.
     Then search for one of them to show it splayed to root.
     """

@@ -68,6 +68,7 @@ class BSTNode:
 class BST:
     """
     A simple Binary Search Tree implementation with insert, search, and delete operations,
+
     plus in-order, pre-order, and post-order traversals.
 
     Examples
@@ -98,6 +99,7 @@ class BST:
     def insert(self, key: Any) -> None:
         """
         Insert a new key into the BST. If key already exists, this example does not handle duplicates
+
         (either skip or define your own policy).
         """
         self.root = self._insert_recursive(self.root, key)
@@ -175,6 +177,7 @@ class BST:
     def pre_order(self) -> list[int]:
         """Return a list of keys from a pre-order traversal (root, left, right)."""
         result: list[int] = []
+
         self._pre_order_recursive(self.root, result)
         return result
 
@@ -200,6 +203,7 @@ class BST:
 def main() -> None:
     """
     Main demonstration:
+
     We'll insert some data into the BST, then do a quick timing of search operations.
     Also prints out complexities and runs doctests.
 

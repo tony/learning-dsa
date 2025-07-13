@@ -28,6 +28,7 @@ from __future__ import annotations
 class Two3Node:
     """
     A node in a 2-3 tree:
+
     - keys: list of up to 2 sorted keys
     - children: up to 3 children (2 or 3 pointers), each child is a Two3Node
     - leaf: indicates whether this node has no children.
@@ -50,6 +51,7 @@ def split_2node(parent: Two3Node, index: int) -> None:
     We'll create a new sibling node and push the middle key up into parent.
     """
     child = parent.children[index]
+
     # child has 3 keys after insertion => pick middle key for parent
     mid_key = child.keys[1]
 
@@ -170,6 +172,7 @@ def inorder(node: Two3Node | None, arr: list[int]) -> None:
 def main() -> None:
     """
     Minimal demonstration of 2-3 tree insertion (no deletion).
+
     We'll insert keys => see an in-order output is sorted.
     The structure is simplistic, not all corner cases are handled, but
     it shows the idea of 2-3 tree: each node 1 or 2 keys, splitted if 3 keys appear.

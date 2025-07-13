@@ -27,6 +27,7 @@ from __future__ import annotations
 class BTreeNode:
     """
     A B-Tree node storing multiple keys and child pointers.
+
     - keys: sorted list of up to 2t-1 keys
     - children: array of child pointers of length up to 2t
     - leaf: whether this node is a leaf.
@@ -42,6 +43,7 @@ class BTreeNode:
 def btree_search(node: BTreeNode | None, key: int) -> bool:
     """
     Search key in the subtree rooted at 'node'.
+
     Return True if found, else False.
     """
     if node is None:
@@ -61,6 +63,7 @@ def btree_search(node: BTreeNode | None, key: int) -> bool:
 def split_child(parent: BTreeNode, i: int) -> None:
     """
     Split the full child parent.children[i] into two nodes, adjusting parent keys & children.
+
     parent.children[i] must have 2t-1 keys (full).
     We'll move the median key up to parent, and create a new sibling node for the second half of keys.
     """
@@ -86,6 +89,7 @@ def split_child(parent: BTreeNode, i: int) -> None:
 def btree_insert_nonfull(node: BTreeNode, key: int) -> None:
     """
     Insert 'key' into the node (which is assumed to be NOT full).
+
     If it's a leaf, just put the key in the correct position.
     If not leaf, descend to the correct child, splitting it first if it is full.
     """
@@ -114,6 +118,7 @@ def btree_insert_nonfull(node: BTreeNode, key: int) -> None:
 def btree_insert(root: BTreeNode | None, key: int, t: int) -> BTreeNode:
     """
     Insert 'key' into the B-Tree with root 'root', branching factor 't'.
+
     If root is full, we split it by creating a new root node.
     Returns the new root after insertion.
     """
@@ -141,6 +146,7 @@ def btree_insert(root: BTreeNode | None, key: int, t: int) -> BTreeNode:
 def inorder_traverse(node: BTreeNode | None, arr: list[int]) -> None:
     """
     In-order traversal for B-tree keys. We'll do a simple approach:
+
     for each key, traverse child i, then the key, then next child.
     """
     if node is None:
@@ -159,6 +165,7 @@ def inorder_traverse(node: BTreeNode | None, arr: list[int]) -> None:
 def main() -> None:
     """
     Main demonstration:
+
     We'll build a B-Tree with branching factor t=2. Insert a few items, do an inorder.
     B-Tree ensures O(log n) height by splitting nodes as soon as they fill up with 2t-1=3 keys.
     """

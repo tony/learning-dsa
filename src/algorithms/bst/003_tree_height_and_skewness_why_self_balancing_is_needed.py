@@ -26,6 +26,7 @@ from collections import deque
 class BSTNode:
     """
     A simple BST node for demonstration: each node has a value, a left child, and a right child.
+
     We'll keep this minimal for clarity. No balancing logic here.
     """
 
@@ -38,6 +39,7 @@ class BSTNode:
 def insert_iterative(root: BSTNode | None, val: int) -> BSTNode:
     """
     Iteratively insert 'val' into the BST, avoiding deep recursion.
+
     Returns the (possibly new) root.
 
     Examples
@@ -77,6 +79,7 @@ def insert_iterative(root: BSTNode | None, val: int) -> BSTNode:
 def height_iterative(root: BSTNode | None) -> int:
     """
     Iteratively compute the height of the BST using a BFS approach.
+
     An empty tree has height=0. A single node has height=1.
 
     Examples
@@ -110,6 +113,7 @@ def height_iterative(root: BSTNode | None) -> int:
 def main() -> None:
     """
     Main demonstration:
+
     We'll construct two BSTs of size n:
       1) Insert ascending values (0..n-1), measuring final height (worst-case ~n).
       2) Insert random values, measuring final height (typical average ~O(log n)) if distribution is balanced.
