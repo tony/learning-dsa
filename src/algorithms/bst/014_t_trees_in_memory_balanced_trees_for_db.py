@@ -21,8 +21,9 @@ from __future__ import annotations
 
 class BSTNode:
     """
-    A simple BST node for demonstration:
+    A simple BST node for demonstration.
 
+    Stores:
     - key: the value
     - left, right: child pointers.
     """

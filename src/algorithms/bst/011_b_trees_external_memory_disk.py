@@ -147,7 +147,7 @@ def btree_insert(root: BTreeNode | None, key: int, t: int) -> BTreeNode:
 
 def inorder_traverse(node: BTreeNode | None, arr: list[int]) -> None:
     """
-    In-order traversal for B-tree keys. We'll do a simple approach:
+    In-order traversal for B-tree keys.
 
     for each key, traverse child i, then the key, then next child.
     """

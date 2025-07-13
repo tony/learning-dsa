@@ -57,15 +57,19 @@ class Queue:
         self._data = deque()  # type: deque[Any]
 
     def enqueue(self, item: Any) -> None:
+        """Add an item to the rear of the queue."""
         self._data.append(item)
 
     def dequeue(self) -> Any:
+        """Remove and return the item at the front of the queue."""
         return self._data.popleft()
 
     def peek(self) -> Any:
+        """Return the front item without removing it."""
         return self._data[0]
 
     def is_empty(self) -> bool:
+        """Check if the queue is empty."""
         return len(self._data) == 0
 
     def __len__(self) -> int:

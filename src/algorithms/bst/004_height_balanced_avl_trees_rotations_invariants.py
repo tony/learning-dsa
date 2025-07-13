@@ -29,8 +29,9 @@ from __future__ import annotations
 
 class AVLNode:
     """
-    A Node in an AVL Tree, storing:
+    A Node in an AVL Tree.
 
+    Stores:
     - key: the value
     - left, right: child pointers
     - height: cached height of this node for balancing.
@@ -44,6 +45,7 @@ class AVLNode:
 
 
 def get_height(node: AVLNode | None) -> int:
+    """Get the height of a node (0 if None)."""
     return node.height if node else 0
 
 
@@ -143,16 +145,12 @@ def insert_avl(root: AVLNode | None, key: int) -> AVLNode:
     # If node unbalanced => 4 cases
 
     # Left Left Case
-    if balance > 1:
-        # We must ensure root.left is not None before comparing keys
-        if root.left and key < root.left.key:
-            return rotate_right(root)
+    if balance > 1 and root.left and key < root.left.key:
+        return rotate_right(root)
 
     # Right Right Case
-    if balance < -1:
-        # Ensure root.right is not None before comparing keys
-        if root.right and key > root.right.key:
-            return rotate_left(root)
+    if balance < -1 and root.right and key > root.right.key:
+        return rotate_left(root)
 
     # Left Right Case
     if balance > 1 and root.left and key > root.left.key:

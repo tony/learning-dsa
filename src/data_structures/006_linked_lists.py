@@ -74,6 +74,7 @@ class SinglyLinkedList:
         self._size = 0
 
     def insert_head(self, value: Any) -> None:
+        """Insert a new node at the head of the list."""
         new_node = Node(value)
         new_node.next = self.head
         self.head = new_node
@@ -82,6 +83,7 @@ class SinglyLinkedList:
         self._size += 1
 
     def insert_tail(self, value: Any) -> None:
+        """Insert a new node at the tail of the list."""
         new_node = Node(value)
         if self.tail is not None:
             self.tail.next = new_node
@@ -93,6 +95,7 @@ class SinglyLinkedList:
         self._size += 1
 
     def search(self, value: Any) -> bool:
+        """Search for a value in the list."""
         current = self.head
         while current is not None:
             if current.value == value:
@@ -101,6 +104,7 @@ class SinglyLinkedList:
         return False
 
     def is_empty(self) -> bool:
+        """Check if the list is empty."""
         return self._size == 0
 
     def __len__(self) -> int:

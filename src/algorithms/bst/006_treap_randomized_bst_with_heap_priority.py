@@ -33,8 +33,9 @@ import random
 
 class TreapNode:
     """
-    Node in a Treap:
+    Node in a Treap.
 
+    Stores:
     - key: BST key
     - priority: random priority, ensures heap property
     - left, right: child pointers.

@@ -29,8 +29,9 @@ from __future__ import annotations
 
 class TTreeNode:
     """
-    A node in a toy T-Tree:
+    A node in a toy T-Tree.
 
+    Stores:
     - keys: a sorted list of keys (up to capacity)
     - left, right: child pointers
     - height: for AVL-like balancing
@@ -46,14 +47,17 @@ class TTreeNode:
 
 
 def get_height(node: TTreeNode | None) -> int:
+    """Get the height of a node (0 if None)."""
     return node.height if node else 0
 
 
 def update_height(node: TTreeNode) -> None:
+    """Update the height of a node based on its children."""
     node.height = 1 + max(get_height(node.left), get_height(node.right))
 
 
 def get_balance(node: TTreeNode | None) -> int:
+    """Get the balance factor of a node."""
     if not node:
         return 0
     return get_height(node.left) - get_height(node.right)
@@ -212,7 +216,7 @@ def inorder_traverse(node: TTreeNode | None, arr: list[int]) -> None:
 
 def main() -> None:
     """
-    Minimal T-tree demonstration:
+    Minimal T-tree demonstration.
 
     We'll insert some keys. Each node can hold up to 4 keys before splitting.
     Then we do an in-order listing, verifying BST ordering across node.keys.

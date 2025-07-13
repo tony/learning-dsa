@@ -30,8 +30,9 @@ from __future__ import annotations
 
 class OBSTNode:
     """
-    A node in the Optimal BST:
+    A node in the Optimal BST.
 
+    Stores:
     - key: the actual key
     - left, right: children.
     """
@@ -110,6 +111,7 @@ def build_obst_tree(
 
 
 def inorder_traverse(root: OBSTNode | None, arr: list[int]) -> None:
+    """Perform in-order traversal and collect keys in arr."""
     if root:
         inorder_traverse(root.left, arr)
         arr.append(root.key)

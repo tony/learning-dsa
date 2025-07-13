@@ -61,15 +61,19 @@ class Stack:
         self._data = deque()  # type: deque[Any]
 
     def push(self, item: Any) -> None:
+        """Push an item onto the stack."""
         self._data.append(item)
 
     def pop(self) -> Any:
+        """Pop and return the top item from the stack."""
         return self._data.pop()
 
     def peek(self) -> Any:
+        """Return the top item without removing it."""
         return self._data[-1]
 
     def is_empty(self) -> bool:
+        """Check if the stack is empty."""
         return len(self._data) == 0
 
     def __len__(self) -> int:

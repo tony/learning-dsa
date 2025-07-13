@@ -34,6 +34,7 @@ import typing
 
 # We assume the following sorts are from previous chapters:
 def insertion_sort(data: list[int]) -> None:
+    """Sort data in-place using insertion sort algorithm."""
     for i in range(1, len(data)):
         key = data[i]
         j = i - 1
@@ -44,6 +45,7 @@ def insertion_sort(data: list[int]) -> None:
 
 
 def merge_sort(data: list[int]) -> None:
+    """Sort data in-place using merge sort algorithm."""
     if len(data) > 1:
         mid = len(data) // 2
         left_half = data[:mid]

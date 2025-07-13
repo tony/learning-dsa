@@ -33,8 +33,9 @@ import random
 
 class TreapNode:
     """
-    A node in the Treap:
+    A node in the Treap.
 
+    Stores:
     - key: BST key
     - priority: random float (for min-heap or max-heap logic)
     - left, right: child pointers.
@@ -134,7 +135,7 @@ def treap_splay_to_root(root: TreapNode | None, key: int) -> TreapNode | None:
 
 def extract_min(root: TreapNode | None) -> tuple[TreapNode | None, int | None]:
     """
-    Extract the minimum key from the treap:
+    Extract the minimum key from the treap.
 
     1) Find min key, rotate it up to the root (treap_splay_to_root),
     2) Then remove the root and merge left/right subtrees if needed.

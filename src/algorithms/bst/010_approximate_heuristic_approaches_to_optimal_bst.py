@@ -26,8 +26,9 @@ from __future__ import annotations
 
 class Node:
     """
-    A simple BST node storing:
+    A simple BST node.
 
+    Stores:
     - key
     - freq: frequency for heuristic building (as a float)
     - left, right children.
@@ -42,7 +43,7 @@ class Node:
 
 def build_heuristic_bst(keys: list[int], freqs: list[float]) -> Node | None:
     """
-    Build a BST using a naive heuristic:
+    Build a BST using a naive heuristic.
 
      1) Find the key with largest freq in [keys], make it root
      2) Recursively build left subtree from keys < root
@@ -98,6 +99,7 @@ def build_heuristic_bst(keys: list[int], freqs: list[float]) -> Node | None:
 
 
 def inorder(n: Node | None, out: list[int]) -> None:
+    """Perform in-order traversal and collect keys in out."""
     if n is None:
         return
     inorder(n.left, out)

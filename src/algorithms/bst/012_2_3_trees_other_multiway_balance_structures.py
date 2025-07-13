@@ -27,8 +27,9 @@ from __future__ import annotations
 
 class Two3Node:
     """
-    A node in a 2-3 tree:
+    A node in a 2-3 tree.
 
+    Stores:
     - keys: list of up to 2 sorted keys
     - children: up to 3 children (2 or 3 pointers), each child is a Two3Node
     - leaf: indicates whether this node has no children.
@@ -48,6 +49,7 @@ def is_full_2keys(node: Two3Node) -> bool:
 def split_2node(parent: Two3Node, index: int) -> None:
     """
     Split the full child parent.children[index] (which must have 2 keys, then we add 1 => total 3 keys).
+
     We'll create a new sibling node and push the middle key up into parent.
     """
     child = parent.children[index]
@@ -81,6 +83,7 @@ def split_2node(parent: Two3Node, index: int) -> None:
 def insert_nonfull_2node(node: Two3Node, key: int) -> None:
     """
     Insert 'key' into a node that is not full (has <=1 or 2 keys).
+
     If leaf, just place the key in sorted order.
     Else find child to descend, split if child is full, then insert in child.
     """
@@ -119,7 +122,9 @@ def insert_nonfull_2node(node: Two3Node, key: int) -> None:
 
 def insert_23(root: Two3Node | None, key: int) -> Two3Node:
     """
-    Insert key into a 2-3 tree with root 'root'. If root is full, create new root node and split root.
+    Insert key into a 2-3 tree with root 'root'.
+
+    If root is full, create new root node and split root.
     Return new root after insertion.
     """
     if root is None:

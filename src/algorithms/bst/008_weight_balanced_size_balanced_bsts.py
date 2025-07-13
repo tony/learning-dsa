@@ -28,8 +28,9 @@ from __future__ import annotations
 
 class SizeBSTNode:
     """
-    Node for a Size-Balanced BST:
+    Node for a Size-Balanced BST.
 
+    Stores:
     - key: BST key
     - size: number of nodes in this subtree (including self)
     - left, right: child pointers.

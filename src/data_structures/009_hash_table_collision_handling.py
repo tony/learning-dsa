@@ -62,6 +62,7 @@ class ChainedHashTable:
         return hash(key) % self.size
 
     def insert(self, key: Any, value: Any) -> None:
+        """Insert a key-value pair into the hash table."""
         index = self._hash(key)
         chain = self.table[index]
         for i, (k, _v) in enumerate(chain):
@@ -71,6 +72,7 @@ class ChainedHashTable:
         chain.append((key, value))
 
     def search(self, key: Any) -> Any | None:
+        """Search for a key and return its value if found."""
         index = self._hash(key)
         chain = self.table[index]
         for k, v in chain:
@@ -79,6 +81,7 @@ class ChainedHashTable:
         return None
 
     def delete(self, key: Any) -> bool:
+        """Delete a key-value pair and return True if successful."""
         index = self._hash(key)
         chain = self.table[index]
         for i, (k, _v) in enumerate(chain):

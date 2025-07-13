@@ -60,8 +60,9 @@ from typing import Any, Optional
 
 class BSTNode:
     """
-    A node in the binary search tree, storing:
+    A node in the binary search tree.
 
+    Stores:
     - key
     - pointers: left, right
     - optional pointer to parent (for easy successor/predecessor).
@@ -157,6 +158,7 @@ class BST:
     # Recursive search
     # -----------------------------
     def search_recursive(self, key: Any) -> bool:
+        """Search for key using recursive approach."""
         return self._search_recursive(self.root, key)
 
     def _search_recursive(self, node: BSTNode | None, key: Any) -> bool:
@@ -172,6 +174,7 @@ class BST:
     # Iterative search
     # -----------------------------
     def search_iterative(self, key: Any) -> bool:
+        """Search for key using iterative approach."""
         current = self.root
         while current:
             if current.key == key:

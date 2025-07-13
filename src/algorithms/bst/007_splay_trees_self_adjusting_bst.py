@@ -26,8 +26,9 @@ from __future__ import annotations
 
 class SplayNode:
     """
-    A node in the Splay Tree, storing:
+    A node in the Splay Tree.
 
+    Stores:
     - key: BST key
     - left, right, parent: pointers to children and parent.
     """

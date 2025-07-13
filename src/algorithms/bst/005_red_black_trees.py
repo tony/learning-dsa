@@ -29,8 +29,9 @@ BLACK = False
 
 class RBNode:
     """
-    A Node in a Red-Black Tree, storing:
+    A Node in a Red-Black Tree.
 
+    Stores:
     - key: integer value
     - color: RED (True) or BLACK (False)
     - left, right, parent: pointers to children/parent, or None if absent.
