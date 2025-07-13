@@ -3,8 +3,10 @@
 [Lesson Title].
 
 [Context]
-- State the concept: e.g., "This lesson shows how to use asyncio.Lock to ensure safe concurrent access."
-- Prerequisites: e.g., familiarity with `asyncio.run()`, basic async/await syntax, event loop model.
+- State the concept: e.g., "This lesson shows how to use asyncio.Lock to ensure
+  safe concurrent access."
+- Prerequisites: e.g., familiarity with `asyncio.run()`, basic async/await syntax,
+  event loop model.
 - References:
   - Official docs: https://docs.python.org/3/library/asyncio.html
   - Possibly link to previous lessons or advanced usage docs.
@@ -17,13 +19,15 @@
 Doctests
 --------
 - Include doctests that demonstrate usage (like usage within a single-file example).
-- If concurrency or timing might reorder output, use ellipses (e.g., `# doctest: +ELLIPSIS`).
+- If concurrency or timing might reorder output, use ellipses
+  (e.g., `# doctest: +ELLIPSIS`).
 - Keep sleeps minimal and rely on ellipses for variable concurrency output.
 - Ensure `pytest --doctest-modules` or `python -m doctest -v thisfile.py` passes.
 
 Type Hints & Mypy
 ----------------
-- **All annotations** must be **mypy strict compliant** (e.g., `mypy --strict thisfile.py`)
+- **All annotations** must be **mypy strict compliant**
+  (e.g., `mypy --strict thisfile.py`)
 - Add type hints to core functions (e.g. `async def demonstrate_concept() -> str:`).
 - For tasks or advanced structures, use `Awaitable`, `Callable`, etc.
 - Optionally consider running `mypy --strict thisfile.py` if you want static analysis.
@@ -32,11 +36,13 @@ Execution
 ---------
 - Running `python thisfile.py` should execute `main()` and demonstrate the concept.
 - Keep the example minimal yet instructive.
-- If measuring performance or complexities, print relevant info in `main()` (like timeit).
+- If measuring performance or complexities, print relevant info in `main()`
+  (like timeit).
 
 Additional Notes
 ---------------
-- Comment on tricky parts. If multiple coroutines are used, clarify how concurrency or error handling is structured.
+- Comment on tricky parts. If multiple coroutines are used, clarify how
+  concurrency or error handling is structured.
 - If an exception is intentionally illustrated, show how to catch or handle it.
 """
 
@@ -46,8 +52,8 @@ import asyncio
 
 
 async def demonstrate_concept() -> str:
-    """
-    [Function Purpose]
+    """Simulate a short async operation.
+
     This function simulates a short async operation (like a small I/O wait),
     returning a predefined result. Demonstrates the fundamental async/await usage.
 
@@ -66,12 +72,11 @@ async def demonstrate_concept() -> str:
 
 
 async def main() -> None:
-    """
-    Main entrypoint for this lesson.
+    """Execute the main demonstration.
 
     In more complex lessons, `main()` may handle multiple tasks, concurrency,
-    error handling, or advanced synchronization. For now, it just calls the core function
-    and prints the result.
+    error handling, or advanced synchronization. For now, it just calls the core
+    function and prints the result.
 
     Examples
     --------
