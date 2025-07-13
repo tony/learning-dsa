@@ -18,7 +18,8 @@ In SRAS or any large data pipeline, data might be random, mostly sorted, or near
 demonstrate that the "best" choice can differ:
 - For large random sets, mergesort or Timsort is usually O(n log n).
 - For nearly sorted data, insertion sort might approach O(n).
-- Timsort can also exploit existing runs (partially sorted segments) to sort in O(n) best case.
+- Timsort can also exploit existing runs (partially sorted segments) to sort in O(n)
+best case.
 
 Doctests:
 We'll omit direct doctests here, focusing on timing demonstration across data patterns.

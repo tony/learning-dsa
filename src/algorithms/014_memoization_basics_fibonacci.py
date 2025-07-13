@@ -5,8 +5,10 @@
 Algorithm: Memoized Fibonacci
 
 Concepts:
-- A naive recursive Fibonacci implementation has O(2^n) time, as it recomputes many subproblems.
-- By storing previously computed results (memoization), each subproblem is solved once, reducing time to O(n).
+- A naive recursive Fibonacci implementation has O(2^n) time, as it recomputes many
+subproblems.
+- By storing previously computed results (memoization), each subproblem is solved once,
+reducing time to O(n).
 - Space: O(n) for the memo, storing fib(k) for k=0..n.
 
 Narrative:

@@ -5,14 +5,16 @@
 Algorithm: Generating permutations/combinations with itertools
 
 Concepts:
-- `itertools.permutations(iterable, r)` generates r-length permutations of the given iterable,
+- `itertools.permutations(iterable, r)` generates r-length permutations of the given
+iterable,
   in O(n!) time for the full length permutations.
 - `itertools.combinations(iterable, r)` generates r-length combinations in O(C(n, r)).
 - These methods are powerful for enumerating possibilities, but factorial growth means
   we must be careful when n is more than a small handful.
 
 Complexities:
-- Generating all permutations of length n: O(n!) time, each permutation is an O(n) tuple space.
+- Generating all permutations of length n: O(n!) time, each permutation is an O(n)
+tuple space.
 - Generating combinations of length r from n: O(C(n, r)) which can also be large.
 - Memory usage: For each yielded permutation/combination, we hold an O(r) tuple.
 

@@ -5,9 +5,11 @@
 Algorithm: Timsort
 
 Concepts:
-- Timsort is a hybrid of mergesort and insertion sort, designed to perform especially well on partially sorted data.
+- Timsort is a hybrid of mergesort and insertion sort, designed to perform especially
+well on partially sorted data.
 - Python’s built-in `sorted()` function and `list.sort()` implement Timsort.
-- If the data contains "runs" (already sorted segments), Timsort exploits them for near O(n) performance in the best case.
+- If the data contains "runs" (already sorted segments), Timsort exploits them for near
+O(n) performance in the best case.
 - Otherwise, it defaults to O(n log n) average and worst case.
 
 Complexities:
@@ -34,7 +36,8 @@ import timeit
 
 def demonstrate_timsort() -> None:
     """
-    Examples
+    Show examples.
+
     --------
     >>> data = [5, 2, 8, 1, 3]
     >>> sorted_data = sorted(data)  # Timsort behind the scenes

@@ -5,9 +5,11 @@
 Algorithm: Simple caching with `functools.lru_cache`
 
 Concepts:
-- We can decorate a function with `@lru_cache(None)` to cache its results. Repeated calls with
+- We can decorate a function with `@lru_cache(None)` to cache its results. Repeated
+calls with
   the same arguments return the cached value, avoiding recomputation.
-- Complexity depends on the underlying function. If it's expensive (e.g., CPU-bound or complex),
+- Complexity depends on the underlying function. If it's expensive (e.g., CPU-bound or
+complex),
   caching drastically reduces repeated-call overhead.
 - For memory usage, the cache grows up to its maxsize if set (None = unbounded).
 

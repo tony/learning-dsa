@@ -6,8 +6,10 @@ Algorithm: Bisect-based insertion (binary search for position)
 
 Concepts:
 - We maintain a sorted list.
-- `bisect_left` (or `bisect_right`) from the `bisect` module finds the position to insert a new element to keep the list sorted.
-- This is O(log n) for finding the position, but list insertion in Python is O(n) due to shifting elements.
+- `bisect_left` (or `bisect_right`) from the `bisect` module finds the position to
+insert a new element to keep the list sorted.
+- This is O(log n) for finding the position, but list insertion in Python is O(n) due
+to shifting elements.
 - Overall cost is O(n).
 
 Complexities:

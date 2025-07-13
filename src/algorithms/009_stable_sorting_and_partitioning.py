@@ -6,7 +6,8 @@ Concept: Stable sorting and its importance.
 Algorithm (Conceptual): Stable partitioning approach
 
 Concepts:
-- A stable sort (or stable partition) preserves the relative order of elements that compare
+- A stable sort (or stable partition) preserves the relative order of elements that
+compare
   equal or fall in the same logical group.
 - This is crucial if data has already been grouped or partially sorted by one criterion,
   and we apply a second criterion while wanting to keep ties in the original order.
@@ -17,7 +18,8 @@ while preserving the relative order of elements within each group.
 Complexities:
 - Time: O(n) for the partition itself if we do it in one pass with extra space.
 - Space: O(n) to store the partitioned data before copying back.
-- If we integrate stable partitioning within a stable sorting algorithm, the sorting complexity
+- If we integrate stable partitioning within a stable sorting algorithm, the sorting
+complexity
   might be O(n log n), e.g., for mergesort. But here, we only show the conceptual partition step.
 
 Narrative:
@@ -39,7 +41,7 @@ from collections.abc import Callable
 
 def stable_partition(data: list[int], predicate: Callable[[int], bool]) -> None:
     """
-    Reorders 'data' so that all elements for which predicate(x) is True come first,
+    Reorders 'data' so that all elements for which predicate(x) is True come first,.
 
     but the relative ordering among True-Group and False-Group elements remains the same.
     This is done in O(n) time with O(n) extra space, preserving stability.

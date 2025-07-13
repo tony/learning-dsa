@@ -5,13 +5,18 @@
 Algorithm: Tail Recursion conversion to Iteration
 
 Concepts:
-- A tail-recursive function is one where the final operation is the recursive call itself.
-- In many languages, tail calls can be optimized to reuse the same stack frame, but Python doesn't do this.
-- Converting tail recursion to iteration avoids deep recursion overhead and stack limits for large n.
+- A tail-recursive function is one where the final operation is the recursive call
+itself.
+- In many languages, tail calls can be optimized to reuse the same stack frame, but
+Python doesn't do this.
+- Converting tail recursion to iteration avoids deep recursion overhead and stack
+limits for large n.
 
 Complexities:
-- Both tail recursion and iterative approach typically run in O(n) if the underlying operation is O(1) each iteration step.
-- Space: Iteration uses O(1) additional space, while naive recursion in Python can use O(n) call stack.
+- Both tail recursion and iterative approach typically run in O(n) if the underlying
+operation is O(1) each iteration step.
+- Space: Iteration uses O(1) additional space, while naive recursion in Python can use
+O(n) call stack.
 
 Narrative:
 In an SRAS pipeline, certain tasks may conceptually be written recursively. However, large data

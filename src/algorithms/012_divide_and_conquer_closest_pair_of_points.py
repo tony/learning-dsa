@@ -6,7 +6,8 @@ Algorithm: Closest Pair of Points (Divide and Conquer)
 
 Concepts:
 - We have a set of 2D points.
-- We split them by x-coordinate into two halves, recursively find the closest pair in each half,
+- We split them by x-coordinate into two halves, recursively find the closest pair in
+each half,
   then inspect points near the dividing line (within distance d) for a potentially closer pair.
 - This yields O(n log n) time, which is better than the naive O(n^2).
 
@@ -40,7 +41,8 @@ def dist(p1: tuple[float, float], p2: tuple[float, float]) -> float:
 
 def closest_pair(points: list[tuple[float, float]]) -> float:
     """
-    Returns the minimal distance between any two points in the list using
+    Return the minimal distance between any two points in the list using.
+
     a divide-and-conquer approach.
 
     Complexity: O(n log n)
@@ -99,7 +101,8 @@ def _naive_closest_pair(pts: list[tuple[float, float]]) -> float:
 
 def _closest_strip_pair(strip: list[tuple[float, float]], d: float) -> float:
     """
-    For points in the strip (sorted by y),
+    For points in the strip (sorted by y),.
+
     check each point against up to next 6 points in the strip to find a smaller distance.
     """
     min_d = d
@@ -116,6 +119,7 @@ def _closest_strip_pair(strip: list[tuple[float, float]], d: float) -> float:
 def main() -> None:
     """
     Main demonstration:
+
     We'll create n random 2D points, measure time for finding the closest pair via
     the divide-and-conquer approach. This demonstrates O(n log n) complexity.
 
