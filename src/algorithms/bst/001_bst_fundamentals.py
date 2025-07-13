@@ -112,7 +112,7 @@ class BST:
             node.left = self._insert_recursive(node.left, key)
         elif key > node.key:
             node.right = self._insert_recursive(node.right, key)
-        # if key == node.key: define policy for duplicates (skip, count, etc.)
+        # if key == node.key: skip duplicates (current behavior)
         return node
 
     def search(self, key: Any) -> bool:
@@ -163,38 +163,38 @@ class BST:
             current = current.left
         return current
 
-    def in_order(self) -> list[int]:
+    def in_order(self) -> list[Any]:
         """Return a list of keys from an in-order traversal (left, root, right)."""
-        result: list[int] = []
+        result: list[Any] = []
         self._in_order_recursive(self.root, result)
         return result
 
-    def _in_order_recursive(self, node: BSTNode | None, result: list[int]) -> None:
+    def _in_order_recursive(self, node: BSTNode | None, result: list[Any]) -> None:
         if node is not None:
             self._in_order_recursive(node.left, result)
             result.append(node.key)
             self._in_order_recursive(node.right, result)
 
-    def pre_order(self) -> list[int]:
+    def pre_order(self) -> list[Any]:
         """Return a list of keys from a pre-order traversal (root, left, right)."""
-        result: list[int] = []
+        result: list[Any] = []
 
         self._pre_order_recursive(self.root, result)
         return result
 
-    def _pre_order_recursive(self, node: BSTNode | None, result: list[int]) -> None:
+    def _pre_order_recursive(self, node: BSTNode | None, result: list[Any]) -> None:
         if node is not None:
             result.append(node.key)
             self._pre_order_recursive(node.left, result)
             self._pre_order_recursive(node.right, result)
 
-    def post_order(self) -> list[int]:
+    def post_order(self) -> list[Any]:
         """Return a list of keys from a post-order traversal (left, right, root)."""
-        result: list[int] = []
+        result: list[Any] = []
         self._post_order_recursive(self.root, result)
         return result
 
-    def _post_order_recursive(self, node: BSTNode | None, result: list[int]) -> None:
+    def _post_order_recursive(self, node: BSTNode | None, result: list[Any]) -> None:
         if node is not None:
             self._post_order_recursive(node.left, result)
             self._post_order_recursive(node.right, result)
