@@ -7,7 +7,8 @@ Concepts
 - Recursive vs. iterative BST search implementation details.
 - Edge cases: empty tree, searching for min or max, or searching in a single-node tree.
 - Finding successor (next-larger key) and predecessor (next-smaller key):
-  * If the node has a right subtree, successor is the leftmost node in the right subtree.
+  * If the node has a right subtree, successor is the leftmost node in the right
+  subtree.
   * Otherwise, follow parent pointers upward until you traverse from left to right.
 
 Algorithm
@@ -42,7 +43,8 @@ Successor & Predecessor:
 Complexities
 -----------
 - Time: Best/Average O(log n), but can degrade to O(n) in a skewed tree.
-- Space: O(h) recursion stack for the recursive approach (h = tree height), or O(1) iterative.
+- Space: O(h) recursion stack for the recursive approach (h = tree height), or O(1)
+iterative.
 
 Narrative
 ---------
@@ -74,7 +76,7 @@ class BSTNode:
 
 class BST:
     """
-    A BST with both recursive and iterative search, plus methods to find
+    A BST with both recursive and iterative search, plus methods to find.
 
     minimum, maximum, successor, and predecessor.
 

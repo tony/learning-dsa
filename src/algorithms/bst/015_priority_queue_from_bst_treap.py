@@ -77,7 +77,7 @@ def rotate_left(root: TreapNode) -> TreapNode:
 
 def treap_insert(root: TreapNode | None, key: int) -> TreapNode:
     """
-    Insert 'key' into the treap. We do a BST insert by 'key',
+    Insert 'key' into the treap. We do a BST insert by 'key',.
 
     then we rotate if needed to maintain min-heap property on 'priority'.
     """
@@ -107,7 +107,8 @@ def find_min(root: TreapNode | None) -> TreapNode | None:
 
 def treap_splay_to_root(root: TreapNode | None, key: int) -> TreapNode | None:
     """
-    Splay-like approach: rotate the node with 'key' up to root if found,
+    Splay-like approach: rotate the node with 'key' up to root if found,.
+
     by repeated left/right rotations (like Zig steps).
     This is simpler than full splay, we just bubble it up by checking parents in recursion.
     For demonstration only.
@@ -134,6 +135,7 @@ def treap_splay_to_root(root: TreapNode | None, key: int) -> TreapNode | None:
 def extract_min(root: TreapNode | None) -> tuple[TreapNode | None, int | None]:
     """
     Extract the minimum key from the treap:
+
     1) Find min key, rotate it up to the root (treap_splay_to_root),
     2) Then remove the root and merge left/right subtrees if needed.
     Return (new_root, min_key).
@@ -163,6 +165,7 @@ def merge_treap(
 ) -> TreapNode | None:
     """
     Merge two treaps 'left' and 'right' (all keys in left < all keys in right).
+
     We'll do a priority-based merge:
      - if left is None => return right
      - if right is None => return left
@@ -194,7 +197,7 @@ def treap_inorder(root: TreapNode | None, out: list[int]) -> None:
 
 def main() -> None:
     """
-    Demonstration: We create a treap, then do some insertions,
+    Demonstration: We create a treap, then do some insertions,.
 
     extract-min a couple times, and confirm the BST property.
     """

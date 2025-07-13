@@ -4,13 +4,15 @@
 
 Concepts:
 - Height of a BST is the longest path from root to leaf.
-- Inserting ascending values (1,2,3,4,...) can lead to a skewed BST shaped like a linked list.
+- Inserting ascending values (1,2,3,4,...) can lead to a skewed BST shaped like a
+linked list.
 - Skewed BST yields worst-case operations of O(n).
 
 No single new algorithm here, but we illustrate the problem that motivates balancing.
 
 Complexities:
-- Demonstrates that naive BST can degrade from average O(log n) to worst-case O(n) if data is unlucky.
+- Demonstrates that naive BST can degrade from average O(log n) to worst-case O(n) if
+data is unlucky.
 
 Narrative:
 In SRAS, if data is partially sorted or arrives in ascending/descending order (like route IDs),

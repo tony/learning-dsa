@@ -3,9 +3,11 @@
 11. B-Trees (External Memory / Disk).
 
 Concepts:
-- A multi-way balanced tree where each node can have up to (2t-1) keys and (2t) children (for a branching factor t).
+- A multi-way balanced tree where each node can have up to (2t-1) keys and (2t)
+children (for a branching factor t).
 - Minimizes disk I/O by grouping large blocks of keys into each node.
-- Insert: if child is full, split it before descending. The tree height remains O(log n).
+- Insert: if child is full, split it before descending. The tree height remains O(log
+n).
 - Search: do a multiway search in node’s keys, follow the correct child pointer.
 
 Algorithm (Insertion Outline):

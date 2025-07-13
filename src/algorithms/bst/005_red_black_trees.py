@@ -5,10 +5,12 @@
 Concepts:
 - Red-Black properties: each node is red or black, no two consecutive reds,
   and every path from root to a leaf has the same number of black nodes (black-height).
-- Insert & delete rebalancing revolve around recoloring and rotations when color constraints are violated.
+- Insert & delete rebalancing revolve around recoloring and rotations when color
+constraints are violated.
 
 Algorithm:
-- Insert a new node as red, then fix color violations with recolors/rotations while moving upward if needed.
+- Insert a new node as red, then fix color violations with recolors/rotations while
+moving upward if needed.
 - Delete also rebalances if there's a "black deficit," but omitted for brevity.
 
 Complexities:
@@ -53,6 +55,7 @@ def is_red(node: RBNode | None) -> bool:
 def safe_rotate_left(root: RBNode, x: RBNode) -> RBNode:
     """
     Left-rotate at node x. Return possibly new root if x was root.
+
     We only rotate if x.right is not None. If x.right is None, do nothing.
     """
     y = x.right
@@ -80,6 +83,7 @@ def safe_rotate_left(root: RBNode, x: RBNode) -> RBNode:
 def safe_rotate_right(root: RBNode, x: RBNode) -> RBNode:
     """
     Right-rotate at node x. Return possibly new root if x was root.
+
     Only rotate if x.left is not None.
     """
     y = x.left
@@ -107,6 +111,7 @@ def safe_rotate_right(root: RBNode, x: RBNode) -> RBNode:
 def insert_rb(root: RBNode | None, key: int) -> RBNode:
     """
     Insert 'key' into the Red-Black tree with root 'root' (may be None).
+
     Returns the new root after insertion (which might change).
 
     Examples
@@ -220,6 +225,7 @@ def inorder(root: RBNode | None, out: list[int]) -> None:
 def main() -> None:
     """
     Main demonstration:
+
     Insert a few items, show in-order. The final tree remains balanced O(log n).
     """
     root = None

@@ -3,7 +3,8 @@
 4. Height-Balanced (AVL) Trees: Rotations and Invariants.
 
 Concepts:
-- AVL property: The height difference (balance factor) of left vs. right subtree at any node is <= 1.
+- AVL property: The height difference (balance factor) of left vs. right subtree at any
+node is <= 1.
 - Rotations (single & double) to rebalance after insertion/deletion.
 - Maintaining an integer "height" or "balance factor" in each node.
 
@@ -15,7 +16,8 @@ Algorithm:
 - Delete similarly rebalances (omitted here for brevity).
 
 Complexities:
-- Search/Insert/Delete: O(log n) guaranteed, because the tree is rebalanced consistently.
+- Search/Insert/Delete: O(log n) guaranteed, because the tree is rebalanced
+consistently.
 
 Narrative:
 For an SRAS pipeline with frequent inserts or random data patterns, an AVL tree
@@ -64,6 +66,7 @@ def update_height(node: AVLNode) -> None:
 def rotate_left(z: AVLNode) -> AVLNode:
     """
     Perform a left rotation on node z, returning the new root (y).
+
     Usually done when z is "heavier" on the right side.
     """
     y = z.right
@@ -82,6 +85,7 @@ def rotate_left(z: AVLNode) -> AVLNode:
 def rotate_right(z: AVLNode) -> AVLNode:
     """
     Perform a right rotation on node z, returning the new root (y).
+
     Usually done when z is "heavier" on the left side.
     """
     y = z.left
@@ -100,6 +104,7 @@ def rotate_right(z: AVLNode) -> AVLNode:
 def insert_avl(root: AVLNode | None, key: int) -> AVLNode:
     """
     Insert 'key' into the AVL tree rooted at 'root', ensuring rebalancing.
+
     Returns the new root after insertion (which might change due to rotations).
 
     Examples

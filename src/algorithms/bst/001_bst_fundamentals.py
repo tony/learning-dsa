@@ -67,7 +67,7 @@ class BSTNode:
 
 class BST:
     """
-    A simple Binary Search Tree implementation with insert, search, and delete operations,
+    A simple Binary Search Tree implementation with insert, search, and delete operations,.
 
     plus in-order, pre-order, and post-order traversals.
 
@@ -98,7 +98,7 @@ class BST:
 
     def insert(self, key: Any) -> None:
         """
-        Insert a new key into the BST. If key already exists, this example does not handle duplicates
+        Insert a new key into the BST. If key already exists, this example does not handle duplicates.
 
         (either skip or define your own policy).
         """

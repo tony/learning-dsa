@@ -4,7 +4,8 @@
 
 Concepts:
 - Each node has a key (BST order) plus a random priority (heap property).
-- Insert in BST key order, then rotate up if the child's priority violates the parent's heap condition.
+- Insert in BST key order, then rotate up if the child's priority violates the parent's
+heap condition.
 - Expected O(log n) height if priorities are uniformly random.
 
 Algorithm:
@@ -17,7 +18,8 @@ Algorithm:
   1. Rotate node down until it's a leaf, then remove it (omitted here for brevity).
 
 Complexities:
-- Expected O(log n) for all BST operations, thanks to randomization ensuring balanced shape on average.
+- Expected O(log n) for all BST operations, thanks to randomization ensuring balanced
+shape on average.
 
 Narrative:
 Treaps can be simpler to implement than Red-Black or AVL trees. In an SRAS environment,
@@ -123,6 +125,7 @@ def inorder(root: TreapNode | None, out: list[int]) -> None:
 def main() -> None:
     """
     Main demonstration:
+
     Insert a few items, do an inorder to confirm BST property.
     Observe random priority yields an unpredictable shape, but expected O(log n) height.
     """

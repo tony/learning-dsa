@@ -87,6 +87,7 @@ def rotate_right(x: SplayNode) -> None:
 def splay(x: SplayNode) -> None:
     """
     Splay node x to the root of its tree using standard zig/zig-zig/zig-zag steps.
+
     We do not return the new root here, but the caller can find it by climbing up
     if needed. In practice, we might reassign the global root after splay if x.parent is None.
     """
@@ -121,6 +122,7 @@ def splay(x: SplayNode) -> None:
 def insert_splay(root: SplayNode | None, key: int) -> SplayNode:
     """
     Insert 'key' into the Splay Tree, then splay the inserted node to root.
+
     Returns the new root after insertion.
 
     Examples
@@ -162,6 +164,7 @@ def insert_splay(root: SplayNode | None, key: int) -> SplayNode:
 def search_splay(root: SplayNode | None, key: int) -> SplayNode | None:
     """
     Search for 'key' in the splay tree. If found, splay that node to root.
+
     If not found, splay the last accessed node (the would-be parent).
 
     Returns the new root after splay, which might be the found node or the last accessed.

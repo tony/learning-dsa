@@ -5,7 +5,8 @@
 Concepts:
 - We have n sorted keys, each with a known frequency of access.
 - We compute a BST that minimizes the expected search cost using dynamic programming.
-- Standard approach is O(n^3) time, or O(n^2) with advanced optimization (Knuth's trick).
+- Standard approach is O(n^3) time, or O(n^2) with advanced optimization (Knuth's
+trick).
 - Here we show the O(n^3) version for clarity, then reconstruct the BST.
 
 Algorithm Outline:
@@ -16,7 +17,8 @@ Algorithm Outline:
 
 Complexities:
 - Building the DP: O(n^3) naive
-- Searching in the final BST: ~ O(h) with h near log n if keys with high freq end up near top
+- Searching in the final BST: ~ O(h) with h near log n if keys with high freq end up
+near top
 
 Narrative:
 In SRAS, if certain IDs have high frequencies, placing them near the root cuts average search cost.
@@ -117,6 +119,7 @@ def inorder_traverse(root: OBSTNode | None, arr: list[int]) -> None:
 def main() -> None:
     """
     Main demonstration:
+
     Suppose we have keys=[10,20,30,40], freq=[3,2,6,1].
     We'll build an optimal BST via O(n^3) DP,
     then do an inorder to show BST ordering.
