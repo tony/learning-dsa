@@ -37,6 +37,9 @@ def selection_sort(data: list[int]) -> None:
     Complexity: O(n²) in best, average, and worst case.
     Space: O(1)
 
+    Note: This implementation is not stable (doesn't preserve
+    the relative order of equal elements).
+
     Examples
     --------
     >>> nums = [5, 2, 8, 1, 3]
