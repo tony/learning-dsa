@@ -69,6 +69,7 @@ class MyIterator:
 def my_generator(data: list[Any]) -> Iterator[Any]:
     """
     A generator that yields elements from the provided list.
+
     Complexity per next element: O(1) to yield and advance.
     Space: O(1).
 
@@ -92,6 +93,7 @@ def my_generator(data: list[Any]) -> Iterator[Any]:
 def main() -> None:
     """
     Main demonstration:
+
     We'll show that iterating over a large list using an iterator or generator
     doesn't require holding all processed data in memory at once, and each step is O(1).
 

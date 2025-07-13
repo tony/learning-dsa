@@ -35,6 +35,7 @@ import timeit
 def trivial_operation() -> int:
     """
     A trivial function that does a small, fixed amount of work.
+
     Not an algorithm or data structure, just a placeholder.
 
     Complexity: O(1), since it does a constant amount of work.
@@ -48,6 +49,7 @@ def trivial_operation() -> int:
 def main() -> None:
     """
     Main demonstration:
+
     - Explain what data structures and algorithms are.
     - Introduce Big-O notation for complexity.
     - Show timing a trivial operation to illustrate that we can measure runtime,

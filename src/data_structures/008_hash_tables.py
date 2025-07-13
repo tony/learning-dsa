@@ -50,6 +50,7 @@ def demonstrate_dict_operations() -> None:
 def main() -> None:
     """
     Main demonstration:
+
     We'll measure insertion and lookup times in a Python dict for large n.
     Should show O(1) average performance.
 

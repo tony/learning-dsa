@@ -50,6 +50,7 @@ def demonstrate_slicing() -> None:
 def main() -> None:
     """
     Main demonstration:
+
     - We'll time slicing operations on lists of various sizes.
     - Show that slicing a segment of length k takes O(k) time to create the new slice.
 

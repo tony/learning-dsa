@@ -16,7 +16,7 @@ Complexities:
 - Search (if needed): O(n) if we must scan
 - Space: O(n)
 
-No best/average/worst differences for push/pop in amortized terms—they're consistently O(1) amortized with deque.
+No best/average/worst differences for push/pop in amortized terms-they're consistently O(1) amortized with deque.
 Worst case scenario: if large memory reallocations occur rarely in a list, push/pop could degrade, but with `deque` this is stable O(1).
 
 Narrative:
@@ -79,6 +79,7 @@ class Stack:
 def main() -> None:
     """
     Main demonstration:
+
     We'll show timing of multiple push/pop operations to highlight O(1) amortized complexity.
 
     Narrative:

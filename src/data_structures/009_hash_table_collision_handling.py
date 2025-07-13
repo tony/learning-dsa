@@ -91,6 +91,7 @@ class ChainedHashTable:
 def main() -> None:
     """
     Main demonstration:
+
     We'll measure insert/search times. Insertions remain O(1) average if distribution is good.
     Searching is O(1) average, but can degrade if many items collide in the same chain.
 
