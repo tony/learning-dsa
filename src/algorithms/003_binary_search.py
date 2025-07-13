@@ -78,11 +78,13 @@ def main() -> None:
     """
     # We'll create sorted lists of different sizes and measure search time
     sizes = [10_000, 100_000, 1_000_000]
-    target = -1  # Not in the list, ensuring full search
 
     for n in sizes:
         data = list(range(n))  # Sorted
-        exec_time = timeit.timeit("binary_search(data, target)", globals=globals(), number=100)
+        target = -1  # Not in the list, ensuring full search
+        exec_time = timeit.timeit(
+            "binary_search(data, target)", globals={**globals(), **locals()}, number=100
+        )
         print(
             f"Sorted list size {n}, repeated 100 runs: {exec_time:.5f} seconds total "
             f"(~{exec_time / 100:.5f}s per run). This scales ~O(log n).",

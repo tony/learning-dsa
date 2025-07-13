@@ -65,11 +65,13 @@ def main() -> None:
     linear search's overhead is minimal, so we keep the code simple and memory usage at O(1).
     """
     sizes = [100, 1000, 5000]  # smaller scales than massive production data
-    target = -1  # ensure worst-case scenario (not present)
 
     for n in sizes:
         data = list(range(n))
-        exec_time = timeit.timeit("linear_search_small(data, target)", globals=globals(), number=50)
+        target = -1  # ensure worst-case scenario (not present)
+        exec_time = timeit.timeit(
+            "linear_search_small(data, target)", globals={**globals(), **locals()}, number=50
+        )
         print(
             f"List size {n}, repeated 50 runs: {exec_time:.5f} seconds total "
             f"(~{exec_time / 50:.5f}s per run).",

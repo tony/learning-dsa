@@ -87,7 +87,9 @@ def main() -> None:
     for n in sizes:
         # We'll use reverse-sorted as a near worst-case scenario.
         data = list(range(n, 0, -1))
-        exec_time = timeit.timeit("insertion_sort(data)", globals=globals(), number=1)
+        exec_time = timeit.timeit(
+            "insertion_sort(data)", globals={**globals(), **locals()}, number=1
+        )
         print(f"Insertion sort on {n} elements took: {exec_time:.5f}s.")
 
 

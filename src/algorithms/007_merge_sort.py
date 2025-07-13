@@ -106,7 +106,7 @@ def main() -> None:
     sizes = [10_000, 20_000]
     for n in sizes:
         data = list(range(n, 0, -1))  # reverse-sorted as a test
-        exec_time = timeit.timeit("merge_sort(data)", globals=globals(), number=1)
+        exec_time = timeit.timeit("merge_sort(data)", globals={**globals(), **locals()}, number=1)
         print(f"Merge sort on {n} elements took: {exec_time:.5f}s (O(n log n))")
 
 
