@@ -23,7 +23,8 @@ Summary
 We will:
 - Define what an algorithm is and why complexity (Big-O) matters.
 - Show a trivial linear search algorithm.
-- Use `timeit` to measure runtime for different input sizes, illustrating that more data means
+- Use `timeit` to measure runtime for different input sizes, illustrating that more
+data means
   longer run times, thus motivating complexity analysis.
 
 Narrative:
@@ -42,9 +43,7 @@ from typing import Any
 
 def linear_search(data: list[Any], target: Any) -> bool:
     """
-    A trivial linear search algorithm:
-
-    Checks each element until it finds the target or reaches the end.
+    Check each element until finding the target or reaching the end.
 
     Complexity:
     - Time: O(n), where n is the length of the list.
@@ -64,9 +63,8 @@ def linear_search(data: list[Any], target: Any) -> bool:
 
 def main() -> None:
     """
-    Main demonstration for this lesson.
+    Demonstrate main functionality for this lesson.
 
-    We will:
     - Explain what an algorithm is: a finite procedure to solve a problem.
     - Measure runtime of linear_search on different input sizes using `timeit`.
     - Show that as input size increases, runtime also increases linearly (O(n)).
