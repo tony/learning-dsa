@@ -74,7 +74,7 @@ def rotate_left(z: AVLNode) -> AVLNode:
     y = z.right
 
     if y is None:
-        return z  # shouldn't happen if we call rotate_left properly
+        raise ValueError("rotate_left called on node with no right child")
     # Perform rotation
     z.right = y.left
     y.left = z
@@ -93,7 +93,7 @@ def rotate_right(z: AVLNode) -> AVLNode:
     y = z.left
 
     if y is None:
-        return z  # shouldn't happen if we call rotate_right properly
+        raise ValueError("rotate_right called on node with no left child")
     # Perform rotation
     z.left = y.right
     y.right = z
@@ -134,8 +134,11 @@ def insert_avl(root: AVLNode | None, key: int) -> AVLNode:
     # BST insert
     if key < root.key:
         root.left = insert_avl(root.left, key)
-    else:
+    elif key > root.key:
         root.right = insert_avl(root.right, key)
+    else:
+        # key == root.key: skip duplicates (no insertion)
+        return root
 
     # Update height of this ancestor node
     update_height(root)
