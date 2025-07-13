@@ -53,7 +53,7 @@ def binary_search(sorted_data: list[Any], target: Any) -> bool:
     high = len(sorted_data) - 1
 
     while low <= high:
-        mid = (low + high) // 2
+        mid = low + (high - low) // 2
         if sorted_data[mid] == target:
             return True
         if sorted_data[mid] < target:
