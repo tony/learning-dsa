@@ -56,7 +56,7 @@ def fixed_size_array_example() -> None:
 
 def main() -> None:
     """
-    Main demonstration:
+    Demonstrate main functionality.
 
     We will measure access and search times on a fixed-size array simulation.
     Access by index is O(1), searching requires O(n) scanning.

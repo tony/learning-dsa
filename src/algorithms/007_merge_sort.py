@@ -93,7 +93,7 @@ def merge_sort(data: list[int]) -> None:
 
 def main() -> None:
     """
-    Main demonstration:
+    Demonstrate main functionality.
 
     We'll run merge sort on moderately sized lists to illustrate O(n log n) scaling.
     Even in worst-case scenarios, merge sort remains O(n log n) compared to O(n²) methods.

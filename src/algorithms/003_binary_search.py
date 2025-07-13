@@ -66,7 +66,7 @@ def binary_search(sorted_data: list[Any], target: Any) -> bool:
 
 def main() -> None:
     """
-    Main demonstration:
+    Demonstrate main functionality.
 
     We'll time the binary_search on large sorted lists to show O(log n) performance.
     For bigger n, time growth is logarithmic rather than linear.

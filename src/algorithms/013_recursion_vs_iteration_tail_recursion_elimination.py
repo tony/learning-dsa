@@ -83,7 +83,7 @@ def iterative_sum(n: int) -> int:
 
 def main() -> None:
     """
-    Main demonstration:
+    Demonstrate main functionality.
 
     We'll pick a moderately large n, time both the tail-recursive approach
     and the iterative approach to sum 1..n. We illustrate that Python’s tail recursion

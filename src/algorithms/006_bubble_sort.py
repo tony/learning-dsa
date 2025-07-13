@@ -73,7 +73,7 @@ def bubble_sort(data: list[int]) -> None:
 
 def main() -> None:
     """
-    Main demonstration:
+    Demonstrate main functionality.
 
     We'll run bubble sort on moderately sized lists, illustrating O(n^2) behavior
     for random or reverse-sorted data. If data is nearly sorted, bubble sort can

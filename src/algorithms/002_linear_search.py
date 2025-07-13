@@ -54,7 +54,7 @@ def linear_search(data: list[Any], target: Any) -> bool:
 
 def main() -> None:
     """
-    Main demonstration:
+    Demonstrate main functionality.
 
     - We'll create different-sized lists and measure the time it takes for linear_search
       to find a target near the end (worst-case scenario).

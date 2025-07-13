@@ -73,7 +73,7 @@ def insertion_sort(data: list[int]) -> None:
 
 def main() -> None:
     """
-    Main demonstration:
+    Demonstrate main functionality.
 
     We'll time insertion sort on moderately sized lists, illustrating O(n^2) behavior in general.
     For small or nearly sorted data, insertion sort can be quite efficient.

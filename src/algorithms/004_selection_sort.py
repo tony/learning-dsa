@@ -64,7 +64,7 @@ def selection_sort(data: list[int]) -> None:
 
 def main() -> None:
     """
-    Main demonstration:
+    Demonstrate main functionality.
 
     We'll run selection sort on moderate-sized lists and time it, illustrating O(n²) growth.
     For large n, selection sort becomes quite slow.

@@ -91,7 +91,7 @@ def _partition(data: list[int], low: int, high: int) -> int:
 
 def main() -> None:
     """
-    Main demonstration:
+    Demonstrate main functionality.
 
     We'll use quick_sort on moderately sized lists to illustrate O(n log n) behavior
     in average cases. For reverse-sorted lists, this naive pivot choice can degrade

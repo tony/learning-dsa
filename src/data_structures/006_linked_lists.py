@@ -115,7 +115,7 @@ class SinglyLinkedList:
 
 def main() -> None:
     """
-    Main demonstration:
+    Demonstrate main functionality.
 
     We'll show timing for insertion at head and tail vs searching.
     Insertions at head and tail are O(1) with tail pointer.

@@ -31,7 +31,7 @@ import timeit
 
 def demonstrate_slicing() -> None:
     """
-    Examples
+    Examples.
     --------
     >>> data = [i for i in range(10)]
     >>> sub = data[2:5]  # slice length k=3
@@ -49,7 +49,7 @@ def demonstrate_slicing() -> None:
 
 def main() -> None:
     """
-    Main demonstration:
+    Demonstrate main functionality.
 
     - We'll time slicing operations on lists of various sizes.
     - Show that slicing a segment of length k takes O(k) time to create the new slice.
