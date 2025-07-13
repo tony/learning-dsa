@@ -11,11 +11,13 @@ as data grows.
 
 Data Structure: *None* (conceptual introduction)
 - We are not implementing a specific data structure in this chapter.
-- Instead, we introduce the concept of complexity analysis, which applies to all data structures.
+- Instead, we introduce the concept of complexity analysis, which applies to all data
+structures.
 
 Complexity Details:
 - At this stage, we only discuss complexity conceptually.
-- Big-O notation: O(n), O(log n), O(n²), etc., describe how runtime or space usage grows with input size.
+- Big-O notation: O(n), O(log n), O(n²), etc., describe how runtime or space usage
+grows with input size.
 - We'll learn that as data grows, certain complexities lead to performance issues.
 
 Narrative:
@@ -34,7 +36,7 @@ import timeit
 
 def trivial_operation() -> int:
     """
-    A trivial function that does a small, fixed amount of work.
+    Provide a trivial function that does a small, fixed amount of work.
 
     Not an algorithm or data structure, just a placeholder.
 

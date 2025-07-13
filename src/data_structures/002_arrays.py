@@ -9,7 +9,8 @@ A fixed-size array is a contiguous block of memory storing elements of the same 
 
 Complexities:
 - Access by index: O(1) (direct indexing)
-- Insert at end: O(n) if we must copy into a larger array since size is fixed (no amortized benefit)
+- Insert at end: O(n) if we must copy into a larger array since size is fixed (no
+amortized benefit)
 - Insert at arbitrary position: O(n) due to shifting elements
 - Search (linear): O(n) if we must scan the array
 - Space: O(n) where n is the fixed capacity
@@ -29,7 +30,7 @@ import timeit
 
 def fixed_size_array_example() -> None:
     """
-    Simulate a fixed-size array by creating a Python list of fixed length
+    Simulate a fixed-size array by creating a Python list of fixed length.
 
     and treating it as if we cannot change its size.
 

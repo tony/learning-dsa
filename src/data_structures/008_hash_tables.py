@@ -7,7 +7,8 @@ Data Structure: Hash Table (Python's built-in dict)
 Concepts:
 A hash table uses a hash function to map keys to buckets. Python's dict is a dynamic hash table.
 - Average complexity: O(1) for insert, search, delete.
-- Worst case: O(n) if all elements end up in the same bucket (rare due to good hash distribution).
+- Worst case: O(n) if all elements end up in the same bucket (rare due to good hash
+distribution).
 - Space: O(n) to store n key-value pairs.
 
 Complexities:
@@ -32,7 +33,8 @@ import timeit
 
 def demonstrate_dict_operations() -> None:
     """
-    Examples
+    Show examples.
+
     --------
     >>> d = {}
     >>> d['apple'] = 10  # insert O(1) average
