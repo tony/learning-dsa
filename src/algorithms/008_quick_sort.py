@@ -13,7 +13,8 @@ pivots often mitigate this.
 Complexities:
 - Best Case: O(n log n)
 - Average Case: O(n log n)
-- Worst Case: O(n^2) if we always pick a poor pivot (e.g., sorted or reverse-sorted data with naive pivot choice).
+- Worst Case: O(n^2) if we always pick a poor pivot (e.g., sorted or reverse-sorted
+data with naive pivot choice).
 - Space: O(log n) average (due to recursive calls).
 
 Narrative:

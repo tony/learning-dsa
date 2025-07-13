@@ -32,7 +32,7 @@ import timeit
 
 def merge_sort(data: list[int]) -> None:
     """
-    In-place merge sort (we'll implement a helper function that merges in a separate array,
+    In-place merge sort (we'll implement a helper function that merges in a separate array,.
 
     then copy back). Sorts 'data' in ascending order.
 

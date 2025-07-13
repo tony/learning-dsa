@@ -11,7 +11,8 @@ leading to a best-case of O(n). However, in general or worst-case scenarios, it 
 multiple elements per insertion, yielding O(n^2) time complexity.
 
 Complexities:
-- Best Case: O(n) if the list is already nearly sorted (each insertion does minimal shifting).
+- Best Case: O(n) if the list is already nearly sorted (each insertion does minimal
+shifting).
 - Average Case: O(n^2)
 - Worst Case: O(n^2)
 - Space: O(1), sorting in-place.
