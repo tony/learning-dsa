@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """
-9. Optimal BST with Known Frequencies: Knuth’s DP Algorithm.
+9. Optimal BST with Known Frequencies: Knuth's DP Algorithm.
 
 Concepts:
 - We have n sorted keys, each with a known frequency of access.
@@ -59,7 +59,7 @@ def build_optimal_bst(keys: list[int], freq: list[float]) -> OBSTNode | None:
     # root[i][j]: which index k in [i..j] is root
     root_table = [[0] * (n + 1) for _ in range(n + 1)]
 
-    # For convenience, we’ll number keys 1..n in DP, so shift index
+    # For convenience, we'll number keys 1..n in DP, so shift index
     # cost[i][i-1] = 0, weight[i][i-1] = 0 => empty subtrees
     # We'll fill i..i in a loop, then expand j>i
 
@@ -118,7 +118,7 @@ def inorder_traverse(root: OBSTNode | None, arr: list[int]) -> None:
 
 def main() -> None:
     """
-    Main demonstration:
+    Demonstrate main functionality.
 
     Suppose we have keys=[10,20,30,40], freq=[3,2,6,1].
     We'll build an optimal BST via O(n^3) DP,

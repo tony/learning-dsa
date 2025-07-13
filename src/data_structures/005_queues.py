@@ -74,7 +74,7 @@ class Queue:
 
 def main() -> None:
     """
-    Main demonstration:
+    Demonstrate main functionality.
 
     We'll measure enqueue/dequeue times for large n to show O(1) amortized performance.
 

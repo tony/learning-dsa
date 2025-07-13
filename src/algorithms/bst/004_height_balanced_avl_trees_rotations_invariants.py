@@ -11,8 +11,8 @@ node is <= 1.
 Algorithm:
 - Insert in BST fashion, then update heights while unwinding the recursion.
 - If the node becomes unbalanced (balance factor > 1 or < -1), rotate:
-  - Single rotation (left or right) if it’s a simple "zig-zig" pattern.
-  - Double rotation (left-right or right-left) if it’s "zig-zag".
+  - Single rotation (left or right) if it's a simple "zig-zig" pattern.
+  - Double rotation (left-right or right-left) if it's "zig-zag".
 - Delete similarly rebalances (omitted here for brevity).
 
 Complexities:
@@ -178,7 +178,7 @@ def inorder(root: AVLNode | None, result: list[int]) -> None:
 
 def main() -> None:
     """
-    Main demonstration:
+    Demonstrate main functionality.
 
     We'll insert ascending data (1..20), also random data,
     and confirm we get a balanced tree of height ~ log(n).

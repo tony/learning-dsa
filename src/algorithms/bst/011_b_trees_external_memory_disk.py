@@ -8,12 +8,12 @@ children (for a branching factor t).
 - Minimizes disk I/O by grouping large blocks of keys into each node.
 - Insert: if child is full, split it before descending. The tree height remains O(log
 n).
-- Search: do a multiway search in node’s keys, follow the correct child pointer.
+- Search: do a multiway search in node's keys, follow the correct child pointer.
 
 Algorithm (Insertion Outline):
 1) If root is full, create a new node and split root.
 2) Descend to the correct child, splitting it first if it's full.
-3) Insert the new key in that leaf’s key array.
+3) Insert the new key in that leaf's key array.
 
 Complexities:
 - O(log n) for search/insert/delete, with branching factor t => height ~ O(log_{t} n).
@@ -166,7 +166,7 @@ def inorder_traverse(node: BTreeNode | None, arr: list[int]) -> None:
 
 def main() -> None:
     """
-    Main demonstration:
+    Demonstrate main functionality.
 
     We'll build a B-Tree with branching factor t=2. Insert a few items, do an inorder.
     B-Tree ensures O(log n) height by splitting nodes as soon as they fill up with 2t-1=3 keys.

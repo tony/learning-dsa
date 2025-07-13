@@ -21,7 +21,7 @@ sort might be acceptable. Its simplicity can be appealing, but as data grows, se
 becomes too slow, motivating more efficient sorts (e.g., merge sort, quicksort) with \( O(n \log n) \).
 
 Doctests:
-We’ll test selection_sort on small inputs to confirm correctness.
+We'll test selection_sort on small inputs to confirm correctness.
 
 Run `python -m doctest -v thisfile.py` or `pytest --doctest-modules` to verify.
 """

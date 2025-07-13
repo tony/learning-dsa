@@ -18,7 +18,7 @@ Complexities:
 - Worst case: Large slices or frequent slicing operations can impact performance linearly with slice size.
 
 Narrative:
-When preprocessing raw data, we may have a large list of records. Pythonic slicing and list comprehensions let us quickly extract relevant portions of the data. For example, if we only need the first 100 lines or want to skip a header row, slicing makes it easy. While slicing is O(k), if k is small relative to n, it’s very convenient. As we scale to larger datasets, we must remain aware that slicing large portions can add overhead proportional to that slice size.
+When preprocessing raw data, we may have a large list of records. Pythonic slicing and list comprehensions let us quickly extract relevant portions of the data. For example, if we only need the first 100 lines or want to skip a header row, slicing makes it easy. While slicing is O(k), if k is small relative to n, it's very convenient. As we scale to larger datasets, we must remain aware that slicing large portions can add overhead proportional to that slice size.
 
 Doctests:
 We'll show simple slicing operations and confirm they produce the expected sublists.
@@ -69,7 +69,7 @@ def main() -> None:
     )
 
     # This demonstrates O(k) complexity for the slicing operation.
-    # If we double k, we’d expect roughly double the time for the same number of operations.
+    # If we double k, we'd expect roughly double the time for the same number of operations.
 
     print()
     print(

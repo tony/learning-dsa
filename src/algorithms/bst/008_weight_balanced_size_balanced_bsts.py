@@ -171,7 +171,7 @@ def inorder(root: SizeBSTNode | None, arr: list[int]) -> None:
 
 def main() -> None:
     """
-    Main demonstration:
+    Demonstrate main functionality.
 
     We'll insert a few items, ensuring the size ratio is kept at 2.0.
     Then print in-order to confirm BST property. The ratio enforcement

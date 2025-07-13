@@ -114,7 +114,7 @@ def height_iterative(root: BSTNode | None) -> int:
 
 def main() -> None:
     """
-    Main demonstration:
+    Demonstrate main functionality.
 
     We'll construct two BSTs of size n:
       1) Insert ascending values (0..n-1), measuring final height (worst-case ~n).

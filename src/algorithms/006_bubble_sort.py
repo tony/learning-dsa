@@ -22,7 +22,7 @@ is occasionally beneficial, but overall it's typically replaced by more efficien
 techniques as data scales.
 
 Doctests:
-We’ll test `bubble_sort` on small lists to confirm correctness.
+We'll test `bubble_sort` on small lists to confirm correctness.
 
 Run `python -m doctest -v thisfile.py` or `pytest --doctest-modules` to verify.
 """

@@ -50,7 +50,7 @@ def trivial_operation() -> int:
 
 def main() -> None:
     """
-    Main demonstration:
+    Demonstrate main functionality.
 
     - Explain what data structures and algorithms are.
     - Introduce Big-O notation for complexity.

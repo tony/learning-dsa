@@ -11,12 +11,12 @@ Concepts
 Algorithm
 ---------
 Insert:
-  1. Compare new value with current node’s key.
+  1. Compare new value with current node's key.
   2. Move left or right accordingly until a leaf position.
   3. Insert once you find a None pointer.
 
 Search:
-  1. Compare the target with the current node’s key.
+  1. Compare the target with the current node's key.
   2. Move left or right until found or None is reached.
 
 Delete:
@@ -202,7 +202,7 @@ class BST:
 
 def main() -> None:
     """
-    Main demonstration:
+    Demonstrate main functionality.
 
     We'll insert some data into the BST, then do a quick timing of search operations.
     Also prints out complexities and runs doctests.

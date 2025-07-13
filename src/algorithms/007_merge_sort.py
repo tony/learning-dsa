@@ -16,13 +16,13 @@ Complexities:
 - Space: O(n) due to auxiliary arrays while merging.
 
 Narrative:
-As data grows large, O(n²) sorts become untenable. Merge sort’s O(n log n) is a significant
+As data grows large, O(n²) sorts become untenable. Merge sort's O(n log n) is a significant
 improvement, providing stable performance for large datasets in the SRAS (or any data
 analytics pipeline). While it needs extra memory, the predictable O(n log n) is often
 worth that cost.
 
 Doctests:
-We’ll demonstrate merging and sorting small lists to confirm correctness.
+We'll demonstrate merging and sorting small lists to confirm correctness.
 
 Run `python -m doctest -v thisfile.py` or `pytest --doctest-modules` to verify.
 """

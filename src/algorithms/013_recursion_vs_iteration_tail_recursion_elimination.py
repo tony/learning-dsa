@@ -20,7 +20,7 @@ O(n) call stack.
 
 Narrative:
 In an SRAS pipeline, certain tasks may conceptually be written recursively. However, large data
-or deep calls can exceed Python’s recursion limit or cause overhead. Transforming tail recursion
+or deep calls can exceed Python's recursion limit or cause overhead. Transforming tail recursion
 into iteration helps keep memory usage low and avoid hitting recursion limits.
 
 Doctests:
@@ -86,7 +86,7 @@ def main() -> None:
     Demonstrate main functionality.
 
     We'll pick a moderately large n, time both the tail-recursive approach
-    and the iterative approach to sum 1..n. We illustrate that Python’s tail recursion
+    and the iterative approach to sum 1..n. We illustrate that Python's tail recursion
     doesn't get optimized, so iteration may be faster and won't risk hitting recursion depth limits.
 
     Narrative:

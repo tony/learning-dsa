@@ -28,7 +28,7 @@ a tail pointer, but searching through the list is O(n), so it's less suitable fo
 than arrays or balanced trees. Still, O(1) insertion at ends can be handy for certain tasks.
 
 Doctests:
-We’ll show inserting at head, tail (with tail pointer), and searching.
+We'll show inserting at head, tail (with tail pointer), and searching.
 
 Run `python -m doctest -v thisfile.py` or `pytest --doctest-modules` to verify.
 """

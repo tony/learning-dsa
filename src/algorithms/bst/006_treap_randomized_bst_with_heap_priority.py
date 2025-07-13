@@ -124,7 +124,7 @@ def inorder(root: TreapNode | None, out: list[int]) -> None:
 
 def main() -> None:
     """
-    Main demonstration:
+    Demonstrate main functionality.
 
     Insert a few items, do an inorder to confirm BST property.
     Observe random priority yields an unpredictable shape, but expected O(log n) height.

@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 """
-10. Timsort (Python’s Built-In Sorting Algorithm).
+10. Timsort (Python's Built-In Sorting Algorithm).
 
 Algorithm: Timsort
 
 Concepts:
 - Timsort is a hybrid of mergesort and insertion sort, designed to perform especially
 well on partially sorted data.
-- Python’s built-in `sorted()` function and `list.sort()` implement Timsort.
+- Python's built-in `sorted()` function and `list.sort()` implement Timsort.
 - If the data contains "runs" (already sorted segments), Timsort exploits them for near
 O(n) performance in the best case.
 - Otherwise, it defaults to O(n log n) average and worst case.
@@ -25,7 +25,7 @@ for such "nearly sorted" data. Even on random or adversarial data, it remains O(
 making it a highly robust, real-world friendly sorting method.
 
 Doctests:
-Demonstrate basic usage of Timsort via Python’s `sorted()`. Timsort is behind the scenes.
+Demonstrate basic usage of Timsort via Python's `sorted()`. Timsort is behind the scenes.
 
 Run `python -m doctest -v thisfile.py` or `pytest --doctest-modules` to verify.
 """

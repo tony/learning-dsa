@@ -78,7 +78,7 @@ class Stack:
 
 def main() -> None:
     """
-    Main demonstration:
+    Demonstrate main functionality.
 
     We'll show timing of multiple push/pop operations to highlight O(1) amortized complexity.
 

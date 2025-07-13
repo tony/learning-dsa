@@ -20,7 +20,7 @@ Narrative:
 In our Data Analytics Pipeline, initially, we might just load a fixed number of data lines into a fixed-size array (imagine a CSV with a known row count). Access is constant time by index, but adding more items beyond the fixed capacity is costly (we must allocate a bigger array and copy). As data grows unpredictably, fixed-size arrays become inconvenient, prompting us to consider dynamic arrays (Python lists) next.
 
 Doctests:
-We’ll show basic access and update operations. No resizing is possible here.
+We'll show basic access and update operations. No resizing is possible here.
 
 Run `python -m doctest -v thisfile.py` or `pytest --doctest-modules` to test.
 """
@@ -62,7 +62,7 @@ def main() -> None:
     Access by index is O(1), searching requires O(n) scanning.
 
     Narrative:
-    Initially, if we know the exact number of lines we’ll process (e.g., a fixed-size dataset),
+    Initially, if we know the exact number of lines we'll process (e.g., a fixed-size dataset),
     a fixed-size array might suffice. Access is O(1) and simple. But if we need to insert beyond
     the fixed capacity or frequently rearrange, O(n) operations and complete copies become a bottleneck
     as data scales. This sets the stage for dynamic arrays (covered next), which handle unknown growth better.

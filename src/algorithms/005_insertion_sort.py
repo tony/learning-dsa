@@ -79,7 +79,7 @@ def main() -> None:
     For small or nearly sorted data, insertion sort can be quite efficient.
 
     Narrative:
-    If deliveries or records are often partially sorted, insertion sort’s near O(n) best case
+    If deliveries or records are often partially sorted, insertion sort's near O(n) best case
     can be advantageous. But for large or random data, O(n^2) is a big limitation,
     motivating more efficient sorts in future chapters.
     """

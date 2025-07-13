@@ -215,7 +215,7 @@ class BST:
     # -----------------------------
     def successor(self, node: BSTNode) -> BSTNode | None:
         """
-        Return the node’s in-order successor (next-larger).
+        Return the node's in-order successor (next-larger).
 
         If node has a right subtree, it's the min of that subtree.
         Otherwise, move up parents until we come from the left side.
@@ -230,7 +230,7 @@ class BST:
 
     def predecessor(self, node: BSTNode) -> BSTNode | None:
         """
-        Return the node’s in-order predecessor (next-smaller).
+        Return the node's in-order predecessor (next-smaller).
 
         If node has a left subtree, it's the max of that subtree.
         Otherwise, move up parents until we come from the right side.
@@ -258,7 +258,7 @@ class BST:
 
 def main() -> None:
     """
-    Main demonstration:
+    Demonstrate main functionality.
 
     We'll insert some data, compare recursive vs iterative search times,
     show min/max, and check successor/predecessor.

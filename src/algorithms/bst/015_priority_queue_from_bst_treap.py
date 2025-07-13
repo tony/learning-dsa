@@ -12,10 +12,10 @@ Algorithm:
 - Insert:
   1) BST insert by key.
   2) Assign random priority.
-  3) Rotate up if child’s priority outranks parent (for a “min-heap” style, we want parent’s priority <= children).
+  3) Rotate up if child's priority outranks parent (for a “min-heap” style, we want parent's priority <= children).
 - Extract-Min:
   1) Find min by going left.
-  2) Rotate that min node up (by rotating it with parents) until it’s root.
+  2) Rotate that min node up (by rotating it with parents) until it's root.
   3) Pop the root (which is min). Merge subtrees if needed or reassign root.
 
 Complexities:

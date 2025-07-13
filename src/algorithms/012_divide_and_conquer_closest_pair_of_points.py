@@ -118,7 +118,7 @@ def _closest_strip_pair(strip: list[tuple[float, float]], d: float) -> float:
 
 def main() -> None:
     """
-    Main demonstration:
+    Demonstrate main functionality.
 
     We'll create n random 2D points, measure time for finding the closest pair via
     the divide-and-conquer approach. This demonstrates O(n log n) complexity.

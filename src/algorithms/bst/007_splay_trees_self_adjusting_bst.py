@@ -202,7 +202,7 @@ def inorder(root: SplayNode | None, out: list[int]) -> None:
 
 def main() -> None:
     """
-    Main demonstration:
+    Demonstrate main functionality.
 
     Insert a few items, do an in-order print.
     Then search for one of them to show it splayed to root.

@@ -17,7 +17,7 @@ Complexities:
 - Worst-case O(log n) for search/insert/delete. The tree remains balanced in height.
 
 Narrative:
-A simpler set of rebalancing steps than AVL, widely used in practice (e.g., C++ std::map, Java’s TreeMap).
+A simpler set of rebalancing steps than AVL, widely used in practice (e.g., C++ std::map, Java's TreeMap).
 In an SRAS pipeline, if a standard library provides a red-black tree, we can rely on guaranteed O(log n) operations.
 """
 
@@ -224,7 +224,7 @@ def inorder(root: RBNode | None, out: list[int]) -> None:
 
 def main() -> None:
     """
-    Main demonstration:
+    Demonstrate main functionality.
 
     Insert a few items, show in-order. The final tree remains balanced O(log n).
     """
