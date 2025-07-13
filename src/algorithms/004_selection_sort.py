@@ -18,7 +18,8 @@ Complexities:
 Narrative:
 For very small datasets in an early-stage SRAS (Smart Routing and Analytics System), an O(n²)
 sort might be acceptable. Its simplicity can be appealing, but as data grows, selection sort
-becomes too slow, motivating more efficient sorts (e.g., merge sort, quicksort) with \( O(n \log n) \).
+becomes too slow, motivating more efficient sorts (e.g., merge sort, quicksort) with
+\( O(n \log n) \).
 
 Doctests:
 We'll test selection_sort on small inputs to confirm correctness.

@@ -21,7 +21,8 @@ Narrative:
 In certain real-world scenarios, such as a deliveries list that remains "almost sorted" but
 occasionally gets new items, insertion sort can outperform selection sort practically. In the SRAS
 pipeline, if a small portion of new deliveries arrive in roughly sorted order, insertion sort can
-insert them quickly. Still, for fully random or large-scale data, O(n^2) eventually becomes a bottleneck.
+insert them quickly. Still, for fully random or large-scale data, O(n^2) eventually becomes a
+bottleneck.
 
 Doctests:
 Check correctness on small and empty lists.

@@ -118,7 +118,8 @@ def main() -> None:
 
     We'll construct two BSTs of size n:
       1) Insert ascending values (0..n-1), measuring final height (worst-case ~n).
-      2) Insert random values, measuring final height (typical average ~O(log n)) if distribution is balanced.
+      2) Insert random values, measuring final height (typical average ~O(log n)) if distribution
+         is balanced.
 
     By using iterative insert and iterative height, we avoid Python recursion limits.
     We show how naive BST degrade with sorted data, emphasizing self-balancing need.

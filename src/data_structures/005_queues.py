@@ -5,7 +5,8 @@
 Data Structure: Queue (FIFO) implemented via `collections.deque`
 
 Concepts:
-A queue is a First-In-First-Out (FIFO) data structure. We enqueue (append) items at one end and dequeue (popleft) them from the other end.
+A queue is a First-In-First-Out (FIFO) data structure. We enqueue (append) items at one end and
+dequeue (popleft) them from the other end.
 Using `collections.deque`, both enqueue and dequeue operations are O(1) amortized.
 
 Complexities:
@@ -16,7 +17,10 @@ Complexities:
 - Space: O(n) to store n items.
 
 Narrative:
-In a data analytics pipeline, a queue can manage tasks in the order they arrive. For example, we can queue raw data lines for processing. Each line is processed in arrival order, ensuring fairness and predictability. The O(1) amortized operations keep the pipeline efficient, even as the number of tasks grows large.
+In a data analytics pipeline, a queue can manage tasks in the order they arrive. For example, we
+can queue raw data lines for processing. Each line is processed in arrival order, ensuring fairness
+and predictability. The O(1) amortized operations keep the pipeline efficient, even as the number
+of tasks grows large.
 
 Doctests:
 Check enqueue/dequeue operations and ensure FIFO order.

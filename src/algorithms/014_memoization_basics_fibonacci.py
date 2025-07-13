@@ -94,8 +94,9 @@ def main() -> None:
     We'll compare times for naive_fib (exponential) vs. memo_fib (linear) on moderately large n.
 
     Narrative:
-    In a large pipeline, naive recursion leads to exponential time for repeated subproblem calculations.
-    Memoization caches results, dropping time to O(n). We see a big difference for even moderate n.
+    In a large pipeline, naive recursion leads to exponential time for repeated subproblem
+    calculations. Memoization caches results, dropping time to O(n). We see a big difference
+    for even moderate n.
     """
     n = 30  # naive fib(30) is still feasible, but we show the time difference
 

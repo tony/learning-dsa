@@ -9,8 +9,10 @@ Concepts:
 - Generators are a high-level way to create iterators using 'yield'.
 - Complexity: Typically O(1) to move to the next element, as we just fetch the next item.
 - Space: O(1) for iterator state, since we don't store the entire dataset at once.
-- Best case: If the underlying data allows O(1) retrieval of the next item, iteration steps are O(1).
-- Worst case: If underlying data access is expensive, complexity reflects that. But the iterator itself adds minimal overhead.
+- Best case: If the underlying data allows O(1) retrieval of the next item, iteration steps are
+  O(1).
+- Worst case: If underlying data access is expensive, complexity reflects that. But the iterator
+  itself adds minimal overhead.
 
 Narrative:
 In a large data analytics pipeline, using iterators and generators lets us handle massive datasets

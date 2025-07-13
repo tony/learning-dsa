@@ -14,8 +14,8 @@ Concepts:
 Narrative:
 When the dataset is small or we have no knowledge of its order, we might do a linear scan.
 In the early days of our product ID pipeline, scanning a short list is fine. But as the pipeline
-grows to store thousands or millions of product IDs, a linear O(n) search quickly becomes a bottleneck,
-leading us to seek more efficient methods in future chapters.
+grows to store thousands or millions of product IDs, a linear O(n) search quickly becomes a
+bottleneck, leading us to seek more efficient methods in future chapters.
 
 Doctests:
 We test a simple linear_search function with a few scenarios.

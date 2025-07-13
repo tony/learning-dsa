@@ -56,7 +56,7 @@ def stable_partition(data: list[int], predicate: Callable[[int], bool]) -> None:
     >>> # Suppose we want to partition all even numbers to the front,
     >>> # but keep their relative order among evens/odds.
     >>> stable_partition(nums, predicate=lambda x: x % 2 == 0)
-    >>> nums  # Even elements (2,8) stay in their relative order, odd (5,1,3,7) remain in relative order
+    >>> nums  # Even elements (2,8) stay in their relative order, odd (5,1,3,7) remain in order
     [2, 8, 5, 1, 3, 7]
 
     >>> nums2 = []

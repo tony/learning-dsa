@@ -6,9 +6,9 @@ Algorithm: Quick Sort
 
 Concepts:
 Quick sort partitions the list around a pivot element. Elements less than the pivot go to the left,
-elements greater go to the right, and then we recursively sort both sides. The average and best cases
-are O(n log n), but choosing a poor pivot can degrade performance to O(n^2). Randomized or median-of-three
-pivots often mitigate this.
+elements greater go to the right, and then we recursively sort both sides. The average and best
+cases are O(n log n), but choosing a poor pivot can degrade performance to O(n^2). Randomized or
+median-of-three pivots often mitigate this.
 
 Complexities:
 - Best Case: O(n log n)
@@ -18,8 +18,8 @@ data with naive pivot choice).
 - Space: O(log n) average (due to recursive calls).
 
 Narrative:
-In an SRAS (Smart Routing and Analytics System), quick sort often outperforms merge sort in practice for
-random or average distributions because of good locality and less overhead, but it can suffer if
+In an SRAS (Smart Routing and Analytics System), quick sort often outperforms merge sort in practice
+for random or average distributions because of good locality and less overhead, but it can suffer if
 the pivot selection is unlucky. With a good pivot strategy, quick sort remains a top choice for
 fast in-place sorting of large datasets.
 

@@ -5,7 +5,8 @@
 Data Structure: Stack (LIFO)
 
 Concepts:
-A stack is a Last-In-First-Out data structure. We push items onto the top and pop items from the top.
+A stack is a Last-In-First-Out data structure. We push items onto the top and pop items from the
+top.
 We can implement a stack in Python using `collections.deque` or a list. Using `deque` is typically
 more efficient for push/pop at the ends.
 
@@ -16,14 +17,19 @@ Complexities:
 - Search (if needed): O(n) if we must scan
 - Space: O(n)
 
-No best/average/worst differences for push/pop in amortized terms-they're consistently O(1) amortized with deque.
-Worst case scenario: if large memory reallocations occur rarely in a list, push/pop could degrade, but with `deque` this is stable O(1).
+No best/average/worst differences for push/pop in amortized terms-they're consistently O(1)
+amortized with deque.
+Worst case scenario: if large memory reallocations occur rarely in a list, push/pop could degrade,
+but with `deque` this is stable O(1).
 
 Narrative:
-In our data analytics pipeline, a stack can help manage tasks in a LIFO manner. For example, if we have a series of transformation steps and want to easily undo the most recent step, a stack provides O(1) push/pop operations, making undo operations efficient.
+In our data analytics pipeline, a stack can help manage tasks in a LIFO manner. For example, if we
+have a series of transformation steps and want to easily undo the most recent step, a stack provides
+O(1) push/pop operations, making undo operations efficient.
 
 Doctests:
-Check basic stack operations: push, pop, peek (just check the last element), and confirm the LIFO order.
+Check basic stack operations: push, pop, peek (just check the last element), and confirm the LIFO
+order.
 
 Run `python -m doctest -v thisfile.py` or `pytest --doctest-modules` to verify.
 """

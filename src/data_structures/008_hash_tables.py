@@ -18,9 +18,10 @@ Complexities:
 - Space: O(n)
 
 Narrative:
-Storing metadata tags, product IDs, or quick reference lookups in a data analytics pipeline is common.
-A hash table (dict) allows these lookups to be O(1) on average, keeping the pipeline responsive even
-as data grows large. This is critical for fast queries on large sets of tags or identifiers.
+Storing metadata tags, product IDs, or quick reference lookups in a data analytics pipeline is
+common. A hash table (dict) allows these lookups to be O(1) on average, keeping the pipeline
+responsive even as data grows large. This is critical for fast queries on large sets of tags or
+identifiers.
 
 Doctests:
 Show inserting, searching, and deleting from a dict.
@@ -69,10 +70,12 @@ def main() -> None:
     search_time = timeit.timeit(lambda: (n - 1 in d), number=1000)
 
     print(
-        f"Inserting {n} items into dict took: {insert_time:.5f}s total (~{insert_time / n:.9f}s per insert)",
+        f"Inserting {n} items into dict took: {insert_time:.5f}s total "
+        f"(~{insert_time / n:.9f}s per insert)",
     )
     print(
-        f"Checking membership of a key 1000 times took: {search_time:.5f}s (~{search_time / 1000:.9f}s per check)",
+        f"Checking membership of a key 1000 times took: {search_time:.5f}s "
+        f"(~{search_time / 1000:.9f}s per check)",
     )
     print(
         "Average O(1) behavior demonstrated. Worst-case O(n) is rare with good hash distribution.",

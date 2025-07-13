@@ -6,8 +6,8 @@ Context
 -------
 This lesson introduces what algorithms are and why their complexity is important. We'll explore
 Big-O notation as a way to describe how algorithm performance scales with input size. Understanding
-complexity is crucial as the Smart Routing and Analytics System (SRAS) must respond quickly to queries,
-and inefficient algorithms will degrade response times as data grows.
+complexity is crucial as the Smart Routing and Analytics System (SRAS) must respond quickly to
+queries, and inefficient algorithms will degrade response times as data grows.
 
 Prerequisites:
 - Basic Python knowledge (functions, loops).

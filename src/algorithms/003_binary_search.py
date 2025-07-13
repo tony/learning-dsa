@@ -14,8 +14,8 @@ adds O(log n) stack space).
 
 Narrative:
 If we sort product IDs or any sorted collection, we can confirm existence of a particular ID
-in O(log n) rather than O(n). For SRAS (Smart Routing and Analytics System), that's a huge improvement
-over linear scanning. This keeps the system responsive even if the list grows large.
+in O(log n) rather than O(n). For SRAS (Smart Routing and Analytics System), that's a huge
+improvement over linear scanning. This keeps the system responsive even if the list grows large.
 
 Doctests:
 We test the binary_search function on sorted lists to confirm correctness.

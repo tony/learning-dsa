@@ -16,10 +16,10 @@ Complexities:
 - Space: O(n) for storing all elements plus linked lists for chains.
 
 Narrative:
-As our data grows large (e.g., large volumes of tags or product IDs), even with hash tables we must handle collisions.
-Chaining provides a simple method: keep a linked list for all keys that share a bucket. Usually keys distribute well,
-preserving O(1) operations on average. If too many collide, performance can degrade, prompting better hash functions
-or resizing strategies.
+As our data grows large (e.g., large volumes of tags or product IDs), even with hash tables we
+must handle collisions. Chaining provides a simple method: keep a linked list for all keys that
+share a bucket. Usually keys distribute well, preserving O(1) operations on average. If too many
+collide, performance can degrade, prompting better hash functions or resizing strategies.
 
 Doctests:
 We'll use `print(h.search("key"))` to ensure the return value is shown as output.
@@ -117,7 +117,8 @@ def main() -> None:
         f"Inserting {n} items took: {insert_time:.5f} s total (~{insert_time / n:.9f} s/insert)",
     )
     print(
-        f"Searching an existing key 1000 times took: {search_time:.5f} s (~{search_time / 1000:.9f} s/search)",
+        f"Searching an existing key 1000 times took: {search_time:.5f} s "
+        f"(~{search_time / 1000:.9f} s/search)",
     )
     print("Operations show near O(1) average performance with good distribution.")
 

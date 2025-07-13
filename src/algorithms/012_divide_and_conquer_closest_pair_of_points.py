@@ -53,7 +53,8 @@ def closest_pair(points: list[tuple[float, float]]) -> float:
     >>> pts = [(0,0), (3,4), (1,1), (2,2)]
     >>> round(closest_pair(pts), 4)
     1.4142
-    >>> # Explanation: points (1,1) and (2,2) are sqrt(2)=1.4142... apart, which is the minimal distance.
+    >>> # Explanation: points (1,1) and (2,2) are sqrt(2)=1.4142... apart,
+    >>> # which is the minimal distance.
     """
     # Sort points by x-coordinate initially
 
