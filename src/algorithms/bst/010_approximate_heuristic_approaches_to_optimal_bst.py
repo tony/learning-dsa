@@ -42,7 +42,7 @@ class Node:
 
 def build_heuristic_bst(keys: list[int], freqs: list[float]) -> Node | None:
     """
-    A naive heuristic building a BST:
+    Build a BST using a naive heuristic:
 
      1) Find the key with largest freq in [keys], make it root
      2) Recursively build left subtree from keys < root

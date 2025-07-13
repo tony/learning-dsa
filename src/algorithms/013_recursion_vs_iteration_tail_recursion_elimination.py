@@ -40,7 +40,7 @@ sys.setrecursionlimit(
 
 def tail_recursive_sum(n: int, accumulator: int = 0) -> int:
     """
-    Sums integers from 1 to n using a tail-recursive approach.
+    Sum integers from 1 to n using a tail-recursive approach.
 
     Python doesn't optimize tail calls, so large n can cause deep recursion.
 
@@ -62,7 +62,7 @@ def tail_recursive_sum(n: int, accumulator: int = 0) -> int:
 
 def iterative_sum(n: int) -> int:
     """
-    Sums integers from 1 to n in an iterative manner, avoiding recursion entirely.
+    Sum integers from 1 to n in an iterative manner, avoiding recursion entirely.
 
     Examples
     --------

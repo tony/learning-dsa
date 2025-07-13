@@ -202,7 +202,7 @@ class BST:
         return current
 
     def find_node(self, key: Any) -> BSTNode | None:
-        """Utility to return the BSTNode instead of just True/False."""
+        """Return the BSTNode for the given key instead of just True/False."""
         current = self.root
         while current:
             if current.key == key:

@@ -82,7 +82,7 @@ def main() -> None:
 
     for n in sizes:
         data = list(range(n))  # Sorted
-        exec_time = timeit.timeit(lambda d=data: binary_search(d, target), number=100)
+        exec_time = timeit.timeit("binary_search(data, target)", globals=globals(), number=100)
         print(
             f"Sorted list size {n}, repeated 100 runs: {exec_time:.5f} seconds total "
             f"(~{exec_time / 100:.5f}s per run). This scales ~O(log n).",

@@ -71,7 +71,7 @@ def memo_fib(n: int, memo: dict[int, int] | None = None) -> int:
 @lru_cache(None)
 def fib_lru(n: int) -> int:
     """
-    A version using functools.lru_cache for memoization.
+    Compute Fibonacci number using functools.lru_cache for memoization.
 
     Examples
     --------

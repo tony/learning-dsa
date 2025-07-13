@@ -68,7 +68,7 @@ class MyIterator:
 
 def my_generator(data: list[Any]) -> Iterator[Any]:
     """
-    A generator that yields elements from the provided list.
+    Yield elements from the provided list.
 
     Complexity per next element: O(1) to yield and advance.
     Space: O(1).

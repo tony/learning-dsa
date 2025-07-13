@@ -193,7 +193,7 @@ def search_splay(root: SplayNode | None, key: int) -> SplayNode | None:
 
 
 def inorder(root: SplayNode | None, out: list[int]) -> None:
-    """Simple in-order traversal for verifying BST property."""
+    """Perform in-order traversal for verifying BST property."""
     if root:
         inorder(root.left, out)
         out.append(root.key)

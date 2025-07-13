@@ -40,7 +40,7 @@ class BSTNode:
 
 def insert_iterative(root: BSTNode | None, val: int) -> BSTNode:
     """
-    Iteratively insert 'val' into the BST, avoiding deep recursion.
+    Insert 'val' into the BST iteratively, avoiding deep recursion.
 
     Returns the (possibly new) root.
 
@@ -80,7 +80,7 @@ def insert_iterative(root: BSTNode | None, val: int) -> BSTNode:
 
 def height_iterative(root: BSTNode | None) -> int:
     """
-    Iteratively compute the height of the BST using a BFS approach.
+    Compute the height of the BST iteratively using a BFS approach.
 
     An empty tree has height=0. A single node has height=1.
 

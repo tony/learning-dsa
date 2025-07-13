@@ -61,7 +61,7 @@ def get_balance(node: TTreeNode | None) -> int:
 
 def rotate_left(root: TTreeNode) -> TTreeNode:
     """
-    Standard AVL-like left rotation around 'root'.
+    Perform AVL-like left rotation around 'root'.
 
     We'll assume root.right is not None in normal usage.
     """
@@ -77,7 +77,7 @@ def rotate_left(root: TTreeNode) -> TTreeNode:
 
 def rotate_right(root: TTreeNode) -> TTreeNode:
     """
-    Standard AVL-like right rotation around 'root'.
+    Perform AVL-like right rotation around 'root'.
 
     We'll assume root.left is not None in normal usage.
     """
