@@ -89,7 +89,7 @@ def fib_lru(n: int) -> int:
 
 def main() -> None:
     """
-    Main demonstration:
+    Demonstrate main functionality.
 
     We'll compare times for naive_fib (exponential) vs. memo_fib (linear) on moderately large n.
 

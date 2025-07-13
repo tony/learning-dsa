@@ -58,7 +58,7 @@ def sorted_insert(lst: list[int], x: int) -> None:
 
 def main() -> None:
     """
-    Main demonstration:
+    Demonstrate main functionality.
 
     We'll maintain a sorted list of size n, then do m random insertions
     using sorted_insert. We'll measure the time. Despite O(log n) position finding,

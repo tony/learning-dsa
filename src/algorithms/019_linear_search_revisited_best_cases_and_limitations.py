@@ -55,7 +55,7 @@ def linear_search_small(data: list[Any], target: Any) -> bool:
 
 def main() -> None:
     """
-    Main demonstration:
+    Demonstrate main functionality.
 
     We'll demonstrate linear search on smaller data sets,
     highlighting that for small n, O(n) is often acceptable.

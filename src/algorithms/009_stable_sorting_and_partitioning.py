@@ -81,7 +81,7 @@ def stable_partition(data: list[int], predicate: Callable[[int], bool]) -> None:
 
 def main() -> None:
     """
-    Main demonstration:
+    Demonstrate main functionality.
 
     We'll show stable_partition dividing a list into two groups
     (for example, region A vs. region B in SRAS scenario),

@@ -67,7 +67,7 @@ def route_cost(
 
 def main() -> None:
     """
-    Main demonstration:
+    Demonstrate main functionality.
 
     We'll measure the time for repeated calls to route_cost with or without the cache.
 

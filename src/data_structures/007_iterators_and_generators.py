@@ -92,7 +92,7 @@ def my_generator(data: list[Any]) -> Iterator[Any]:
 
 def main() -> None:
     """
-    Main demonstration:
+    Demonstrate main functionality.
 
     We'll show that iterating over a large list using an iterator or generator
     doesn't require holding all processed data in memory at once, and each step is O(1).

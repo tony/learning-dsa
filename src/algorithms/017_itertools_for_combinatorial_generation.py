@@ -70,7 +70,7 @@ def demonstrate_combinations(data: list[Any], r: int) -> None:
 
 def main() -> None:
     """
-    Main demonstration:
+    Demonstrate main functionality.
 
     We'll measure time for generating permutations of a small list.
     Even for moderate n, factorial growth can become large quickly.

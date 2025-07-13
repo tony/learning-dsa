@@ -63,7 +63,7 @@ def merge_sort(data: list[int]) -> None:
         left_half = data[:mid]
         right_half = data[mid:]
 
-        # Recursively sort both halves
+        # Perform recursive sort both halves
         merge_sort(left_half)
         merge_sort(right_half)
 
