@@ -19,11 +19,13 @@ Complexities:
 
 Narrative:
 If we have a sorted list of product IDs in an SRAS pipeline and only occasionally insert a new ID,
-using `bisect` helps us find the correct position quickly. However, the actual insertion is still O(n),
-which is fine for small lists or rare insertions, but can become expensive if we do many insertions.
+using `bisect` helps us find the correct position quickly. However, the actual insertion is still
+O(n), which is fine for small lists or rare insertions, but can become expensive if we do many
+insertions.
 
 Doctests:
-We'll define a function `sorted_insert` that uses `bisect_left` to find the insertion index, then inserts.
+We'll define a function `sorted_insert` that uses `bisect_left` to find the insertion index,
+then inserts.
 
 Run `python -m doctest -v thisfile.py` or `pytest --doctest-modules` to verify.
 """

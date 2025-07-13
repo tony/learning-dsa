@@ -67,7 +67,8 @@ def split_child(parent: BTreeNode, i: int) -> None:
     Split the full child parent.children[i] into two nodes, adjusting parent keys & children.
 
     parent.children[i] must have 2t-1 keys (full).
-    We'll move the median key up to parent, and create a new sibling node for the second half of keys.
+    We'll move the median key up to parent, and create a new sibling node for the second half
+    of keys.
     """
     t = parent.t
     full_child = parent.children[i]

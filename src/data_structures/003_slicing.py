@@ -12,13 +12,20 @@ Concepts:
 
 Complexities:
 - Slicing a list: O(k) time to copy the sliced portion.
-- In-place insertions/deletions via slicing: O(k) time, plus O(n) shifting in worst cases if we replace a large slice at arbitrary positions.
+- In-place insertions/deletions via slicing: O(k) time, plus O(n) shifting in worst cases if
+  we replace a large slice at arbitrary positions.
 - Space: O(k) for new slices since we allocate a new list of size k.
 - Best case: If k is small, slicing overhead is low.
-- Worst case: Large slices or frequent slicing operations can impact performance linearly with slice size.
+- Worst case: Large slices or frequent slicing operations can impact performance linearly
+  with slice size.
 
 Narrative:
-When preprocessing raw data, we may have a large list of records. Pythonic slicing and list comprehensions let us quickly extract relevant portions of the data. For example, if we only need the first 100 lines or want to skip a header row, slicing makes it easy. While slicing is O(k), if k is small relative to n, it's very convenient. As we scale to larger datasets, we must remain aware that slicing large portions can add overhead proportional to that slice size.
+When preprocessing raw data, we may have a large list of records. Pythonic slicing and list
+comprehensions let us quickly extract relevant portions of the data. For example, if we only
+need the first 100 lines or want to skip a header row, slicing makes it easy. While slicing
+is O(k), if k is small relative to n, it's very convenient. As we scale to larger datasets,
+we must remain aware that slicing large portions can add overhead proportional to that slice
+size.
 
 Doctests:
 We'll show simple slicing operations and confirm they produce the expected sublists.
@@ -32,6 +39,7 @@ import timeit
 def demonstrate_slicing() -> None:
     """
     Examples.
+
     --------
     >>> data = [i for i in range(10)]
     >>> sub = data[2:5]  # slice length k=3
@@ -43,7 +51,8 @@ def demonstrate_slicing() -> None:
     >>> data[2:5] = [20,30]  # replacing k=3 elements with k=2 elements
     >>> data
     [0, 1, 20, 30, 5, 6, 7, 8, 9]
-    >>> # This shifting elements beyond index 5 occurs O(n) in worst case if we consider large replacements
+    >>> # This shifting elements beyond index 5 occurs O(n) in worst case if we consider
+    >>> # large replacements
     """
 
 
@@ -79,10 +88,12 @@ def main() -> None:
         "For our data analytics pipeline, small slices (like skipping a header row) are cheap.",
     )
     print(
-        "Large slices are still linear in the slice size, which is usually manageable but must be considered.",
+        "Large slices are still linear in the slice size, which is usually manageable but "
+        "must be considered.",
     )
     print(
-        "This Pythonic idiom remains convenient and clear, often worth the O(k) cost for simplicity.",
+        "This Pythonic idiom remains convenient and clear, often worth the O(k) cost for "
+        "simplicity.",
     )
 
 

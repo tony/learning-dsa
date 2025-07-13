@@ -5,7 +5,9 @@
 Data Structure: Fixed-Size Array
 
 Concepts:
-A fixed-size array is a contiguous block of memory storing elements of the same type. Its size is determined at creation and cannot be changed. While Python doesn't have a native fixed-size array without resizing, we can simulate it or imagine a lower-level language scenario.
+A fixed-size array is a contiguous block of memory storing elements of the same type. Its size
+is determined at creation and cannot be changed. While Python doesn't have a native fixed-size
+array without resizing, we can simulate it or imagine a lower-level language scenario.
 
 Complexities:
 - Access by index: O(1) (direct indexing)
@@ -17,7 +19,11 @@ amortized benefit)
 No amortized improvements since size is not dynamic.
 
 Narrative:
-In our Data Analytics Pipeline, initially, we might just load a fixed number of data lines into a fixed-size array (imagine a CSV with a known row count). Access is constant time by index, but adding more items beyond the fixed capacity is costly (we must allocate a bigger array and copy). As data grows unpredictably, fixed-size arrays become inconvenient, prompting us to consider dynamic arrays (Python lists) next.
+In our Data Analytics Pipeline, initially, we might just load a fixed number of data lines
+into a fixed-size array (imagine a CSV with a known row count). Access is constant time by
+index, but adding more items beyond the fixed capacity is costly (we must allocate a bigger
+array and copy). As data grows unpredictably, fixed-size arrays become inconvenient, prompting
+us to consider dynamic arrays (Python lists) next.
 
 Doctests:
 We'll show basic access and update operations. No resizing is possible here.
@@ -74,21 +80,24 @@ def main() -> None:
     # Access time measurement (random index)
     access_time = timeit.timeit(lambda: arr[n // 2], number=1_000_000)
     print(
-        f"Accessing a fixed-size array element 1,000,000 times took: {access_time:.5f} seconds (O(1) each).",
+        f"Accessing a fixed-size array element 1,000,000 times took: {access_time:.5f} "
+        f"seconds (O(1) each).",
     )
 
     # Searching (linear)
     # Searching for a value near the end ensures O(n) behavior
     search_time = timeit.timeit(lambda: (n - 1 in arr), number=10)
     print(
-        f"Searching for an element near the end of the array 10 times took: {search_time:.5f} seconds.",
+        f"Searching for an element near the end of the array 10 times took: "
+        f"{search_time:.5f} seconds.",
     )
     print("As n grows, searching scales linearly, O(n).")
 
     print()
     print("Fixed-size arrays provide O(1) index access but no easy resizing.")
     print(
-        "As data grows unpredictably, fixed-size arrays force costly O(n) operations when resizing or inserting.",
+        "As data grows unpredictably, fixed-size arrays force costly O(n) operations when "
+        "resizing or inserting.",
     )
     print("This motivates using dynamic arrays (Python lists) in the next chapter.")
 

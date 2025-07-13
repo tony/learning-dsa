@@ -48,7 +48,8 @@ def is_full_2keys(node: Two3Node) -> bool:
 
 def split_2node(parent: Two3Node, index: int) -> None:
     """
-    Split the full child parent.children[index] (which must have 2 keys, then we add 1 => total 3 keys).
+    Split the full child parent.children[index] (which must have 2 keys, then we add 1 =>
+    total 3 keys).
 
     We'll create a new sibling node and push the middle key up into parent.
     """
@@ -69,8 +70,9 @@ def split_2node(parent: Two3Node, index: int) -> None:
     if not child.leaf:
         # child had 3 children => split them
         # child.children => 3 or 4?
-        # if child was full, we expect 3 children after insertion. We'll move the last child to new_node
-        # Actually, if it's 2-3 node, after insertion child might have up to 3 children. We do a simple approach.
+        # if child was full, we expect 3 children after insertion. We'll move the last
+        # child to new_node. Actually, if it's 2-3 node, after insertion child might have
+        # up to 3 children. We do a simple approach.
         # We'll assume child had exactly 3 children if it is full.
         new_node.children = child.children[2:]
         child.children = child.children[:2]
@@ -88,7 +90,8 @@ def insert_nonfull_2node(node: Two3Node, key: int) -> None:
     Else find child to descend, split if child is full, then insert in child.
     """
     if node.leaf:
-        # Insert key in sorted order in node.keys (which has at most 1 key if we are guaranteed not full).
+        # Insert key in sorted order in node.keys (which has at most 1 key if we are
+        # guaranteed not full).
         node.keys.append(key)
         node.keys.sort()
     else:
@@ -111,7 +114,8 @@ def insert_nonfull_2node(node: Two3Node, key: int) -> None:
             pass
         # but if we already inserted, we might not need to re-insert?
         # Actually we handle the case that we tried to insert in child (which might not be full).
-        # We'll do a second pass if the child had 2 keys but didn't cause a split yet. We'll do a simpler approach:
+        # We'll do a second pass if the child had 2 keys but didn't cause a split yet.
+        # We'll do a simpler approach:
         if len(node.children) > i:  # double-check bounds
             if len(node.children[i].keys) < 2:  # still not full
                 insert_nonfull_2node(node.children[i], key)

@@ -77,6 +77,7 @@ class Queue:
         return len(self._data) == 0
 
     def __len__(self) -> int:
+        """Return the number of items in the queue."""
         return len(self._data)
 
 

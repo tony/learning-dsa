@@ -58,9 +58,11 @@ class MyIterator:
         self._index = 0
 
     def __iter__(self) -> "MyIterator":
+        """Return the iterator object itself."""
         return self
 
     def __next__(self) -> Any:
+        """Return the next item from the iterator."""
         if self._index < len(self._data):
             val = self._data[self._index]
             self._index += 1

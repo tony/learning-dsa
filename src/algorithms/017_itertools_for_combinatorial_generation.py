@@ -84,15 +84,18 @@ def main() -> None:
 
     # We'll measure how long it takes to just iterate over permutations
     exec_time = timeit.timeit(lambda: list(itertools.permutations(data)), number=1)
+    perms_count = len(list(itertools.permutations(data)))
     print(
-        f"Iterating over all permutations of {n} items took: {exec_time:.5f}s (there are {len(list(itertools.permutations(data)))})",
+        f"Iterating over all permutations of {n} items took: {exec_time:.5f}s "
+        f"(there are {perms_count})",
     )
 
     # Similarly for combinations
     r = 4
     comb_time = timeit.timeit(lambda: list(itertools.combinations(data, r)), number=1)
+    comb_count = len(list(itertools.combinations(data, r)))
     print(
-        f"Iterating over combinations C({n},{r}) took: {comb_time:.5f}s. (count={len(list(itertools.combinations(data, r)))})",
+        f"Iterating over combinations C({n},{r}) took: {comb_time:.5f}s. (count={comb_count})",
     )
 
 

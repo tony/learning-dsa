@@ -38,6 +38,8 @@ from typing import Any
 
 
 class Node:
+    """A node in a singly linked list."""
+
     def __init__(self, value: Any) -> None:
         self.value = value
         self.next: Node | None = None
@@ -108,9 +110,11 @@ class SinglyLinkedList:
         return self._size == 0
 
     def __len__(self) -> int:
+        """Return the number of nodes in the list."""
         return self._size
 
     def __iter__(self) -> Generator[str]:
+        """Iterate through the linked list values."""
         current = self.head
         while current:
             yield current.value
@@ -127,7 +131,8 @@ def main() -> None:
 
     Narrative:
     If we need a structure where we frequently add steps at start or end (like an undo log),
-    a singly linked list works well for insertion. But searching for a particular value requires O(n).
+    a singly linked list works well for insertion. But searching for a particular value
+    requires O(n).
     This trade-off might be acceptable depending on the pipeline's needs.
     """
     import timeit
@@ -144,14 +149,17 @@ def main() -> None:
     search_time = timeit.timeit(lambda: lst.search(n - 1), number=10)
 
     print(
-        f"Inserting {n} items at head: {head_insert_time:.5f} s total (~{head_insert_time / n:.9f} s per op)",
+        f"Inserting {n} items at head: {head_insert_time:.5f} s total "
+        f"(~{head_insert_time / n:.9f} s per op)",
     )
     print(
-        f"Inserting {n} items at tail: {tail_insert_time:.5f} s total (~{tail_insert_time / n:.9f} s per op)",
+        f"Inserting {n} items at tail: {tail_insert_time:.5f} s total "
+        f"(~{tail_insert_time / n:.9f} s per op)",
     )
     print("Both near O(1) operations per insertion due to tail pointer.")
     print(
-        f"Searching in a list of size {len(lst)}: {search_time:.5f} s for 10 searches (~{search_time / 10:.9f} s per search)",
+        f"Searching in a list of size {len(lst)}: {search_time:.5f} s for 10 searches "
+        f"(~{search_time / 10:.9f} s per search)",
     )
     print("Searching is O(n), as expected.")
 

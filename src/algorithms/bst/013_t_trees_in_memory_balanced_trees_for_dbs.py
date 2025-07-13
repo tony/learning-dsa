@@ -4,7 +4,8 @@
 
 Concepts:
 - A T-tree merges AVL height balancing with B-tree-like multiple keys per node.
-- Each node can hold a set (array) of keys, reducing pointer overhead and leveraging CPU cache better.
+- Each node can hold a set (array) of keys, reducing pointer overhead and leveraging CPU
+  cache better.
 - Balanced using AVL-like height checks (rotate if unbalanced).
 
 Algorithm (Sketch):
@@ -116,6 +117,7 @@ def rebalance(node: TTreeNode) -> TTreeNode:
 def insert_into_node(node: TTreeNode, key: int) -> bool:
     """
     Try to place 'key' into node.keys if there's space or it belongs inside range.
+
     Return True if the key was inserted, False if we need to go subtrees.
     We'll keep keys sorted.
     """
@@ -123,21 +125,20 @@ def insert_into_node(node: TTreeNode, key: int) -> bool:
         node.keys.append(key)
         return True
     # if key is within min and max of node.keys => place it in this node if capacity allows
-    if key >= node.keys[0] and key <= node.keys[-1]:
-        # try to insert in sorted position
-        if len(node.keys) < node.capacity:
-            # insert into node.keys in order
-            i = 0
-            while i < len(node.keys) and node.keys[i] < key:
-                i += 1
-            node.keys.insert(i, key)
-            return True
+    if key >= node.keys[0] and key <= node.keys[-1] and len(node.keys) < node.capacity:
+        # insert into node.keys in order
+        i = 0
+        while i < len(node.keys) and node.keys[i] < key:
+            i += 1
+        node.keys.insert(i, key)
+        return True
     return False
 
 
 def split_node(node: TTreeNode) -> tuple[int, TTreeNode]:
     """
     If node.keys exceed capacity => we 'split' it by:
+
     1) take middle key as 'promoted' or 'pushed up' key
     2) create a new TTreeNode for the right half.
     Return (promoted_key, new_right_node).
@@ -176,7 +177,8 @@ def insert_ttree(root: TTreeNode | None, key: int, capacity: int = 4) -> TTreeNo
             # we must split. The 'mid_key' we push up to the parent
             # but we have no parent pointer here => we do a top-level approach:
             mid_key, new_node = split_node(root)
-            # create new root, mid_key is root's key, old root is left child, new_node is right child
+            # create new root, mid_key is root's key, old root is left child,
+            # new_node is right child
             new_root = TTreeNode(capacity)
             new_root.keys = [mid_key]
             new_root.left = root

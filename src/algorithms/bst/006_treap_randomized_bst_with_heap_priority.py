@@ -23,7 +23,8 @@ shape on average.
 
 Narrative:
 Treaps can be simpler to implement than Red-Black or AVL trees. In an SRAS environment,
-if we dislike complex balancing rules, a Treap with random priorities provides expected O(log n) performance.
+if we dislike complex balancing rules, a Treap with random priorities provides expected
+O(log n) performance.
 """
 
 from __future__ import annotations

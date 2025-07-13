@@ -21,8 +21,9 @@ Complexities:
 near top
 
 Narrative:
-In SRAS, if certain IDs have high frequencies, placing them near the root cuts average search cost.
-But we must pay O(n^3) (or O(n^2)) to compute it offline, only worthwhile if we truly know frequencies.
+In SRAS, if certain IDs have high frequencies, placing them near the root cuts average search
+cost. But we must pay O(n^3) (or O(n^2)) to compute it offline, only worthwhile if we truly
+know frequencies.
 """
 
 from __future__ import annotations

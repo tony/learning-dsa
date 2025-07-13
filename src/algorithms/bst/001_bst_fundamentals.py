@@ -98,9 +98,8 @@ class BST:
 
     def insert(self, key: Any) -> None:
         """
-        Insert a new key into the BST. If key already exists, this example does not handle duplicates.
-
-        (either skip or define your own policy).
+        Insert a new key into the BST. If key already exists, this example does not handle
+        duplicates (either skip or define your own policy).
         """
         self.root = self._insert_recursive(self.root, key)
 
@@ -209,7 +208,8 @@ def main() -> None:
 
     Narrative:
     A small demonstration of how a BST might be used in an SRAS system for moderate random data.
-    For large or potentially skewed data, self-balancing is essential to keep these operations O(log n).
+    For large or potentially skewed data, self-balancing is essential to keep these
+    operations O(log n).
     """
     import random
 

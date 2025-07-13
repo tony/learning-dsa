@@ -83,6 +83,7 @@ class Stack:
         return len(self._data) == 0
 
     def __len__(self) -> int:
+        """Return the number of items in the stack."""
         return len(self._data)
 
 

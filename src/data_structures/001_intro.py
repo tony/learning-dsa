@@ -26,7 +26,8 @@ rows, more products, more queries), poor algorithmic complexity leads to slowdow
 complexity now ensures we choose data structures that keep performance stable at large scales.
 
 Doctests:
-No specific data structure to test. We may just show that the file runs and a trivial function works.
+No specific data structure to test. We may just show that the file runs and a trivial
+function works.
 
 Run `python -m doctest -v thisfile.py` or `pytest --doctest-modules` if needed.
 """
@@ -65,7 +66,8 @@ def main() -> None:
     print("Algorithms: Defined procedures to solve problems.")
     print("Data Structures: Organized ways to store and manage data.")
     print(
-        "Complexity (Big-O notation): A tool to describe how runtime or space grows with input size.",
+        "Complexity (Big-O notation): A tool to describe how runtime or space grows with "
+        "input size.",
     )
     print()
     print("Timing a trivial operation (purely for demonstration):")
@@ -74,7 +76,8 @@ def main() -> None:
     print()
     print("This doesn't show scaling yet. Later chapters will apply Big-O notation")
     print(
-        "to real data structures as input sizes grow, and we'll see differences between O(n), O(log n), etc.",
+        "to real data structures as input sizes grow, and we'll see differences between "
+        "O(n), O(log n), etc.",
     )
     print(
         "This understanding ensures good performance choices in our data analytics pipeline.",

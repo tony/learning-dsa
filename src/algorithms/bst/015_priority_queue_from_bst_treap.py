@@ -12,7 +12,8 @@ Algorithm:
 - Insert:
   1) BST insert by key.
   2) Assign random priority.
-  3) Rotate up if child's priority outranks parent (for a “min-heap” style, we want parent's priority <= children).
+  3) Rotate up if child's priority outranks parent (for a "min-heap" style, we want parent's
+     priority <= children).
 - Extract-Min:
   1) Find min by going left.
   2) Rotate that min node up (by rotating it with parents) until it's root.
@@ -23,7 +24,8 @@ Complexities:
 
 Narrative:
 If SRAS needs both BST lookups and a priority-queue structure, a treap unifies them.
-We can do BFS/DFS by key, also can quickly extract the min or max by rotating them to root and popping.
+We can do BFS/DFS by key, also can quickly extract the min or max by rotating them to root
+and popping.
 """
 
 from __future__ import annotations

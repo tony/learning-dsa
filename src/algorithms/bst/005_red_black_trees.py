@@ -17,8 +17,9 @@ Complexities:
 - Worst-case O(log n) for search/insert/delete. The tree remains balanced in height.
 
 Narrative:
-A simpler set of rebalancing steps than AVL, widely used in practice (e.g., C++ std::map, Java's TreeMap).
-In an SRAS pipeline, if a standard library provides a red-black tree, we can rely on guaranteed O(log n) operations.
+A simpler set of rebalancing steps than AVL, widely used in practice (e.g., C++ std::map,
+Java's TreeMap). In an SRAS pipeline, if a standard library provides a red-black tree, we can
+rely on guaranteed O(log n) operations.
 """
 
 from __future__ import annotations
