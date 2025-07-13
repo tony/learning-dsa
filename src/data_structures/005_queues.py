@@ -55,6 +55,16 @@ class Queue:
     20
     >>> q.is_empty()
     True
+    >>> try:
+    ...     q.dequeue()
+    ... except IndexError as e:
+    ...     print(e)
+    dequeue from empty queue
+    >>> try:
+    ...     q.peek()
+    ... except IndexError as e:
+    ...     print(e)
+    peek from empty queue
     """
 
     def __init__(self) -> None:
@@ -65,11 +75,27 @@ class Queue:
         self._data.append(item)
 
     def dequeue(self) -> Any:
-        """Remove and return the item at the front of the queue."""
+        """Remove and return the item at the front of the queue.
+
+        Raises
+        ------
+        IndexError
+            If the queue is empty.
+        """
+        if self.is_empty():
+            raise IndexError("dequeue from empty queue")
         return self._data.popleft()
 
     def peek(self) -> Any:
-        """Return the front item without removing it."""
+        """Return the front item without removing it.
+
+        Raises
+        ------
+        IndexError
+            If the queue is empty.
+        """
+        if self.is_empty():
+            raise IndexError("peek from empty queue")
         return self._data[0]
 
     def is_empty(self) -> bool:
