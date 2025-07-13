@@ -73,12 +73,10 @@ def _quick_sort_helper(data: list[int], low: int, high: int) -> None:
 
 
 def _partition(data: list[int], low: int, high: int) -> int:
-    # Pick a random pivot between low and high
+    # Pick a random pivot between low and high to avoid worst-case O(n²) behavior
     pivot_index = random.randint(low, high)
-    # Swap pivot into the end
+    # Swap pivot into the end position for partitioning
     data[pivot_index], data[high] = data[high], data[pivot_index]
-    # We'll pick the last element as pivot (simple strategy).
-    # For better performance, consider randomizing or median-of-three pivot selection.
     pivot = data[high]
     i = low - 1
     for j in range(low, high):
@@ -107,7 +105,7 @@ def main() -> None:
         data = list(range(n, 0, -1))  # worst-case with naive pivot
         exec_time = timeit.timeit("quick_sort(data)", globals={**globals(), **locals()}, number=1)
         print(
-            f"Quick sort on {n} elements took: {exec_time:.5f}s. (Pivot=last element)",
+            f"Quick sort on {n} elements took: {exec_time:.5f}s. (Random pivot)",
         )
 
 
