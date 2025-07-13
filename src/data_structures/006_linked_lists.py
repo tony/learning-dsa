@@ -113,7 +113,7 @@ class SinglyLinkedList:
         """Return the number of nodes in the list."""
         return self._size
 
-    def __iter__(self) -> Generator[str]:
+    def __iter__(self) -> Generator[Any, None, None]:
         """Iterate through the linked list values."""
         current = self.head
         while current:
