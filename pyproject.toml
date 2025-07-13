@@ -53,6 +53,8 @@ select = [
 ]
 ignore = [
   "COM812", # missing trailing comma, ruff format conflict
+  "EM101", # Exception must not use a string literal, assign to variable first
+  "TRY003", # Avoid specifying long messages outside the exception class
 ]
 
 [tool.ruff.lint.isort]
