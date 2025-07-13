@@ -61,6 +61,16 @@ class Stack:
     10
     >>> s.is_empty()
     True
+    >>> try:
+    ...     s.pop()
+    ... except IndexError as e:
+    ...     print(e)
+    pop from empty stack
+    >>> try:
+    ...     s.peek()
+    ... except IndexError as e:
+    ...     print(e)
+    peek from empty stack
     """
 
     def __init__(self) -> None:
@@ -71,11 +81,27 @@ class Stack:
         self._data.append(item)
 
     def pop(self) -> Any:
-        """Pop and return the top item from the stack."""
+        """Pop and return the top item from the stack.
+
+        Raises
+        ------
+        IndexError
+            If the stack is empty.
+        """
+        if self.is_empty():
+            raise IndexError("pop from empty stack")
         return self._data.pop()
 
     def peek(self) -> Any:
-        """Return the top item without removing it."""
+        """Return the top item without removing it.
+
+        Raises
+        ------
+        IndexError
+            If the stack is empty.
+        """
+        if self.is_empty():
+            raise IndexError("peek from empty stack")
         return self._data[-1]
 
     def is_empty(self) -> bool:
