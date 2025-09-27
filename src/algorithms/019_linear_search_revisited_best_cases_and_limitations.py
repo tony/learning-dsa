@@ -70,7 +70,9 @@ def main() -> None:
         data = list(range(n))
         target = -1  # ensure worst-case scenario (not present)
         exec_time = timeit.timeit(
-            "linear_search_small(data, target)", globals={**globals(), **locals()}, number=50
+            "linear_search_small(data, target)",
+            globals={**globals(), **locals()},
+            number=50,
         )
         print(
             f"List size {n}, repeated 50 runs: {exec_time:.5f} seconds total "

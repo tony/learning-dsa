@@ -83,7 +83,9 @@ def main() -> None:
         data = list(range(n))  # Sorted
         target = -1  # Not in the list, ensuring full search
         exec_time = timeit.timeit(
-            "binary_search(data, target)", globals={**globals(), **locals()}, number=100
+            "binary_search(data, target)",
+            globals={**globals(), **locals()},
+            number=100,
         )
         print(
             f"Sorted list size {n}, repeated 100 runs: {exec_time:.5f} seconds total "

@@ -82,7 +82,9 @@ def main() -> None:
     for n in sizes:
         data = list(range(n, 0, -1))  # worst-case: reverse-sorted
         exec_time = timeit.timeit(
-            "selection_sort(data)", globals={**globals(), **locals()}, number=1
+            "selection_sort(data)",
+            globals={**globals(), **locals()},
+            number=1,
         )
         print(f"Selection sort on {n} elements took: {exec_time:.5f}s.")
 

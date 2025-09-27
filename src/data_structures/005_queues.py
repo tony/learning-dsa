@@ -83,7 +83,8 @@ class Queue:
             If the queue is empty.
         """
         if self.is_empty():
-            raise IndexError("dequeue from empty queue")
+            msg = "dequeue from empty queue"
+            raise IndexError(msg)
         return self._data.popleft()
 
     def peek(self) -> Any:
@@ -95,7 +96,8 @@ class Queue:
             If the queue is empty.
         """
         if self.is_empty():
-            raise IndexError("peek from empty queue")
+            msg = "peek from empty queue"
+            raise IndexError(msg)
         return self._data[0]
 
     def is_empty(self) -> bool:

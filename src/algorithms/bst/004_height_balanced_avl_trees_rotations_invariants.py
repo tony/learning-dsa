@@ -74,7 +74,8 @@ def rotate_left(z: AVLNode) -> AVLNode:
     y = z.right
 
     if y is None:
-        raise ValueError("rotate_left called on node with no right child")
+        msg = "rotate_left called on node with no right child"
+        raise ValueError(msg)
     # Perform rotation
     z.right = y.left
     y.left = z
@@ -93,7 +94,8 @@ def rotate_right(z: AVLNode) -> AVLNode:
     y = z.left
 
     if y is None:
-        raise ValueError("rotate_right called on node with no left child")
+        msg = "rotate_right called on node with no left child"
+        raise ValueError(msg)
     # Perform rotation
     z.left = y.right
     y.right = z

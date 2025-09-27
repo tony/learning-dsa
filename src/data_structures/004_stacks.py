@@ -89,7 +89,8 @@ class Stack:
             If the stack is empty.
         """
         if self.is_empty():
-            raise IndexError("pop from empty stack")
+            msg = "pop from empty stack"
+            raise IndexError(msg)
         return self._data.pop()
 
     def peek(self) -> Any:
@@ -101,7 +102,8 @@ class Stack:
             If the stack is empty.
         """
         if self.is_empty():
-            raise IndexError("peek from empty stack")
+            msg = "peek from empty stack"
+            raise IndexError(msg)
         return self._data[-1]
 
     def is_empty(self) -> bool:

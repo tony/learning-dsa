@@ -69,7 +69,9 @@ def main() -> None:
         data = list(range(n))
         target = -1  # a value not in the lists, ensuring worst-case O(n) scenario
         exec_time = timeit.timeit(
-            "linear_search(data, target)", globals={**globals(), **locals()}, number=10
+            "linear_search(data, target)",
+            globals={**globals(), **locals()},
+            number=10,
         )
         print(
             f"List size {n}, repeated 10 runs: {exec_time:.5f} seconds total "
