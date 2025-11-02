@@ -13,7 +13,7 @@ Learning DSA is an educational project that teaches computer science fundamental
 ## Getting Started
 
 ### Prerequisites
-- Python 3.12 or higher
+- Python 3.14 or higher
 - [uv](https://docs.astral.sh/uv/) (recommended) or pip
 
 ### Installation
