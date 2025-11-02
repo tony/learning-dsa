@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "Learning series for data structures and algorithms."
 license = { text = "All Rights Reserved" }
 readme = "README.md"
-requires-python = ">=3.13,<4.0"
+requires-python = ">=3.14,<4.0"
 authors = [
   {name = "Tony Narlock", email = "tony@git-pull.com"}
 ]
