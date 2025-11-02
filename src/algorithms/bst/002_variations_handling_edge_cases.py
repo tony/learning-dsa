@@ -55,7 +55,7 @@ We demonstrate both recursive and iterative search code and show how to handle e
 """
 
 import timeit
-from typing import Any, Optional
+from typing import Any
 
 
 class BSTNode:
@@ -68,7 +68,7 @@ class BSTNode:
     - optional pointer to parent (for easy successor/predecessor).
     """
 
-    def __init__(self, key: Any, parent: Optional["BSTNode"] = None) -> None:
+    def __init__(self, key: Any, parent: BSTNode | None = None) -> None:
         self.key = key
         self.left: BSTNode | None = None
         self.right: BSTNode | None = None

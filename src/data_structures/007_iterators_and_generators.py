@@ -57,7 +57,7 @@ class MyIterator:
         self._data = data
         self._index = 0
 
-    def __iter__(self) -> "MyIterator":
+    def __iter__(self) -> MyIterator:
         """Return the iterator object itself."""
         return self
 
