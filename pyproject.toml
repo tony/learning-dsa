@@ -12,7 +12,7 @@ authors = [
 [dependency-groups]
 dev = [
   ### Testing ###
-  "pytest",
+  "pytest>=9.0",
   "pytest-rerunfailures",
   "pytest-watcher",
     # Lint
