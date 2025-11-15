@@ -40,7 +40,7 @@ dev = [
 [package.metadata.requires-dev]
 dev = [
     { name = "mypy" },
-    { name = "pytest" },
+    { name = "pytest", specifier = ">=9.0" },
     { name = "pytest-rerunfailures" },
     { name = "pytest-watcher" },
     { name = "ruff" },
