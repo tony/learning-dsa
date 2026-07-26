@@ -124,7 +124,7 @@ def find_runs(lst):
         return
     run = [lst[0]]
     for i in range(1, len(lst)):
-        if lst[i] >= lst[i-1]:
+        if lst[i] >= lst[i - 1]:
             run.append(lst[i])
         else:
             yield run
@@ -136,9 +136,10 @@ def find_runs(lst):
 ```python
 class TournamentTree:
     """Efficient for finding k smallest elements."""
+
     def __init__(self, elements):
         self.tree = self._build_tree(elements)
-    
+
     def pop_min(self):
         """Extract minimum and rebuild affected path."""
         # Implementation details...
@@ -148,9 +149,12 @@ class TournamentTree:
 ```python
 class SkewHeap:
     """Self-adjusting heap without balance info."""
+
     def merge(self, h1, h2):
-        if not h1: return h2
-        if not h2: return h1
+        if not h1:
+            return h2
+        if not h2:
+            return h1
         if h1.val > h2.val:
             h1, h2 = h2, h1
         # Swap children for self-adjustment
