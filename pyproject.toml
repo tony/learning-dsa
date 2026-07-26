@@ -16,7 +16,7 @@ dev = [
   "pytest-rerunfailures",
   "pytest-watcher",
     # Lint
-  "ruff",
+  "ruff>=0.16.0",
   "mypy",
   "typing-extensions",
 ]
@@ -33,7 +33,10 @@ target-version = "py314"
 line-length = 100  # Following cpython conventions for educational content
 
 [tool.ruff.lint]
-select = [
+# `select` is deliberately unset: ruff 0.16 enables a curated default rule
+# set, and an explicit `select` would replace it rather than extend it.
+# `extend-select` layers this project's additional linters on top.
+extend-select = [
   "E", # pycodestyle
   "F", # pyflakes
   "I", # isort
@@ -75,6 +78,12 @@ convention = "numpy"
 "*/__init__.py" = ["F401"]
 "*.py" = [
   "T201"  # print() is used in doctests and normal test output
+]
+# Lessons are numbered so the curriculum reads in order on disk. The digits
+# make the stem an invalid identifier, which is fine: lessons are run as
+# scripts and collected by pytest, never imported.
+"src/**/[0-9][0-9][0-9]_*.py" = [
+  "N999", # invalid module name
 ]
 
 [tool.pytest]
