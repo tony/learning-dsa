@@ -63,7 +63,7 @@ def main() -> None:
     # Inserting n items
     insert_time = timeit.timeit(lambda: s.add(len(s)), number=n)
     # Check membership for an item known to exist
-    search_time = timeit.timeit(lambda: (n - 1 in s), number=1000)
+    search_time = timeit.timeit(lambda: n - 1 in s, number=1000)
 
     print(
         f"Inserting {n} items took: {insert_time:.5f} s "

@@ -67,7 +67,7 @@ def main() -> None:
     insert_time = timeit.timeit(lambda: d.__setitem__(len(d), 1), number=n)
 
     # Time searching an existing key (like n-1) multiple times
-    search_time = timeit.timeit(lambda: (n - 1 in d), number=1000)
+    search_time = timeit.timeit(lambda: n - 1 in d, number=1000)
 
     print(
         f"Inserting {n} items into dict took: {insert_time:.5f}s total "

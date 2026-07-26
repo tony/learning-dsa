@@ -87,7 +87,7 @@ def main() -> None:
 
     # Searching (linear)
     # Searching for a value near the end ensures O(n) behavior
-    search_time = timeit.timeit(lambda: (n - 1 in arr), number=10)
+    search_time = timeit.timeit(lambda: n - 1 in arr, number=10)
     print(
         f"Searching for an element near the end of the array 10 times took: "
         f"{search_time:.5f} seconds.",
