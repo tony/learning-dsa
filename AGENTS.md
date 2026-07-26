@@ -137,6 +137,29 @@ Follow the numbered progressions in:
 - Performance timing in main() functions helps understand complexity
 - Use minimal sleeps and ellipses for concurrency tests
 
+### Classes with fields
+
+**Classes with fields** — `NamedTuple`, dataclasses — document every field in
+an `Attributes` section:
+
+```python
+class SearchResult(NamedTuple):
+    """Outcome of one search over a structure.
+
+    Attributes
+    ----------
+    index : int | None
+        Position the value was found at, or ``None`` when absent.
+    comparisons : int
+        Comparisons performed, the figure the lesson measures.
+    """
+```
+
+A type says how a field is shaped, not what it holds. Describing each one
+keeps that meaning next to the code, and anything that renders the class —
+autodoc, a REPL, an editor tooltip — has a description to show instead of a
+bare name.
+
 ### Doctests
 
 **All functions and methods MUST have working doctests.** Doctests serve as both documentation and tests.
