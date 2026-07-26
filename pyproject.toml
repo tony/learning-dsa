@@ -79,6 +79,12 @@ convention = "numpy"
 "*.py" = [
   "T201"  # print() is used in doctests and normal test output
 ]
+# Lessons are numbered so the curriculum reads in order on disk. The digits
+# make the stem an invalid identifier, which is fine: lessons are run as
+# scripts and collected by pytest, never imported.
+"src/**/[0-9][0-9][0-9]_*.py" = [
+  "N999", # invalid module name
+]
 
 [tool.pytest]
 minversion = "9.0"
