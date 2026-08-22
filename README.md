@@ -1,45 +1,51 @@
 # Learning DSA
 
-A friendly, story-driven approach to learning Data Structures and Algorithms in Python!
+Numbered, doctested Python lessons that teach data structures and algorithms
+through two running stories — one for data structures, one for algorithms.
 
 ## What is this?
 
-Learning DSA is an educational project that teaches computer science fundamentals through:
+Learning DSA teaches computer science fundamentals through:
 - **Numbered lessons** that build on each other
-- **Engaging narratives** that make concepts memorable
-- **Clean Python code** with type hints and doctests
-- **Performance analysis** to understand complexity in practice
+- **Two running narratives** — a data pipeline and a logistics platform —
+  that give each lesson a concrete scenario
+- **Type-hinted, doctested Python** — every example in this repo is a test
+- **Complexity analysis** — every lesson states Best/Average/Worst/Space in
+  Big-O terms
 
 ## Getting Started
 
 ### Prerequisites
 - Python 3.14 or higher
-- [uv](https://docs.astral.sh/uv/) (recommended) or pip
+- [uv](https://docs.astral.sh/uv/)
 
 ### Installation
 
-```bash
-# Clone the repository
-git clone https://github.com/tony/learning-dsa.git
-cd learning-dsa
+Clone the repository and enter it:
 
-# Install dependencies with uv (recommended)
-uv sync --all-extras --dev
+```console
+$ git clone https://github.com/tony/learning-dsa.git && cd learning-dsa
+```
 
-# Or with pip
-pip install -e ".[dev]"
+Install dependencies:
+
+```console
+$ uv sync --all-extras --dev
 ```
 
 ### Running a Lesson
 
 Each lesson is self-contained and can be run directly:
 
-```bash
-# Run a specific lesson
-python src/algorithms/002_linear_search.py
+```console
+$ uv run python src/algorithms/002_linear_search.py
+```
 
-# Or with uv
-uv run python src/algorithms/002_linear_search.py
+Every lesson only imports the standard library, so a plain interpreter works
+too, provided it satisfies the Python version above:
+
+```console
+$ python src/algorithms/002_linear_search.py
 ```
 
 ## Project Structure
@@ -71,30 +77,47 @@ Follow these progressions for a structured learning experience:
 
 ## Development
 
+See [.github/CONTRIBUTING.md](.github/CONTRIBUTING.md) for the full gate
+list. The short version:
+
 ### Running Tests
 
-```bash
-# Run all tests
-uv run pytest
+Run the full suite:
 
-# Watch mode (auto-rerun on changes)
-uv run pytest-watcher
+```console
+$ uv run pytest
+```
 
-# Test a specific file
-uv run pytest src/algorithms/002_linear_search.py
+Re-run automatically on save:
+
+```console
+$ uv run pytest-watcher
+```
+
+Test a specific file:
+
+```console
+$ uv run pytest src/algorithms/002_linear_search.py
 ```
 
 ### Code Quality
 
-```bash
-# Type checking
-uv run mypy .
+Type-check:
 
-# Linting
-uv run ruff check .
+```console
+$ uv run mypy .
+```
 
-# Auto-format
-uv run ruff format .
+Lint:
+
+```console
+$ uv run ruff check .
+```
+
+Auto-format:
+
+```console
+$ uv run ruff format .
 ```
 
 ## The Narratives
@@ -104,7 +127,7 @@ This project uses two storytelling frameworks to make learning memorable:
 ### Data Analytics Pipeline
 Used for data structures - follows a company building a data analytics system:
 - Raw data storage → Arrays and Lists
-- Task processing → Stacks and Queues  
+- Task processing → Stacks and Queues
 - Efficient lookups → Hash Tables and Trees
 - Advanced indexing → Specialized structures
 
@@ -117,7 +140,13 @@ Used for algorithms - simulates a growing logistics platform:
 
 ## Contributing
 
-This is a personal learning project, but suggestions and improvements are welcome! Each lesson follows the template in `notes/lesson_template.py`.
+This is a personal learning project. Bug reports and suggestions are
+welcome. New lessons follow the `Algorithm:`/`Data Structure:`,
+`Concepts:`, `Narrative:`, `Doctests:` docstring shape already used
+throughout `src/`; `notes/lesson_template.py` is a starting skeleton, not a
+strict template every existing lesson matches. See
+[.github/CONTRIBUTING.md](.github/CONTRIBUTING.md) and
+[.github/WRITING.md](.github/WRITING.md) for the full conventions.
 
 ## License
 
@@ -126,7 +155,3 @@ MIT License - See LICENSE file for details
 ## Author
 
 Created by Tony Narlock as a journey through computer science fundamentals.
-
----
-
-*Happy learning! Remember: understanding complexity is the key to writing efficient code.*
